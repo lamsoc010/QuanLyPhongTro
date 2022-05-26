@@ -23,6 +23,15 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
+// Route::get('/category', [HomeController::class, 'category'])->name('category');
+// Route::get('/about', [HomeController::class, 'about'])->name('about');
+// Route::get('/latest_news', [HomeController::class, 'latest_news'])->name('latest_news');
+// Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+// Route::get('/elements', [HomeController::class, 'elements'])->name('elements');
+// Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
+// Route::get('/single-blog', [HomeController::class, 'single_blog'])->name('single_blog');
+// Route::get('/details', [HomeController::class, 'details'])->name('details');
+
 
 // Admin
 Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function() {

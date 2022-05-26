@@ -116,6 +116,8 @@
                                                     <li><a href="blog.html">Blog</a></li>
                                                     <li><a href="single-blog.html">Blog Details</a></li>
                                                     <li><a href="details.html">Categori Details</a></li>
+                                                    <!-- <li><a href="<?php echo route('details')?>">Categori Details</a></li> -->
+
                                                 </ul>
                                             </li>
                                         </ul>
