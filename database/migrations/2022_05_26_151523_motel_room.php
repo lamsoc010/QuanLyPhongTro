@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Motels extends Migration
+class MotelRoom extends Migration
 {
     /**
      * Run the migrations.
@@ -13,25 +13,20 @@ class Motels extends Migration
      */
     public function up()
     {
-        Schema::create('motels', function (Blueprint $table) {
+        Schema::create('motel_room', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('address');
-            $table->string('area');
-            $table->integer('room_quantity');
+            $table->integer('room_number');
+            $table->float('area');
+            $table->float('price');
             $table->string('descreption');
             $table->string('status');
-            $table->bigInteger('idUser')->unsigned();
+            $table->bigInteger('idMotels')->unsigned();
             $table->timestamps();
 
-            // $table->primary('idUser');
-
-            // if(Schema::hasTable('users')){
-                $table->foreign('idUser')
-                ->references('id')->on('users')
+            $table->foreign('idMotels')
+                ->references('id')->on('motels')
                 ->onDelete('CASCADE')
                 ->onUpdate('CASCADE');
-            // }
         });
     }
 
@@ -42,6 +37,6 @@ class Motels extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('motels');
+        Schema::dropIfExists('motel_room');
     }
 }

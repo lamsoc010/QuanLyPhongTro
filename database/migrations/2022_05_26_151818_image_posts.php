@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Posts extends Migration
+class ImagePosts extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,13 @@ class Posts extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('image_posts', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('content');
-            $table->string('status');
-            $table->bigInteger('idUser')->unsigned();
-            $table->string('category');
-            $table->timestamps();
+            $table->bigInteger('idPosts')->unsigned();
+            $table->string('image');
 
-            $table->foreign('idUser')
-                ->references('id')->on('users')
+            $table->foreign('idPosts')
+                ->references('id')->on('posts')
                 ->onDelete('CASCADE')
                 ->onUpdate('CASCADE');
         });
@@ -36,6 +32,6 @@ class Posts extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('image_posts');
     }
 }
