@@ -57,7 +57,7 @@
                                     <ul class="header-social">   
                                         <li><a href="#"><i class="fab fa-twitter"></i></a></li>
                                         <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                       <li> <a href="#"><i class="fab fa-pinterest-p"></i></a></li>
+                                        <li> <a href="#"><i class="fab fa-pinterest-p"></i></a></li>
                                        @if (Route::has('login'))
                                             @auth
                                                 <li><a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Xin chào, {{ Auth::user()->name }}</a></li>
@@ -105,19 +105,17 @@
                                 <div class="main-menu d-none d-md-block">
                                     <nav>                  
                                         <ul id="navigation">    
-                                            <li><a href="index.html">Home</a></li>
-                                            <li><a href="categori.html">Category</a></li>
-                                            <li><a href="about.html">About</a></li>
-                                            <li><a href="latest_news.html">Latest News</a></li>
-                                            <li><a href="contact.html">Contact</a></li>
+                                            <li><a href="{{route('home')}}">Home</a></li>
+                                            <li><a href="{{route('category')}}">Category</a></li>
+                                            <li><a href="{{route('about')}}">About</a></li>
+                                            <li><a href="{{route('latest_news')}}">Latest News</a></li>
+                                            <li><a href="{{route('contact')}}">Contact</a></li>
                                             <li><a href="#">Pages</a>
                                                 <ul class="submenu">
-                                                    <li><a href="elements.html">Element</a></li>
-                                                    <li><a href="blog.html">Blog</a></li>
-                                                    <li><a href="single-blog.html">Blog Details</a></li>
-                                                    <li><a href="details.html">Categori Details</a></li>
-                                                    <!-- <li><a href="<?php echo route('details')?>">Categori Details</a></li> -->
-
+                                                    <li><a href="{{route('element')}}">Element</a></li>
+                                                    <li><a href="{{route('blog')}}">Blog</a></li>
+                                                    <li><a href="{{route('blog_details')}}">Blog Details</a></li>
+                                                    <li><a href="{{route('details')}}">Categori Details</a></li>
                                                 </ul>
                                             </li>
                                         </ul>

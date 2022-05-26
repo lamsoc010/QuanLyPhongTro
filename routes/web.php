@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Clients\HomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,9 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('clients.index');
-});
+// Clients
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/category', [HomeController::class, 'category'])->name('category');
+Route::get('/about', [HomeController::class, 'about'])->name('about');
+Route::get('/latest_news', [HomeController::class, 'latest_news'])->name('latest_news');
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::get('/element', [HomeController::class, 'element'])->name('element');
+Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
+Route::get('/blog_details', [HomeController::class, 'blog_details'])->name('blog_details');
+Route::get('/details', [HomeController::class, 'details'])->name('details');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -23,14 +30,6 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-// Route::get('/category', [HomeController::class, 'category'])->name('category');
-// Route::get('/about', [HomeController::class, 'about'])->name('about');
-// Route::get('/latest_news', [HomeController::class, 'latest_news'])->name('latest_news');
-// Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
-// Route::get('/elements', [HomeController::class, 'elements'])->name('elements');
-// Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
-// Route::get('/single-blog', [HomeController::class, 'single_blog'])->name('single_blog');
-// Route::get('/details', [HomeController::class, 'details'])->name('details');
 
 
 // Admin
