@@ -26,6 +26,39 @@
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
             </div>
 
+            <div class="mt-4">
+                <x-label for="image" :value="__('Image')" />
+                
+                <x-input id="image" class="block mt-1 w-full"
+                                type="file"
+                                name="image"
+                                required autocomplete="new-image" />
+            </div>
+            <div class="mt-4">
+                <x-label for="phone" :value="__('Phone')" />
+                
+                <x-input id="phone" class="block mt-1 w-full"
+                                type="number"
+                                name="phone"
+                                required autocomplete="new-phone" />
+            </div>
+            <div class="mt-4">
+                <x-label for="birthday" :value="__('Birthday')" />
+                
+                <x-input id="birthday" class="block mt-1 w-full"
+                                type="date"
+                                name="birthday"
+                                required autocomplete="new-birthday" />
+            </div>
+            <div class="mt-4">
+                <x-label for="address" :value="__('Address')" />
+
+                <x-input id="address" class="block mt-1 w-full"
+                type="text"
+                name="address"
+                required autocomplete="new-address" />
+            </div>
+            
             <!-- Password -->
             <div class="mt-4">
                 <x-label for="password" :value="__('Password')" />
@@ -35,7 +68,6 @@
                                 name="password"
                                 required autocomplete="new-password" />
             </div>
-
             <!-- Confirm Password -->
             <div class="mt-4">
                 <x-label for="password_confirmation" :value="__('Confirm Password')" />

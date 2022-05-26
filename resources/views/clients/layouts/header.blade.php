@@ -60,7 +60,11 @@
                                         <li> <a href="#"><i class="fab fa-pinterest-p"></i></a></li>
                                        @if (Route::has('login'))
                                             @auth
-                                                <li><a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Xin chào, {{ Auth::user()->name }}</a></li>
+                                                @if(Auth::user()->role == 'user')
+                                                        <li><a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Xin chào, {{ Auth::user()->name }}</a></li>
+                                                    @else
+                                                        <li><a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Xin chào, chủ trọ: {{ Auth::user()->name }}</a></li>
+                                                @endif
                                             @else
                                                 <li><a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a></li>
 
