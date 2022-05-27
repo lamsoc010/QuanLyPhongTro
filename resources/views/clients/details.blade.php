@@ -116,10 +116,11 @@
                            <i class="fas fa-star"></i>
                            <i class="fas fa-star"></i>
                            <i class="fas fa-star"></i>
-                           Cư xá Duy Tân
+                           {{ $motels[0]->name}}
+                           
                         </h2>
                         <ul class="blog-info-link mt-4 ">
-                           <li class="motels_area"><i class="fas fa-map-marker-alt"></i>Địa chỉ: Huế</li>
+                           <li class="motels_area"><i class="fas fa-map-marker-alt"></i>Địa chỉ: {{ $motels[0]->address}}</li>
 
                         </ul>
                         <ul class="blog-info-link mt-4 mb-4">
@@ -129,8 +130,8 @@
 
                         </ul>
                         <ul class="blog-info-link mt-4 mb-4">
-                           <li class="ms-4"><i class="fas fa-chart-area"></i>16m2 </li>
-                           <li><i class="fas fa-sort-numeric-down"></i>12 phòng </li>
+                           <li class="ms-4"><i class="fas fa-chart-area"></i>{{ $motels[0]->area}}/m2 </li>
+                           <li><i class="fas fa-sort-numeric-down"></i>{{ $motels[0]->room_quantity}} phòng </li>
 
                         </ul>
 
@@ -142,11 +143,11 @@
 
                            </div>
                            <div class="card_body">
-                              <h5 class="card-title text-center">Nguyên Trần</h5>
+                              <h5 class="card-title text-center">{{$users[0]->name}}</h5>
 
                               <div class="card-info d-flex mb-2 justify-content-between">
-                                 <a href="tel:0991231231" class="user_phone bg-success mr-2"><i class="fas fa-phone mr-2"></i>0988234234</a>
-                                 <a href=" https://chat.zalo.me/?phone=0378965275" class="user_zalo bg-light text-primary d-flex">
+                                 <a href="tel:0991231231" class="user_phone bg-success mr-2"><i class="fas fa-phone mr-2"></i>{{$users[0]->phone}}</a>
+                                 <a href=" https://chat.zalo.me/?phone={{$users[0]->name}}" class="user_zalo bg-light text-primary d-flex">
                                     <i class="zalo"></i>
                                     <span>Nhắn zalo</span></a>
 
@@ -162,33 +163,9 @@
                   <div class="row mt-3">
                      <h3 class="">Thông tin mô tả</h3>
                      <p class="excert">
-                        - Phòng cho thuê phòng Hẻm xe hơi, full nội thất.
-
-                        + Diện tích phòng tầng trệt 25m2
-
-                        - Giá cho thuê : 3,5 triệu/tháng
-
-                        + Diện tích phòng 20m2 có ban công
-
-                        - Giá cho thuê : 4 triệu/tháng
-
-                        - Cả 2 phòng đều có máy lạnh inverter, tủ lạnh, bàn, ghế, giường, tủ quần áo, nệm, wifi, full nội thất.
-
-                        - Nhà hẻm xe hơi Đường Trường Sơn gần sân bay, yên tĩnh, an ninh. nhà đẹp mới sửa.
-
-                        - Giờ giấc tự do, không chung chủ.
-
-
-
-
+                        {{$motels[0]->descreption}}
                      </p>
-                     <p>
-                        - Điện: 3.500/Kw, nước: 100k/ người
-
-                        - Phí quản lý, dịch vụ ( wifi,rác, vệ sinh chung...): 80k/ người
-
-                        - Đầy đủ tiện ích xung quanh, an ninh đảm bảo tuyệt đối
-                     </p>
+                     
                   </div>
                   <div class="quote-wrapper">
                      <div class="quotes">

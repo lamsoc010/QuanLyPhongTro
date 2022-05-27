@@ -20,6 +20,7 @@ class MotelRoom extends Migration
             $table->float('price');
             $table->string('descreption');
             $table->string('status');
+            $table->integer('views');
             $table->bigInteger('idMotels')->unsigned();
             $table->timestamps();
 
