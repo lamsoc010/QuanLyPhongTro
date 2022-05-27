@@ -19,19 +19,16 @@ class Motels extends Migration
             $table->string('address');
             $table->string('area');
             $table->integer('room_quantity');
+            $table->integer('views');
             $table->string('descreption');
             $table->string('status');
             $table->bigInteger('idUser')->unsigned();
-            $table->timestamps();
-
-            // $table->primary('idUser');
-
-            // if(Schema::hasTable('users')){
-                $table->foreign('idUser')
-                ->references('id')->on('users')
-                ->onDelete('CASCADE')
-                ->onUpdate('CASCADE');
-            // }
+            
+            
+            $table->foreign('idUser')
+            ->references('id')->on('users')
+            ->onDelete('CASCADE')
+            ->onUpdate('CASCADE');
         });
     }
 

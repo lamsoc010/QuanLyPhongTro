@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Posts extends Migration
+class ReplyCommentsMotels extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,16 @@ class Posts extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('reply_comment_motels', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('content');
-            $table->string('status');
-            $table->integer('views');
+            $table->string('contents');
+            $table->bigInteger('idCommentMotels')->unsigned();
             $table->bigInteger('idUser')->unsigned();
-            $table->string('category');
-            $table->timestamps();
 
+            $table->foreign('idCommentMotels')
+                ->references('id')->on('comment_motels')
+                ->onDelete('CASCADE')
+                ->onUpdate('CASCADE');
             $table->foreign('idUser')
                 ->references('id')->on('users')
                 ->onDelete('CASCADE')
@@ -37,6 +37,6 @@ class Posts extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('reply_comment_motels');
     }
 }

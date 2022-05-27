@@ -32,6 +32,7 @@ require __DIR__.'/auth.php';
 
 
 
+
 // Admin
 Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function() {
     Route::namespace('Auth')->middleware('guest:admin')->group(function() {

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Clients;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use DB;
 
 class HomeController extends Controller
 {
@@ -32,6 +33,14 @@ class HomeController extends Controller
         return view('clients.single-blog');
     }
     public function details() {
-        return view('clients.details');
+        $motels = DB::table('motels')->get()
+        ->where('id', '=', '1');
+        
+        $users = DB::table('users')
+            ->join('motels', 'users.id', '=', 'motels.idUser')
+            ->select('users.*')
+            ->get();
+        // dd($users);
+        return view('clients.details', compact('motels','users'));
     }
 }
