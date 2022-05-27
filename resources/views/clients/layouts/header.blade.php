@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>News HTML-5 Template </title>
+        <title>Phòng trọ Huế </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="manifest" href="site.webmanifest">
@@ -86,7 +86,7 @@
                             <!-- Logo -->
                             <div class="col-xl-3 col-lg-3 col-md-3">
                                 <div class="logo">
-                                    <a href="index.html"><img src="{{asset('assets/img/logo/logo.png')}}" alt=""></a>
+                                    <a href="/"><img src="{{asset('assets/img/logo/logo.png')}}" alt=""></a>
                                 </div>
                             </div>
                             <div class="col-xl-9 col-lg-9 col-md-9">
@@ -109,11 +109,11 @@
                                 <div class="main-menu d-none d-md-block">
                                     <nav>                  
                                         <ul id="navigation">    
-                                            <li><a href="{{route('home')}}">Home</a></li>
-                                            <li><a href="{{route('category')}}">Category</a></li>
-                                            <li><a href="{{route('about')}}">About</a></li>
-                                            <li><a href="{{route('latest_news')}}">Latest News</a></li>
-                                            <li><a href="{{route('contact')}}">Contact</a></li>
+                                            <li><a href="{{route('home')}}">Trang chủ</a></li>
+                                            <li><a href="{{route('category')}}">Cho thuê phòng trọ</a></li>
+                                            <li><a href="{{route('about')}}">Tìm người ở ghép</a></li>
+                                            <li><a href="{{route('latest_news')}}">Bài đăng</a></li>
+                                            <li><a href="{{route('contact')}}">Hướng dẫn</a></li>
                                             <li><a href="#">Pages</a>
                                                 <ul class="submenu">
                                                     <li><a href="{{route('element')}}">Element</a></li>
