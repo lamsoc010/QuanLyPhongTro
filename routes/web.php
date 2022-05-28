@@ -55,5 +55,9 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function() {
     Route::get('/users/listUser', 'HomeController@user');
     Route::get('/posts/newPost', 'HomeController@post');
     
+    // get all user with datatable
     Route::get('/users/getList', 'HomeController@anyData');
+
+    // show user with function details in view --- admin.users.details
+    Route::get('/users/details/{id}', 'HomeController@details');
 });

@@ -30,6 +30,8 @@ class HomeController extends Controller
         $start1 =$request->start;
         $end1 = $request->length;
         $draw = $request->draw;
+
+        // get dataBase
         $users = DB::table('users');
         $totalRecords = $users->count();
         $users = $users->offset($start1)->limit($end1)->get();
@@ -39,6 +41,17 @@ class HomeController extends Controller
             "recordsTotal"=>  $totalRecords,
             "data" => $users
         ];
+
         return response()->json($data1);
+    }
+
+    public function details(Request $request)
+    {
+
+        $idUser = $request->id;
+        
+        // get database
+        $users = DB::table('users')->where('id', $idUser)->get();
+        return response()->json($users);
     }
 }
