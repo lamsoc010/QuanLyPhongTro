@@ -1,12 +1,12 @@
 @section('style')
 <!-- CodeMirror -->
-<link rel="stylesheet" href="{{asset('plugins/codemirror/codemirror.css')}}">
-<link rel="stylesheet" href="{{asset('plugins/codemirror/theme/monokai.css')}}">
+<link rel="stylesheet" href="{{asset('AdminPTH/plugins/codemirror/codemirror.css')}}">
+<link rel="stylesheet" href="{{asset('AdminPTH/plugins/codemirror/theme/monokai.css')}}">
 <!-- SimpleMDE -->
-<link rel="stylesheet" href="{{asset('plugins/simplemde/simplemde.min.css')}}">
+<link rel="stylesheet" href="{{asset('AdminPTH/plugins/simplemde/simplemde.min.css')}}">
 @endsection
 
-@extends('../../layouts/layout')
+@extends('admin.layouts.layout')
 @section('content')
  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -51,12 +51,12 @@
 
   @section('scripts')
 <!-- Summernote -->
-<script src="{{asset('plugins/summernote/summernote-bs4.min.js')}}"></script>
+<script src="{{asset('AdminPTH/plugins/summernote/summernote-bs4.min.js')}}"></script>
 <!-- CodeMirror -->
-<script src="{{asset('plugins/codemirror/codemirror.js')}}"></script>
-<script src="{{asset('plugins/codemirror/mode/css/css.js')}}"></script>
-<script src="{{asset('plugins/codemirror/mode/xml/xml.js')}}"></script>
-<script src="{{asset('plugins/codemirror/mode/htmlmixed/htmlmixed.js')}}"></script>
+<script src="{{asset('AdminPTH/plugins/codemirror/codemirror.js')}}"></script>
+<script src="{{asset('AdminPTH/plugins/codemirror/mode/css/css.js')}}"></script>
+<script src="{{asset('AdminPTH/plugins/codemirror/mode/xml/xml.js')}}"></script>
+<script src="{{asset('AdminPTH/plugins/codemirror/mode/htmlmixed/htmlmixed.js')}}"></script>
 
 <!-- Page specific script -->
 <script>

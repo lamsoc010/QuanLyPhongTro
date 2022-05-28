@@ -29,7 +29,7 @@
                   <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                   <li class="nav-item ">
-                      <a href="/" class="nav-link ">
+                      <a href="/admin" class="nav-link ">
                         <i class="fas fa-home mr-2"></i>
                           <p>
                               Trang chủ </p>
@@ -45,7 +45,7 @@
                       </a>
                       <ul class="nav nav-treeview pl-3">
                         <li class="nav-item">
-                          <a href="/users/listUser" class="nav-link">
+                          <a href="/admin/users/listUser" class="nav-link">
                             <i class="fas fa-users mr-2"></i>
                             <p>Người dùng</p>
                           </a>
@@ -83,7 +83,7 @@
                       </ul>
                   </li>
                   <li class="nav-item">
-                      <a href="/posts/newPost" class="nav-link">
+                      <a href="/admin/posts/newPost" class="nav-link">
                         <i class="fab fa-usps mr-2"></i>
                           <p>
                               Bài viết

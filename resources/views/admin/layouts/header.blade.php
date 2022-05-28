@@ -11,7 +11,7 @@
             <a class="nav-link pt-0" data-toggle="dropdown" href="#">
                 <div class="user-panel  d-flex btn p-0">
                     <div class="image">
-                        <img src="{{asset('dist/img/user1-128x128.jpg')}}" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                        <img src="{{asset('AdminPTH/dist/img/user1-128x128.jpg')}}" alt="User Avatar" class="img-size-50 mr-3 img-circle">
                     </div>
                     <div class="info">
                         <span>Van Huy</span>

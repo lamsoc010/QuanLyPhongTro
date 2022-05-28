@@ -44,4 +44,15 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function() {
         Route::get('dashboard', 'HomeController@index')->name('dashboard');
     });
     Route::post('logout', 'Auth\AuthenticatedSessionController@destroy')->name('logout');
+
+    // new routes
+    Route::get('/', 'HomeController@index');
+
+    Route::get('/hello', function () {
+        return view('index');
+    });
+    Route::get('/users/listUser', 'HomeController@user');
+    Route::get('/posts/newPost', 'HomeController@post');
+    
+    Route::get('/users/getList', 'HomeController@anyData');
 });
