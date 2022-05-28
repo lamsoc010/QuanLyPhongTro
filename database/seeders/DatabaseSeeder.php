@@ -13,11 +13,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $admin = [
-            'name' => 'Admin',
-            'email' => 'admin@gmail.com',
-            'password' => bcrypt('admin'),
-        ];
-        Admin::create($admin);
+        $this->call(Motels::class);
+        // $admin = [
+        //     'name' => 'Admin',
+        //     'email' => 'admin@gmail.com',
+        //     'password' => bcrypt('admin'),
+        // ];
+        // Admin::create($admin);
     }
 }
