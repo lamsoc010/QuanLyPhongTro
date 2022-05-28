@@ -83,12 +83,27 @@
                       </ul>
                   </li>
                   <li class="nav-item">
-                      <a href="/admin/posts/newPost" class="nav-link">
+                      <a href="#" class="nav-link">
                         <i class="fab fa-usps mr-2"></i>
                           <p>
                               Bài viết
                           </p>
+                          <i class="fas fa-angle-left right"></i>
                       </a>
+                      <ul class="nav nav-treeview pl-3">
+                        <li class="nav-item">
+                          <a href="#" class="nav-link">
+                            <i class="fas fa-envelope-open-text mr-2"></i>
+                            <p>Bài viết</p>
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/admin/posts/newPost" class="nav-link">
+                              <i class="fas fa-user-edit mr-2"></i>
+                              <p>Đăng bài</p>
+                            </a>
+                          </li>
+                      </ul>
                   </li>
                   <li class="nav-item">
                       <a href="#" class="nav-link">
