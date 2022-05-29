@@ -159,7 +159,7 @@ div.dataTables_wrapper div.dataTables_filter label {
                                 <div class="d-flex flex-column align-items-center text-center">
                                     <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
                                     <div class="mt-3">
-                                        <h4>@Model.Name</h4>
+                                        <h4 class="dt-name"></h4>
                                     </div>
                                 </div>
                             </div>
@@ -172,8 +172,8 @@ div.dataTables_wrapper div.dataTables_filter label {
                                     <div class="col-sm-3">
                                         <h6 class="mb-0">Họ & tên</h6>
                                     </div>
-                                    <div class="col-sm-9 text-secondary">
-                                        @Model.Name
+                                    <div class="dt-name col-sm-9 text-secondary">
+                                       
                                     </div>
                                 </div>
                                 <hr>
@@ -181,8 +181,8 @@ div.dataTables_wrapper div.dataTables_filter label {
                                     <div class="col-sm-3">
                                         <h6 class="mb-0">Email</h6>
                                     </div>
-                                    <div class="col-sm-9 text-secondary">
-                                        @Model.Email
+                                    <div class="dt-email col-sm-9 text-secondary">
+                                        
                                     </div>
                                 </div>
                                 <hr>
@@ -190,8 +190,8 @@ div.dataTables_wrapper div.dataTables_filter label {
                                     <div class="col-sm-3">
                                         <h6 class="mb-0">Số điện thoại</h6>
                                     </div>
-                                    <div class="col-sm-9 text-secondary">
-                                        @Model.Phone
+                                    <div class="dt-phone col-sm-9 text-secondary">
+                                       
                                     </div>
                                 </div>
                                 <hr>
@@ -199,8 +199,8 @@ div.dataTables_wrapper div.dataTables_filter label {
                                     <div class="col-sm-3">
                                         <h6 class="mb-0">Địa chỉ</h6>
                                     </div>
-                                    <div class="col-sm-9 text-secondary">
-                                        @Model.Address
+                                    <div class="dt-address col-sm-9 text-secondary">
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -272,7 +272,7 @@ div.dataTables_wrapper div.dataTables_filter label {
             {
                 "render": function(data, type, full, meta) {
                     var myUrl = '{{asset('admin/users/details')}}/'+full.id;
-                    return `<button type="button" class="btn btn-primary" data-toggle="modal"  data-target="#modal-details" >Chi tiết </button>`;
+                    return `<button type="button" class="btn btn-primary" data-toggle="modal" onclick=Details("${myUrl}")  data-target="#modal-details" >Chi tiết </button>`;
                 }
             },
             {
@@ -374,7 +374,21 @@ div.dataTables_wrapper div.dataTables_filter label {
         }
       });
     })
-    
+    function Details(url) {
+        $.ajax({
+            url: url,
+            type: 'GET',
+            success: function (data) {
+            console.log(data);
+                 $('.dt-name').html(data[0].name);
+                 $('.dt-email').html(data[0].email);
+                 $('.dt-address').html(data[0].address);
+                 $('.dt-phone').html(data[0].phone);
+               
+               // $('#modal-details').find('.modal-body').html(data);
+            }
+        });
+    }
     // hiện thị modal edit
     // var ShowModal = $("#ShowModal");
     // function EditUser(url){

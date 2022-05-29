@@ -52,7 +52,8 @@ class HomeController extends Controller
         
         // get database
         $users = DB::table('users')->where('id', $idUser)->get();
-        return response()->json($users);
+        
+        return  response()->json($users);
     }
 
     public function create(Request $request)
