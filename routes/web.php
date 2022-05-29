@@ -60,4 +60,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function() {
 
     // show user with function details in view --- admin.users.details
     Route::get('/users/details/{id}', 'HomeController@details');
+
+    // add new user ----admin.users.create
+    Route::post('/users/create', 'HomeController@create');
 });

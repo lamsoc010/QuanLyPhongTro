@@ -83,7 +83,7 @@ div.dataTables_wrapper div.dataTables_filter label {
                 </button>
             </div>
             <div class="modal-body">
-                <form asp-action="Create" id="create-user">
+                <form action=""  id="create-user">
                     <div class=" card-body">
                         <div class="row">
                             <div class="col-md-6">
@@ -122,7 +122,7 @@ div.dataTables_wrapper div.dataTables_filter label {
                         </div>
                           <div class="modal-footer justify-content-between">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Thoát</button>
-                            <button type="submit" class="btn btn-primary" data-save="modal">Lưu</button>
+                            <button  class=" form-submit btn btn-primary" >Lưu</button>
                         </div>
                     </div>
                 </form>
@@ -211,13 +211,15 @@ div.dataTables_wrapper div.dataTables_filter label {
             ],
         });
     // send data and validate
-        var PlaceHolderElement = $("#PlaceHolderHere");
+        // var PlaceHolderElement = $("#PlaceHolderHere");
 
       // xử lý -  gửi data sau khi thông qua được validate
       $.validator.setDefaults({
-       submitHandler: function () {
-            PlaceHolderElement.on('click', '[data-save="modal"]', function (event) {
+        submitHandler: function () {
+          //  document.on('click', '[data-save="modal"]', function (event) {
+            //    console.log('data', data);
               
+
             // cấu hình message
                 var Toast = Swal.mixin({
                     toast: true,
@@ -225,25 +227,47 @@ div.dataTables_wrapper div.dataTables_filter label {
                     showConfirmButton: false,
                     timer: 3000
                 });
-                console.log("save")
                 // form
-                var form = $(this).parents('.modal').find('form');
-                var actionUrl = form.attr('action');
-                console.log(form, actionUrl)
-                var sendData = form.serialize();
-           
-                $.post(actionUrl, sendData).done(function (data) {
-                    Toast.fire({
-                        icon: 'success',
-                        title: "Thông tin được lưu lại thành công"
-                    })
-                    PlaceHolderElement.find('.modal').modal('hide')
-                     $('#example1').DataTable().ajax.reload();
-                     return;
-                })
-               document.getElementById('message').innerHTML ="email đã tồn tại"
-            });
-        }
+                // var form = $(this).parents('.modal').find('form');
+                 var actionUrl ="{{asset('admin/users/create')}}";
+                 var sendData = JSON.stringify($("form#create-user").serializeArray());
+                //   JSON.stringify( $(form).serializeArray() );
+               //  console.log("sendData",sendData);
+
+                // $.post(actionUrl, sendData).done(function (data) {
+                //     console.log(data);
+                //     Toast.fire({
+                //         icon: 'success',
+                //         title: "Thông tin được lưu lại thành công"
+                //     })
+                 //   PlaceHolderElement.find('.modal').modal('hide')
+                //  modal('hide')
+                //      $('#example1').DataTable().ajax.reload();
+                //      return;
+              //  })
+               $.ajax({
+                    type: "POST",
+                    url: actionUrl,
+                    data: { 
+                        name: "huy",
+                        email: 'duonghuy261@gmail.com',
+                        phone: '0989898989',
+                        address: 'Hà Nội',
+                        birthday: '1998-12-12',
+                        password: '123456',
+                        role: '1',
+
+                        _token: '{{csrf_token()}}'
+                     },
+                    success: function (data) {
+                    console.log(data);
+                    },
+                    error: function (data, textStatus, errorThrown) {
+                        console.log(data);
+
+                    },
+                });
+            }
       });
       $('#create-user').validate({
         rules: {

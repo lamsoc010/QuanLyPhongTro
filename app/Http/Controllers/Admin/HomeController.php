@@ -54,4 +54,24 @@ class HomeController extends Controller
         $users = DB::table('users')->where('id', $idUser)->get();
         return response()->json($users);
     }
+
+    public function create(Request $request)
+    {
+        // check email exist
+        
+        
+        // insert database
+        DB::table('users')->insertGetId([
+            'name' => $request->name,
+            'email' => $request->email,
+            'address' => $request->address,
+            'phone' => $request->phone,
+            'birthday' => $request->birthday,
+            'password' => $request->password,
+            'role' => $request->role,
+        ]);
+
+        // return view('admin.pages.users.listUser');
+        return "a";
+    }
 }
