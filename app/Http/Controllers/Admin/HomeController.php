@@ -71,7 +71,6 @@ class HomeController extends Controller
             'role' => $request->role,
         ]);
 
-        // return view('admin.pages.users.listUser');
-        return "a";
+        //  return view('admin.pages.users.listUser');
     }
 }

@@ -4,6 +4,8 @@
     <link rel="stylesheet" href="{{asset('AdminPTH/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
     <link rel="stylesheet" href="{{asset('AdminPTH/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/validate.css')}}">
+      <!-- SweetAlert2 -->
+      <link rel="stylesheet" href="{{asset('AdminPTH/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css')}}">
     <style>
         div#example1_length {
     display: contents;
@@ -215,11 +217,11 @@ div.dataTables_wrapper div.dataTables_filter label {
 
       // xử lý -  gửi data sau khi thông qua được validate
       $.validator.setDefaults({
-        submitHandler: function () {
+        submitHandler: function (form) {
           //  document.on('click', '[data-save="modal"]', function (event) {
             //    console.log('data', data);
               
-
+            
             // cấu hình message
                 var Toast = Swal.mixin({
                     toast: true,
@@ -227,44 +229,53 @@ div.dataTables_wrapper div.dataTables_filter label {
                     showConfirmButton: false,
                     timer: 3000
                 });
-                // form
-                // var form = $(this).parents('.modal').find('form');
+            //     // form
+            //     // var form = $(this).parents('.modal').find('form');
                  var actionUrl ="{{asset('admin/users/create')}}";
-                 var sendData = JSON.stringify($("form#create-user").serializeArray());
-                //   JSON.stringify( $(form).serializeArray() );
-               //  console.log("sendData",sendData);
+            //      var sendData = JSON.stringify($("form#create-user").serializeArray());
+            //     //   JSON.stringify( $(form).serializeArray() );
+            //    //  console.log("sendData",sendData);
 
-                // $.post(actionUrl, sendData).done(function (data) {
-                //     console.log(data);
-                //     Toast.fire({
-                //         icon: 'success',
-                //         title: "Thông tin được lưu lại thành công"
-                //     })
-                 //   PlaceHolderElement.find('.modal').modal('hide')
-                //  modal('hide')
-                //      $('#example1').DataTable().ajax.reload();
-                //      return;
-              //  })
+            //     // $.post(actionUrl, sendData).done(function (data) {
+            //     //     console.log(data);
+            //     //     Toast.fire({
+            //     //         icon: 'success',
+            //     //         title: "Thông tin được lưu lại thành công"
+            //     //     })
+            //      //   PlaceHolderElement.find('.modal').modal('hide')
+            //     //  modal('hide')
+            //     //      $('#example1').DataTable().ajax.reload();
+            //     //      return;
+            //   //  })
                $.ajax({
                     type: "POST",
                     url: actionUrl,
                     data: { 
-                        name: "huy",
-                        email: 'duonghuy261@gmail.com',
-                        phone: '0989898989',
-                        address: 'Hà Nội',
-                        birthday: '1998-12-12',
-                        password: '123456',
+                        name: form.name.value,
+                        email: form.email.value,
+                        phone: form.phone.value,
+                        address: form.address.value,
+                        birthday: form.birthday.value,
+                        password: Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 7),
                         role: '1',
 
                         _token: '{{csrf_token()}}'
                      },
                     success: function (data) {
-                    console.log(data);
+                        // ẩn modal
+                        $('div#modal-create').modal('hide');
+                        // reload data in table
+                        $('#example1').DataTable().ajax.reload();
+                        // show message
+                        Toast.fire({
+                            icon: 'success',
+                            title: "Thông tin được lưu lại thành công"
+                        })
+                        // xóa các biểu mẫu sau khi lưu
+                        form.reset();
                     },
                     error: function (data, textStatus, errorThrown) {
-                        console.log(data);
-
+                        $('#message').html('Email đã tồn tại');
                     },
                 });
             }
