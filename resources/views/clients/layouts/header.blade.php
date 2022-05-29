@@ -1,88 +1,154 @@
 <!doctype html>
 <html class="no-js" lang="zxx">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Phòng trọ Huế </title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="manifest" href="site.webmanifest">
-		<link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/img/favicon.ico')}}">
 
-		<!-- CSS here -->
-            <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css') }}">
-            <link rel="stylesheet" href="{{asset('assets/css/owl.carousel.min.css')}}">
-            <link rel="stylesheet" href="{{asset('assets/css/ticker-style.css')}}">
-            <link rel="stylesheet" href="{{asset('assets/css/flaticon.css')}}">
-            <link rel="stylesheet" href="{{asset('assets/css/slicknav.css')}}">
-            <link rel="stylesheet" href="{{asset('assets/css/animate.min.css')}}">
-            <link rel="stylesheet" href="{{asset('assets/css/magnific-popup.css')}}">
-            <link rel="stylesheet" href="{{asset('assets/css/fontawesome-all.min.css')}}">
-            <link rel="stylesheet" href="{{asset('assets/css/themify-icons.css')}}">
-            <link rel="stylesheet" href="{{asset('assets/css/slick.css')}}">
-            <link rel="stylesheet" href="{{asset('assets/css/nice-select.css')}}">
-            <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
-            @yield('style')
-   </head>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Phòng trọ Huế </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/img/favicon.ico')}}">
 
-   <body>
-       
-    <!-- Preloader Start -->
-    <!-- <div id="preloader-active">
-        <div class="preloader d-flex align-items-center justify-content-center">
-            <div class="preloader-inner position-relative">
-                <div class="preloader-circle"></div>
-                <div class="preloader-img pere-text">
-                    {{-- <img src="{{asset('assets/img/logo/logo.png')}}" alt=""> --}}
-                </div>
-            </div>
-        </div>
-    </div> -->
-    <!-- Preloader Start -->
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{asset('assets/css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/ticker-style.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/flaticon.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/slicknav.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/animate.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/magnific-popup.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/fontawesome-all.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/themify-icons.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/slick.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/nice-select.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
+    @yield('style')
+
+    <style>
+        .header-area .header-top {
+            padding: 12px 0px !important;
+        }
+
+        .header-area .header-top .header-info-right .header-social li a {
+            font-size: 14px !important;
+        }
+
+        .user-title {
+            position: relative;
+        }
+
+        .user-title:hover .block-info-user {
+            transform: rotateX(0);
+            opacity: 1;
+        }
+
+        .block-info-user {
+            position: absolute;
+            top: 36px;
+            left: 0;
+            background: #fff;
+            opacity: 0;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            transform:  rotateX(-90deg) ;
+            transform-origin: top left;
+            transition: all 0.4s ease-in-out;
+            z-index: 100;
+
+        }
+
+        .block-info-user li {
+            width: 100%;
+            display: inline-block;
+            cursor: pointer;
+            font-size: 13px !important;
+            padding: 8px 4px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .block-info-user li a {
+            color: #333 !important;
+            transition: all 0.4s ease-in-out;
+        }
+        .block-info-user li a:hover {
+            color: #fc3f00 !important;
+        }
+
+        .block-info-user li:last-child {
+           
+            border:none;
+        }
+
+
+    </style>
+</head>
+
+<body>
+
+
 
     <header>
         <!-- Header Start -->
-       <div class="header-area">
+        <div class="header-area">
             <div class="main-header ">
                 <div class="header-top black-bg d-none d-md-block">
-                   <div class="container">
-                       <div class="col-xl-12">
+                    <div class="container">
+                        <div class="col-xl-12">
                             <div class="row d-flex justify-content-between align-items-center">
                                 <div class="header-info-left">
-                                    <ul>     
+                                    <ul>
                                         <li><img src="{{asset('assets/img/icon/header_icon1.png')}}" alt="">34ºc, Sunny </li>
                                         <li><img src="{{asset('assets/img/icon/header_icon1.png')}}" alt="">Tuesday, 18th June, 2019</li>
                                     </ul>
                                 </div>
-                                <div class="header-info-right">
-                                    <ul class="header-social">   
+                                <div class="header-info-right d-flex justify-content-center align-items-center">
+                                    <ul class="header-social">
                                         <li><a href="#"><i class="fab fa-twitter"></i></a></li>
                                         <li><a href="#"><i class="fab fa-instagram"></i></a></li>
                                         <li> <a href="#"><i class="fab fa-pinterest-p"></i></a></li>
-                                       @if (Route::has('login'))
-                                            @auth
-                                                @if(Auth::user()->role == 'user')
-                                                        <li><a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Xin chào, {{ Auth::user()->name }}</a></li>
-                                                    @else
-                                                        <li><a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Xin chào, chủ trọ: {{ Auth::user()->name }}</a></li>
-                                                @endif
-                                            @else
-                                                <li><a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a></li>
 
-                                                @if (Route::has('register'))
-                                                    <li><a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a></li>
-                                                @endif
-                                            @endauth
-                                        @endif
-                                
                                     </ul>
+
+                                    @if (Route::has('login'))
+                                    @auth
+                                    <ul class="header-social user-title">
+
+
+                                        <li class="user-name"><a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Xin chào, {{ Auth::user()->name }} <i class="fas fa-caret-down ml-1"></i></a></li>
+                                        <div class="block-info-user">
+                                            <li><a><i class="fas fa-user mr-1"></i> Thông tin cá nhân</a></li>
+                                            <li><a><i class="fas fa-home mr-1"></i> Quản lý dãy trọ</a></li>
+                                            <li><a><i class="fas fa-newspaper mr-1"></i> Quản lý bài đăng</a></li>
+                                            <li><a><i class="fas fa-key mr-1"></i> Đổi mật khẩu</a></li>
+                                            <li><a><i class="fas fa-sign-out-alt mr-1"></i> Đăng xuất</a></li>
+                                        </div>
+
+                                    </ul>
+                                    @else
+                                    <ul class="header-social">
+                                        <li><a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a></li>
+
+                                        @if (Route::has('register'))
+                                        <li><a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a></li>
+                                        @endif
+
+                                    </ul>
+
+                                    @endauth
+                                    @endif
+
+
+
+
                                 </div>
                             </div>
-                       </div>
-                   </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="header-mid d-none d-md-block">
-                   <div class="container">
+                    <div class="container">
                         <div class="row d-flex align-items-center">
                             <!-- Logo -->
                             <div class="col-xl-3 col-lg-3 col-md-3">
@@ -96,20 +162,20 @@
                                 </div>
                             </div>
                         </div>
-                   </div>
+                    </div>
                 </div>
-               <div class="header-bottom header-sticky">
+                <div class="header-bottom header-sticky">
                     <div class="container">
                         <div class="row align-items-center">
                             <div class="col-xl-10 col-lg-10 col-md-12 header-flex">
                                 <!-- sticky -->
-                                    <div class="sticky-logo">
-                                        <a href="index.html"><img src="{{asset('assets/img/logo/logo.png')}}" alt=""></a>
-                                    </div>
+                                <div class="sticky-logo">
+                                    <a href="index.html"><img src="{{asset('assets/img/logo/logo.png')}}" alt=""></a>
+                                </div>
                                 <!-- Main-menu -->
                                 <div class="main-menu d-none d-md-block">
-                                    <nav>                  
-                                        <ul id="navigation">    
+                                    <nav>
+                                        <ul id="navigation">
                                             <li><a href="{{route('home')}}">Trang chủ</a></li>
                                             <li><a href="{{route('category')}}">Cho thuê phòng trọ</a></li>
                                             <li><a href="{{route('about')}}">Tìm người ở ghép</a></li>
@@ -126,14 +192,14 @@
                                         </ul>
                                     </nav>
                                 </div>
-                            </div>             
+                            </div>
                             <div class="col-xl-2 col-lg-2 col-md-4">
                                 <div class="header-right-btn f-right d-none d-lg-block">
                                     <i class="fas fa-search special-tag"></i>
                                     <div class="search-box">
                                         <form action="#">
                                             <input type="text" placeholder="Search">
-                                            
+
                                         </form>
                                     </div>
                                 </div>
@@ -144,8 +210,8 @@
                             </div>
                         </div>
                     </div>
-               </div>
+                </div>
             </div>
-       </div>
+        </div>
         <!-- Header End -->
     </header>
