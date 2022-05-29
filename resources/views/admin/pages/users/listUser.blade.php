@@ -138,7 +138,6 @@ div.dataTables_wrapper div.dataTables_filter label {
 </div>
 <!-- /Modal create-->
 
-
 {{-- modal details  --}}
 <div class="modal fade" id="modal-details" data-backdrop="static">
     <div class="modal-dialog modal-lg">
@@ -214,6 +213,74 @@ div.dataTables_wrapper div.dataTables_filter label {
 </div>
 {{-- /modal-details --}}
 
+{{-- modal edit --}}
+<div class="modal fade" id="modal-edit"  data-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Thay đổi thông tin người dùng</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form asp-action="Edit" id="edit-user">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Name">Họ & tên</label>
+                                    <input asp-for="Name" type="text" class="form-control" placeholder="Enter name">
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                    <span class="form-message"></span>
+
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Email">Địa chỉ Email</label>
+                                    <input asp-for="Email" type="email" class="form-control" placeholder="Enter email">
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                    <span class="form-message"></span>
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Phone">Số điện thoại</label>
+                                    <input asp-for="Phone" type="text" class="form-control" placeholder="Enter Phone">
+                                    <span asp-validation-for="Phone" class="text-danger"></span>
+                                    <span class="form-message"></span>
+
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Birthday">Ngày sinh</label>
+                                    <input asp-for="Birthday" type="date" class="form-control" placeholder="Enter Birthday">
+                                    <span asp-validation-for="Birthday" class="text-danger"></span>
+                                    <span class="form-message"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                         <div class="form-group">
+                            <label asp-for="Address">Địa chỉ </label>
+                            <input asp-for="Address" type="text" class="form-control" placeholder="Enter Address">
+                            <span asp-validation-for="Address" class="text-danger"></span>
+                            <span class="form-message"></span>
+
+                        </div>
+                    </div>
+                </form>
+                <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Thoát</button>
+                <button type="button" class="btn btn-primary" data-save="modal">Lưu thay đổi</button>
+            </div>
+            </div>
+
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+{{-- /modal-edit --}}
 @endsection
     <!-- /.row -->
 
@@ -279,7 +346,7 @@ div.dataTables_wrapper div.dataTables_filter label {
                 data: null,
                 render: function(data, type, row) {
                     var myUrl = '{{asset('admin/users/edit')}}/'+row.id;
-                    return `<button type="button" class="btn btn-primary" data-toggle="ajax-modal" onclick=EditUser("${myUrl}") data-target="#modal-create">Sửa </button>`;
+                    return `<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-edit">Sửa </button>`;
                 }
             },
             ],
@@ -374,6 +441,8 @@ div.dataTables_wrapper div.dataTables_filter label {
         }
       });
     })
+
+    // show modal details
     function Details(url) {
         $.ajax({
             url: url,
