@@ -225,53 +225,48 @@ div.dataTables_wrapper div.dataTables_filter label {
             </div>
             <div class="modal-body">
                 <form asp-action="Edit" id="edit-user">
-                    <div class="card-body">
+                    <div class=" card-body">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label asp-for="Name">Họ & tên</label>
-                                    <input asp-for="Name" type="text" class="form-control" placeholder="Enter name">
-                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                    <label for="ed-name">Họ & tên</label>
+                                    <input id="ed-name" type="text" class="form-control" name="name" placeholder="Enter name">
+                                    
                                     <span class="form-message"></span>
-
                                 </div>
                                 <div class="form-group">
-                                    <label asp-for="Email">Địa chỉ Email</label>
-                                    <input asp-for="Email" type="email" class="form-control" placeholder="Enter email">
-                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                    <label for="ed-email">Địa chỉ Email</label>
+                                    <input id="ed-email" type="email" class="form-control" name="email" placeholder="Enter email">
                                     <span class="form-message"></span>
-
+                                    <span id="message" class="text-danger"></span>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label asp-for="Phone">Số điện thoại</label>
-                                    <input asp-for="Phone" type="text" class="form-control" placeholder="Enter Phone">
-                                    <span asp-validation-for="Phone" class="text-danger"></span>
+                                    <label for="ed-phone">Số điện thoại</label>
+                                    <input id="ed-phone" type="text" class="form-control" name="phone" placeholder="Enter Phone">                                    
                                     <span class="form-message"></span>
 
                                 </div>
                                 <div class="form-group">
-                                    <label asp-for="Birthday">Ngày sinh</label>
-                                    <input asp-for="Birthday" type="date" class="form-control" placeholder="Enter Birthday">
-                                    <span asp-validation-for="Birthday" class="text-danger"></span>
+                                    <label for="ed-birthday">Ngày sinh</label>
+                                    <input id="ed-birthday"  type="date" value="2022-05-25" name="birthday" class="form-control" placeholder="Enter Birthday">                                 
                                     <span class="form-message"></span>
                                 </div>
                             </div>
                         </div>
-
-                         <div class="form-group">
-                            <label asp-for="Address">Địa chỉ </label>
-                            <input asp-for="Address" type="text" class="form-control" placeholder="Enter Address">
-                            <span asp-validation-for="Address" class="text-danger"></span>
+                        <div class="form-group">
+                            <label for="ed-address">Địa chỉ </label>
+                            <input id="ed-address" type="text" class="form-control" name="address" placeholder="Enter Address">
+                            
                             <span class="form-message"></span>
-
                         </div>
+                    
                     </div>
                 </form>
                 <div class="modal-footer justify-content-between">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Thoát</button>
-                <button type="button" class="btn btn-primary" data-save="modal">Lưu thay đổi</button>
+                <button type="button" onclick="editUser()" class="btn btn-primary" data-save="modal">Lưu thay đổi</button>
             </div>
             </div>
 
@@ -346,7 +341,7 @@ div.dataTables_wrapper div.dataTables_filter label {
                 data: null,
                 render: function(data, type, row) {
                     var myUrl = '{{asset('admin/users/edit')}}/'+row.id;
-                    return `<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-edit">Sửa </button>`;
+                    return `<button type="button" class="btn btn-primary" onclick=Edit("${myUrl}")  data-toggle="modal" data-target="#modal-edit">Sửa </button>`;
                 }
             },
             ],
@@ -458,16 +453,67 @@ div.dataTables_wrapper div.dataTables_filter label {
             }
         });
     }
-    // hiện thị modal edit
-    // var ShowModal = $("#ShowModal");
-    // function EditUser(url){
-    //     var decodeUrl = decodeURIComponent(url);
-    //     $.get(decodeUrl).done(function (data) {
-    //         ShowModal.html(data);
-    //         ShowModal.find('.modal').modal('show');
-    //     })
-    // }
-    //  // lưu thông tin trong form edit khi button save
+
+    var urlEdit ="";
+    // show modal edit
+    function Edit(url){
+        $.ajax({
+            url: url,
+            type: 'GET',
+            success: function (data) {
+                $('#ed-name').val(data[0].name);
+                $('#ed-email').val(data[0].email);
+                $('#ed-phone').val(data[0].phone);
+                $('#ed-address').val(data[0].address);
+                $('#ed-birthday').val(data[0].birthday);
+            }
+        });
+        urlEdit = url;
+    }
+
+    function editUser(){
+        var Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+        });
+        var actionUrl =urlEdit;
+        $.ajax({
+            type: "POST",
+            url: actionUrl,
+            data: { 
+                id: $('#ed-id').val(),
+                name: $('#ed-name').val(),
+                email: $('#ed-email').val(),
+                phone: $('#ed-phone').val(),
+                address: $('#ed-address').val(),
+                birthday: $('#ed-birthday').val(),
+                _token: '{{csrf_token()}}'
+            },
+            success: function (data) {
+                // ẩn modal
+                $('div#modal-edit').modal('hide');
+                // reload data in table
+                $('#example1').DataTable().ajax.reload();
+                // show message
+                Toast.fire({
+                    icon: 'success',
+                    title: "Thông tin được lưu lại thành công"
+                })
+                // xóa các biểu mẫu sau khi lưu
+                $('#ed-name').val('');
+                $('#ed-email').val('');
+                $('#ed-phone').val('');
+                $('#ed-address').val('');
+                $('#ed-birthday').val('');
+            },
+            error: function (data, textStatus, errorThrown) {
+                $('#message').html('Email đã tồn tại');
+            },
+        });
+    }
+  // lưu thông tin trong form edit khi button save
     // ShowModal.on('click', '[data-save="modal"]', function (event) {
     //     event.preventDefault();
 

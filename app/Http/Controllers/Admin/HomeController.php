@@ -55,6 +55,32 @@ class HomeController extends Controller
         
         return  response()->json($users);
     }
+    public function getOneUser(Request $request)
+    {
+
+        $idUser = $request->id;
+        
+        // get database
+        $users = DB::table('users')->where('id', $idUser)->get();
+        
+        return  response()->json($users);
+    }
+
+    public function edit(Request $request){
+        $idUser = $request->id;
+        DB::table('users')
+        ->where('id', $idUser)
+        ->update([
+            'name' => $request->name,
+             'email' => $request->email,
+              'address' => $request->address,
+               'phone' => $request->phone,
+               'birthday' => $request->birthday,
+
+            ]);
+       // ->update([ 'email' => $request->email]);
+    }
+
 
     public function create(Request $request)
     {
