@@ -69,4 +69,8 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function() {
 
     // add new user ----admin.users.create
     Route::post('/users/create', 'HomeController@create');
+
+    //----------------------------------------------------- ---------------------------
+
+    Route::get('/motels/listMotels', 'MotelsController@index');
 });

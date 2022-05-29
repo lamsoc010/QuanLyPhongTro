@@ -78,7 +78,6 @@ class HomeController extends Controller
                'birthday' => $request->birthday,
 
             ]);
-       // ->update([ 'email' => $request->email]);
     }
 
 
