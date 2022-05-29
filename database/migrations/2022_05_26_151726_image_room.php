@@ -17,6 +17,7 @@ class ImageRoom extends Migration
             $table->id();
             $table->bigInteger('idRoom')->unsigned();
             $table->string('image');
+            $table->timestamps();
 
             $table->foreign('idRoom')
                 ->references('id')->on('motel_room')

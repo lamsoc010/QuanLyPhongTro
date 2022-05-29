@@ -18,12 +18,15 @@ class Motels extends Migration
             $table->string('name');
             $table->string('address');
             $table->string('area');
+            $table->double('min_price');
+            $table->double('max_price');
             $table->integer('room_quantity');
             $table->integer('views');
-            $table->string('descreption');
+            $table->text('descreption');
             $table->string('status');
+            $table->string('person');
             $table->bigInteger('idUser')->unsigned();
-            
+            $table->timestamps();
             
             $table->foreign('idUser')
             ->references('id')->on('users')

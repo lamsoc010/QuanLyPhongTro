@@ -16,17 +16,22 @@ class Posts extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('content');
+            $table->text('content');
             $table->string('status');
             $table->integer('views');
+            $table->bigInteger('idCategory')->unsigned();
             $table->bigInteger('idUser')->unsigned();
-            $table->string('category');
             $table->timestamps();
 
+            $table->foreign('idCategory')
+                ->references('id')->on('category')
+                ->onDelete('CASCADE')
+                ->onUpdate('CASCADE');
             $table->foreign('idUser')
                 ->references('id')->on('users')
                 ->onDelete('CASCADE')
                 ->onUpdate('CASCADE');
+
         });
     }
 

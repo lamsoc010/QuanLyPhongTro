@@ -81,8 +81,6 @@
                 </div>
             </div>
             <div class="trending-main">
-
-
                 <!-- Trending Tittle -->
                 <div class="row">
                     <div class="col-lg-12">
