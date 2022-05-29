@@ -40,33 +40,34 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function() {
         Route::get('login', 'AuthenticatedSessionController@create')->name('login');
         Route::post('login', 'AuthenticatedSessionController@store')->name('adminlogin');
     });
-
+    
     Route::middleware('admin')->group(function() {
         Route::get('dashboard', 'HomeController@index')->name('dashboard');
-    });
-    Route::post('logout', 'Auth\AuthenticatedSessionController@destroy')->name('logout');
-
-    // new routes
-    Route::get('/', 'HomeController@index');
-
-    Route::get('/hello', function () {
-        return view('index');
-    });
-    Route::get('/users/listUser', 'HomeController@user');
-    Route::get('/posts/newPost', 'HomeController@post');
+        // new routes
+        Route::get('/', 'HomeController@index');
     
-    // get all user with datatable
-    Route::get('/users/getList', 'HomeController@anyData');
-
-    // show user with function details in view --- admin.users.details
-    Route::get('/users/details/{id}', 'HomeController@details');
-
-     // show user with function details in view --- admin.users.details
-     Route::get('/users/edit/{id}', 'HomeController@getOneUser');
-
-      // show user with function details in view --- admin.users.details
-    Route::post('/users/edit/{id}', 'HomeController@edit');
-
-    // add new user ----admin.users.create
-    Route::post('/users/create', 'HomeController@create');
+        Route::get('/hello', function () {
+            return view('index');
+        });
+        Route::get('/users/listUser', 'HomeController@user');
+        Route::get('/posts/newPost', 'HomeController@post');
+        
+        // get all user with datatable
+        Route::get('/users/getList', 'HomeController@anyData');
+    
+        // show user with function details in view --- admin.users.details
+        Route::get('/users/details/{id}', 'HomeController@details');
+    
+         // show user with function details in view --- admin.users.details
+         Route::get('/users/edit/{id}', 'HomeController@getOneUser');
+    
+          // show user with function details in view --- admin.users.details
+        Route::post('/users/edit/{id}', 'HomeController@edit');
+    
+        // add new user ----admin.users.create
+        Route::post('/users/create', 'HomeController@create');
+    });
+    
+    Route::post('logout', 'Auth\AuthenticatedSessionController@destroy')->name('logout');
+    
 });
