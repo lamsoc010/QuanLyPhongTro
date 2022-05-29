@@ -74,7 +74,7 @@ div.dataTables_wrapper div.dataTables_filter label {
 </div>
 
 
-<!-- Model create-->
+<!-- Modal create-->
 <div class="modal fade" id="modal-create" data-backdrop="static">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -136,7 +136,83 @@ div.dataTables_wrapper div.dataTables_filter label {
     </div>
     <!-- /.modal-dialog -->
 </div>
-<!-- /Model create-->
+<!-- /Modal create-->
+
+
+{{-- modal details  --}}
+<div class="modal fade" id="modal-details" data-backdrop="static">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            {{-- header --}}
+            <div class="modal-header">
+                <h4 class="modal-title">Thông tin người dùng</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+           {{-- body --}}
+            <div class="modal-body">
+                <div class="row gutters-sm">
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex flex-column align-items-center text-center">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                                    <div class="mt-3">
+                                        <h4>@Model.Name</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card mb-3 pb-2">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Họ & tên</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        @Model.Name
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Email</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        @Model.Email
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Số điện thoại</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        @Model.Phone
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Địa chỉ</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        @Model.Address
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{{-- /modal-details --}}
 
 @endsection
     <!-- /.row -->
@@ -175,22 +251,18 @@ div.dataTables_wrapper div.dataTables_filter label {
             serverSide: true, 
             filter: true, 
             orderMulti: false,
-            // frtip
             dom: 'Blfrtip',
             buttons: [
             'copy', 'csv', 'excel', 'pdf', 'print'
             ],
             ajax: {
                 url:  "{{asset('admin/users/getList')}}",
-                // type: 'get',
-                // dataType: "json",
             },
             "columnDefs": [{
                 "targets": [0],
                 "visible": false,
                 "searchable": false
             }],
-           
             columns: [
             { "data": "id", "name": "id"  },
             { "data": "name", "name": "name" },
@@ -200,85 +272,60 @@ div.dataTables_wrapper div.dataTables_filter label {
             {
                 "render": function(data, type, full, meta) {
                     var myUrl = '{{asset('admin/users/details')}}/'+full.id;
-                    return `<button type="button" class="btn btn-primary" data-toggle="ajax-modal" onclick=EditUser("${myUrl}") data-target="#modal-create" data-url=\"'+myUrl+'\">Chi tiết </button>`;
+                    return `<button type="button" class="btn btn-primary" data-toggle="modal"  data-target="#modal-details" >Chi tiết </button>`;
                 }
             },
             {
                 data: null,
                 render: function(data, type, row) {
                     var myUrl = '{{asset('admin/users/edit')}}/'+row.id;
-                    return `<button type="button" class="btn btn-primary" data-toggle="ajax-modal" onclick=EditUser("${myUrl}") data-target="#modal-create" data-url=\"'+myUrl+'\">Sửa </button>`;
+                    return `<button type="button" class="btn btn-primary" data-toggle="ajax-modal" onclick=EditUser("${myUrl}") data-target="#modal-create">Sửa </button>`;
                 }
             },
             ],
         });
-    // send data and validate
-        // var PlaceHolderElement = $("#PlaceHolderHere");
-
       // xử lý -  gửi data sau khi thông qua được validate
       $.validator.setDefaults({
         submitHandler: function (form) {
-          //  document.on('click', '[data-save="modal"]', function (event) {
-            //    console.log('data', data);
-              
-            
             // cấu hình message
-                var Toast = Swal.mixin({
-                    toast: true,
-                    position: 'top-end',
-                    showConfirmButton: false,
-                    timer: 3000
-                });
-            //     // form
-            //     // var form = $(this).parents('.modal').find('form');
-                 var actionUrl ="{{asset('admin/users/create')}}";
-            //      var sendData = JSON.stringify($("form#create-user").serializeArray());
-            //     //   JSON.stringify( $(form).serializeArray() );
-            //    //  console.log("sendData",sendData);
-
-            //     // $.post(actionUrl, sendData).done(function (data) {
-            //     //     console.log(data);
-            //     //     Toast.fire({
-            //     //         icon: 'success',
-            //     //         title: "Thông tin được lưu lại thành công"
-            //     //     })
-            //      //   PlaceHolderElement.find('.modal').modal('hide')
-            //     //  modal('hide')
-            //     //      $('#example1').DataTable().ajax.reload();
-            //     //      return;
-            //   //  })
-               $.ajax({
-                    type: "POST",
-                    url: actionUrl,
-                    data: { 
-                        name: form.name.value,
-                        email: form.email.value,
-                        phone: form.phone.value,
-                        address: form.address.value,
-                        birthday: form.birthday.value,
-                        password: Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 7),
-                        role: '1',
-
-                        _token: '{{csrf_token()}}'
-                     },
-                    success: function (data) {
-                        // ẩn modal
-                        $('div#modal-create').modal('hide');
-                        // reload data in table
-                        $('#example1').DataTable().ajax.reload();
-                        // show message
-                        Toast.fire({
-                            icon: 'success',
-                            title: "Thông tin được lưu lại thành công"
-                        })
-                        // xóa các biểu mẫu sau khi lưu
-                        form.reset();
-                    },
-                    error: function (data, textStatus, errorThrown) {
-                        $('#message').html('Email đã tồn tại');
-                    },
-                });
-            }
+            var Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000
+            });
+            var actionUrl ="{{asset('admin/users/create')}}";    
+            $.ajax({
+                type: "POST",
+                url: actionUrl,
+                data: { 
+                    name: form.name.value,
+                    email: form.email.value,
+                    phone: form.phone.value,
+                    address: form.address.value,
+                    birthday: form.birthday.value,
+                    password: Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 7),
+                    role: '1',
+                    _token: '{{csrf_token()}}'
+                },
+                success: function (data) {
+                    // ẩn modal
+                    $('div#modal-create').modal('hide');
+                    // reload data in table
+                    $('#example1').DataTable().ajax.reload();
+                    // show message
+                    Toast.fire({
+                        icon: 'success',
+                        title: "Thông tin được lưu lại thành công"
+                    })
+                    // xóa các biểu mẫu sau khi lưu
+                    form.reset();
+                },
+                error: function (data, textStatus, errorThrown) {
+                    $('#message').html('Email đã tồn tại');
+                },
+            });
+        }
       });
       $('#create-user').validate({
         rules: {
