@@ -15,9 +15,10 @@ class CommentMotels extends Migration
     {
         Schema::create('comment_motels', function (Blueprint $table) {
             $table->id();
-            $table->string('contents');
+            $table->text('contents');
             $table->bigInteger('idMotels')->unsigned();
             $table->bigInteger('idUser')->unsigned();
+            $table->timestamps();
 
             $table->foreign('idMotels')
                 ->references('id')->on('motels')

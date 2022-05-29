@@ -17,6 +17,7 @@ class ImageMotels extends Migration
             $table->id();
             $table->bigInteger('idMotels')->unsigned();
             $table->string('image');
+            $table->timestamps();
 
             $table->foreign('idMotels')
                 ->references('id')->on('motels')

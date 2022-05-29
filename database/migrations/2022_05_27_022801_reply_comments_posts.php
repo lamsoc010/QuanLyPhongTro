@@ -15,9 +15,10 @@ class ReplyCommentsPosts extends Migration
     {
         Schema::create('reply_comment_posts', function (Blueprint $table) {
             $table->id();
-            $table->string('contents');
+            $table->text('contents');
             $table->bigInteger('idCommentPosts')->unsigned();
             $table->bigInteger('idUser')->unsigned();
+            $table->timestamps();
 
             $table->foreign('idCommentPosts')
                 ->references('id')->on('comment_posts')

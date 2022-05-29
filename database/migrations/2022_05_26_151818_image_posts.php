@@ -17,7 +17,8 @@ class ImagePosts extends Migration
             $table->id();
             $table->bigInteger('idPosts')->unsigned();
             $table->string('image');
-
+            $table->timestamps();
+            
             $table->foreign('idPosts')
                 ->references('id')->on('posts')
                 ->onDelete('CASCADE')
