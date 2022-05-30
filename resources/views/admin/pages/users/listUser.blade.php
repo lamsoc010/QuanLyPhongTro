@@ -54,6 +54,7 @@ div.dataTables_wrapper div.dataTables_filter label {
                     <table id="example1" class="table table-bordered table-striped" style="width:100%">
                         <thead>
                             <th> Id</th>
+                            <th> STT</th>
                             <th> Họ & tên</th>
                             <th> Email </th>
                             <th> Số điện thoại</th>
@@ -293,10 +294,6 @@ div.dataTables_wrapper div.dataTables_filter label {
     <script src="{{asset('AdminPTH/plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
     <script src="{{asset('AdminPTH/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
     <script src="{{asset('AdminPTH/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
-    <script>
-
-       
-    </script>
 @*message*@
 <!-- SweetAlert2 -->
 <script src="{{asset('AdminPTH/plugins/sweetalert2/sweetalert2.min.js')}}"></script>
@@ -308,7 +305,7 @@ div.dataTables_wrapper div.dataTables_filter label {
 
     $(document).ready(function(){
     //    datatable
-        $("#example1").DataTable({
+     var table =   $("#example1").DataTable({
             processing: true, 
             serverSide: true, 
             filter: true, 
@@ -320,13 +317,22 @@ div.dataTables_wrapper div.dataTables_filter label {
             ajax: {
                 url:  "{{asset('admin/users/getList')}}",
             },
-            "columnDefs": [{
+            "columnDefs": [
+                {
                 "targets": [0],
                 "visible": false,
                 "searchable": false
-            }],
+                },
+                {
+                searchable: false,
+                orderable: false,
+                targets: 1,
+                },
+
+        ],
             columns: [
             { "data": "id", "name": "id"  },
+            { "data": null},
             { "data": "name", "name": "name" },
             { "data": "email", "name": "email"  },
             { "data": "phone","name": "phone" },
@@ -346,6 +352,11 @@ div.dataTables_wrapper div.dataTables_filter label {
             },
             ],
         });
+        table.on( 'order.dt search.dt', function () {
+            table.column(1, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+                cell.innerHTML = i+1;
+            } );
+        } ).draw();
       // xử lý -  gửi data sau khi thông qua được validate
       $.validator.setDefaults({
         submitHandler: function (form) {
@@ -436,6 +447,7 @@ div.dataTables_wrapper div.dataTables_filter label {
         }
       });
     })
+   
 
     // show modal details
     function Details(url) {
@@ -513,36 +525,6 @@ div.dataTables_wrapper div.dataTables_filter label {
             },
         });
     }
-  // lưu thông tin trong form edit khi button save
-    // ShowModal.on('click', '[data-save="modal"]', function (event) {
-    //     event.preventDefault();
-
-    //     var Toast = Swal.mixin({
-    //         toast: true,
-    //         position: 'top-end',
-    //         showConfirmButton: false,
-    //         timer: 3000
-    //     });
-
-    //     var form = $(this).parents('.modal').find('form');
-    //     var actionUrl = form.attr('action');
-    //     var sendData = form.serialize();
-
-    //     $.post(actionUrl, sendData).done(function (data) {
-           
-    //         Toast.fire({
-    //             icon: 'success',
-    //             title: "Thông tin được lưu lại thành công"
-    //         })
-    //         ShowModal.find('.modal').modal('hide')
-    //       $('#example1').DataTable().ajax.reload();
-    //     })
-    // })
-    // document.addEventListener("keyup", ()=>{
-    //     console.log("aa")
-    // })
 
 </script>
-
-
 @endsection
