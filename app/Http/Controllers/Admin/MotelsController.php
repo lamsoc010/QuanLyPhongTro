@@ -32,6 +32,14 @@ class MotelsController extends Controller
         ];
         return response()->json($data1);
     }
+
+    public function getAllNameMotels() {
+        $data = DB::table('motels')
+        ->select('id','name')
+        ->get();
+
+        return response()->json($data);
+    }
     
     
 }

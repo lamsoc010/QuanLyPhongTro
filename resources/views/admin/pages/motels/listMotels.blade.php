@@ -35,15 +35,21 @@
       <div class="row">
         <div class="col-md-6">
           <div class="form-group row">
-        
-                <div class="col-md-2">
-                  <label >Từ ngày: </label>
-                </div>
-               <div class="col-md">
-                <input type="date" class="form-control datetimepicker-input" data-target="#reservationdate"/>
+            <div class="col-md-2">
+              <label>Giá:</label>
+            </div>
+            <div class="col-md">
+              <select class="form-control select2" >
+                <option selected="selected" value="0">--tất cả--</option>
+                <option value="1">Dưới 500.000 vnđ</option>
+                <option value="2">Từ 500.000 - 700.000 vnđ</option>
+                <option value="3">Từ 700.000 - 1.000.000 vnđ</option>
+                <option value="4">Từ 1.000.000 - 1.500.000 vnđ</option>
+                <option value="5">Từ 1.500.000 - 2.000.000 vnđ</option>
+                <option value="6">Trên 2.000.000 vnđ</option>
+              </select>
+            </div>
          
-                  
-              </div>
           </div>
           <!-- /.form-group -->
           <div class="form-group row">
@@ -65,12 +71,16 @@
         <div class="col-md-6">
           <div class="form-group row">
             <div class="col-md-2">
-              <label>Đến ngày:</label>
+              <label>Phân loại:</label>
             </div>
             <div class="col-md">
-              <input type="date" class="form-control datetimepicker-input" data-target="#reservationdate"/>
+              <select class="form-control select2" >
+                <option selected="selected">--tất cả--</option>
+                <option>Nam</option>
+                <option>Nữ</option>
+              </select>
             </div>
-              
+         
           </div>
           <!-- /.form-group -->
           <div class="form-group row">
@@ -78,14 +88,9 @@
               <label>Tên trọ: </label>
             </div>
             <div class="col-md">
-              <select class="form-control select2" style="width: 100%;">
+              <select class="form-control select2" name="nameMotels" style="width: 100%;">
                 <option selected="selected">--tất cả--</option>
-                <option>Alaska</option>
-                <option>California</option>
-                <option>Delaware</option>
-                <option>Tennessee</option>
-                <option>Texas</option>
-                <option>Washington</option>
+
               </select>
             </div>
            
@@ -118,9 +123,9 @@
                     <thead>
                         <th> Id</th>
                         <th> STT</th>
-                        <th> Tên dãy trọ</th>
+                        <th> Tên trọ</th>
                         <th> Chủ trọ</th>
-                        <th> Giá trung bình</th>
+                        <th> Giá TB</th>
                         <th> Tổng phòng </th>
                         <th> Tổng diện tích</th>
                         <th> Địa chỉ</th>
@@ -160,6 +165,10 @@
   <!-- jQuery -->
   <script> 
      $(document).ready(function(){
+      var filter = null;
+        var nameMotels = null;
+        var sex = null ;
+        var price = null;
     //    datatable
       var table =   $("#tabMotels").DataTable({
             processing: true, 
@@ -172,6 +181,12 @@
             // ],
             ajax: {
                 url:  "{{asset('admin/motels/getList')}}",
+                data:  {
+                  filter,
+                  nameMotels,
+                  sex,
+                  price,
+                }
             },
             columnDefs: [{
                 "targets": [0],
@@ -184,7 +199,6 @@
                 targets: 1,
             },
           ],
-      //  order: [[2, 'asc']],
             columns: [
             { "data": "id", "name": "id"  },
             { "data": null  },
@@ -216,6 +230,26 @@
                 cell.innerHTML = i+1;
             } );
         } ).draw();
-    })
+    
+        // set data to tagName: select -> option
+        $.ajax({
+                type: "GET",
+                url:  "{{asset('admin/motels/getAllNameMotels')}}",
+                success: function (data) {
+                  console.log("get data success");
+                //  $("select[name='nameMotels'").html('');
+                  $.each(data, function(key, value){
+                    console.log(key, value)
+                      $("select[name='nameMotels']").append(
+                          "<option value=" + value.id + ">" + value.name + "</option>"
+                      );
+                  });
+                },
+                error: function (data, textStatus, errorThrown) {
+                  console.log("get data fail");
+                },
+            });
+       
+      })
   </script>
   @endsection

@@ -304,6 +304,7 @@ div.dataTables_wrapper div.dataTables_filter label {
 <script>
 
     $(document).ready(function(){
+       
     //    datatable
      var table =   $("#example1").DataTable({
             processing: true, 
@@ -316,6 +317,8 @@ div.dataTables_wrapper div.dataTables_filter label {
             ],
             ajax: {
                 url:  "{{asset('admin/users/getList')}}",
+               
+
             },
             "columnDefs": [
                 {
