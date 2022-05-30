@@ -75,7 +75,7 @@
                           </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="/admin/motels/listMotels" class="nav-link">
                                 <i class="fas fa-door-open mr-2"></i>
                               <p>Dãy trọ</p>
                             </a>

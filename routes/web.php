@@ -67,6 +67,14 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function() {
     
         // add new user ----admin.users.create
         Route::post('/users/create', 'HomeController@create');
+
+        //---------------------------------------Motels------------------------------------------------------
+        // show view motels
+        Route::get('/motels/listMotels', 'MotelsController@index');
+        // get all motel with datatable
+        Route::get('/motels/getList', 'MotelsController@anyData');
+        // get all name motels --- admin/motels/getAllNameMotels
+        Route::get('/motels/getAllNameMotels', 'MotelsController@getAllNameMotels');
     });
     
     Route::post('logout', 'Auth\AuthenticatedSessionController@destroy')->name('logout');
