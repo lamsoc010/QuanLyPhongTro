@@ -25,9 +25,131 @@
 
     }
 
+    .w-20 {
+        width: 20% !important;
+    }
+
     .motel-posts-wrapper {
-        background-color: #fff;
+        background-color: #F5F5F5;
         border-radius: 8px;
+        padding: 0;
+    }
+
+    .motel-posts-block {
+        padding: 0;
+        background: #FFF9F3;
+        /* border-radius: 8px; */
+    }
+
+    .motel-posts-item {
+        padding: 24px 16px;
+        border-top: 1px solid red;
+        font-size: 14px !important;
+
+    }
+
+    .motel-posts-item:last-child {
+        border-bottom: 1px solid red;
+
+    }
+
+    .motel-posts-title {
+        font-size: 15px !important;
+        font-weight: 600;
+        text-transform: uppercase !important;
+        color: #E13427;
+    }
+
+    .motel-posts-title i {
+        color: #FFC929;
+    }
+
+    .motel-posts-title span a {
+        color: #E13427;
+    }
+
+    .motel-posts-title span:hover a {
+        text-decoration: underline;
+    }
+
+    .motel-posts-prop {
+        margin-top: 6px;
+    }
+
+    .motel-posts-desc {
+        margin-top: 6px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
+        -webkit-box-orient: vertical;
+    }
+
+    .bd-6 {
+        border-radius: 6px !important;
+    }
+
+    .motel-posts-all {
+        background: #FFF9F3;
+        border-radius: 8px;
+    }
+
+    .motel-posts-trending {
+        background-color: #F5F5F5;
+        border-radius: 8px;
+    }
+
+    .posts-trending-title {
+        border-bottom: 1px solid red;
+    }
+
+    .posts-trending-item {
+        border-bottom: 1px solid red;
+        padding: 20px 0;
+    }
+
+    .posts-trending-item:last-child {
+        border: none;
+    }
+
+    .why-choose-us .container {
+        background-color: #F5F5F5;
+        padding: 16px 0;
+        border-radius: 8px;
+
+    }
+
+    .why-choose-us i {
+        color: #FFCA2F;
+    }
+
+    .contact-us {
+        background: #F5F5F5;
+        padding: 24px 0;
+    }
+
+    .contact-us .container {
+        border: 7px dashed red;
+        background-color: #fff;
+    }
+
+    .contact-bg {
+        height: 150px;
+        background: url("{{ asset('assets/img/support-bg.jpg') }}") center no-repeat;
+        background-size: contain;
+
+    }
+    .list-contact-item h6{
+        color: #E13427;
+        text-transform: uppercase;
+    }
+
+    .list-contact-item p{
+        margin: 6px 0;
+        font-size:18px;
+        font-weight: 600;
+        color: #233762 !important;
     }
 </style>
 <main>
@@ -40,11 +162,11 @@
                 <div class="col-md-12">
                     <div class="filter-blog  d-flex justify-content-around align-items-center">
 
-                        <div class="filter-price w-auto filter-block  bg-white d-flex justify-content-between  align-items-center text-dark">
+                        <div class="filter-price  filter-block w-20 bg-white d-flex justify-content-between  align-items-center text-dark">
 
 
-                            <div class="filter-sub">
-                               
+                            <div class="filter-sub w-100">
+
                                 <select class="form-select ">
                                     <option selected value="1"><i class="fas fa-hotel"></i>Phòng trọ, nhà trọ</option>
                                     <option value="2"><i class="fa-solid fa-user-group"></i>Tìm người ở ghép</option>
@@ -85,8 +207,8 @@
                     </div>
                 </div>
             </div>
-            <div class="trending-main">
-                <!-- Trending Tittle -->
+            <div class="">
+                <!-- post Tittle -->
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="trending-tittle">
@@ -106,489 +228,257 @@
 
 
 
-                <!--  -->
+                <!-- post block -->
                 <div class="row">
 
                     <div class="col-lg-8 motel-posts-wrapper">
-                        <h3>Danh sách tin đăng</h3>
+                        <h4 class="m-3">Danh sách tin đăng</h4>
                         <div class="motel-posts-block">
 
+                            <!-- post-item -->
+                            <div class="motel-posts-item d-flex">
+                                <img style="max-width:240px; height:auto;border-radius:6px" src="{{ asset('assets/img/motels/motels1.jpg') }}" alt="">
+
+                                <div class="motel-posts-content ml-3">
+                                    <div class="motel-posts-title d-flex justify-content-between">
+                                        <span class="mr-3">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <a href="#"> Cho thuê phòng trọ giá 1.000.000đ/tháng tại 52 Duy Tân</a>
+                                        </span>
+                                        <img style="width:25px; height:25px;" src="{{ asset('assets/img/hot-post.svg') }}" alt="">
+                                    </div>
+                                    <div class="motel-posts-prop d-flex justify-content-between">
+                                        <span class="font-weight-bold text-success ">1.000.000/tháng</span>
+                                        <span><i class="fas fa-chart-area mr-1"></i>15m2</span>
+                                        <span><i class="fas fa-sort-numeric-down mr-1"></i>52 Duy Tân</span>
+                                        <span class="text-muted">7 giờ trước</span>
+                                    </div>
+
+                                    <div class="motel-posts-desc text-muted">
+                                        Cho thuê phòng Q.5 giá 1,000,000đ/ tháng. Sạch sẽ,
+                                        thoáng mát Ngay trung tâm Q.5, thuận tiện cho việc đi lại.
+                                        Địa chỉ: 31 Lầu 1, Nguyễn Tri Phương, P.6, Q.5.…
+                                        Cho thuê phòng Q.5 giá 1,000,000đ/ tháng. Sạch sẽ,
+                                        thoáng mát Ngay trung tâm Q.5, thuận tiện cho việc đi lại.
+                                        Địa chỉ: 31 Lầu 1, Nguyễn Tri Phương, P.6, Q.5.…
+                                        Cho thuê phòng Q.5 giá 1,000,000đ/ tháng. Sạch sẽ,
+                                        thoáng mát Ngay trung tâm Q.5, thuận tiện cho việc đi lại.
+                                        Địa chỉ: 31 Lầu 1, Nguyễn Tri Phương, P.6, Q.5.…
+                                    </div>
+
+                                    <div class="motel-posts-contact mt-2 d-flex justify-content-between align-items-center">
+                                        <div class="motel-posts-user text-muted">
+                                            <img style="width:40px; height:40px; border-radius: 50%" src="{{ asset('assets/img/users/user.jpg') }}" alt="">
+                                            <span class="ml-1">Nguyên Trần</span>
+                                        </div>
+                                        <div class="motel-posts-social d-flex">
+                                            <div class="motel-posts-phone">
+
+                                                <a href="tel:0991231231" class="bd-6 bg-success mr-2 px-2 py-1"><i class="fas fa-phone mr-2"></i>0993845345</a>
+
+                                            </div>
+                                            <div class="motel-posts-zalo">
+
+                                                <a href=" https://chat.zalo.me/?phone=0923853243234" class="bd-6 bg-primary px-2 py-1">Nhắn zalo</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- end-post-item -->
+                            <!-- post-item -->
+                            <div class="motel-posts-item d-flex">
+                                <img style="max-width:240px; height:auto;border-radius:6px" src="{{ asset('assets/img/motels/motels1.jpg') }}" alt="">
+
+                                <div class="motel-posts-content ml-3">
+                                    <div class="motel-posts-title d-flex justify-content-between">
+                                        <span class="mr-3">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <a href="#"> Cho thuê phòng trọ giá 1.000.000đ/tháng tại 52 Duy Tân</a>
+                                        </span>
+                                        <img style="width:25px; height:25px;" src="{{ asset('assets/img/hot-post.svg') }}" alt="">
+                                    </div>
+                                    <div class="motel-posts-prop d-flex justify-content-between">
+                                        <span class="font-weight-bold text-success ">1.000.000/tháng</span>
+                                        <span><i class="fas fa-chart-area mr-1"></i>15m2</span>
+                                        <span><i class="fas fa-sort-numeric-down mr-1"></i>52 Duy Tân</span>
+                                        <span class="text-muted">7 giờ trước</span>
+                                    </div>
+
+                                    <div class="motel-posts-desc text-muted">
+                                        Cho thuê phòng Q.5 giá 1,000,000đ/ tháng. Sạch sẽ,
+                                        thoáng mát Ngay trung tâm Q.5, thuận tiện cho việc đi lại.
+                                        Địa chỉ: 31 Lầu 1, Nguyễn Tri Phương, P.6, Q.5.…
+                                        Cho thuê phòng Q.5 giá 1,000,000đ/ tháng. Sạch sẽ,
+                                        thoáng mát Ngay trung tâm Q.5, thuận tiện cho việc đi lại.
+                                        Địa chỉ: 31 Lầu 1, Nguyễn Tri Phương, P.6, Q.5.…
+                                        Cho thuê phòng Q.5 giá 1,000,000đ/ tháng. Sạch sẽ,
+                                        thoáng mát Ngay trung tâm Q.5, thuận tiện cho việc đi lại.
+                                        Địa chỉ: 31 Lầu 1, Nguyễn Tri Phương, P.6, Q.5.…
+                                    </div>
+
+                                    <div class="motel-posts-contact mt-2 d-flex justify-content-between align-items-center">
+                                        <div class="motel-posts-user text-muted">
+                                            <img style="width:40px; height:40px; border-radius: 50%" src="{{ asset('assets/img/users/user.jpg') }}" alt="">
+                                            <span class="ml-1">Nguyên Trần</span>
+                                        </div>
+                                        <div class="motel-posts-social d-flex">
+                                            <div class="motel-posts-phone">
+
+                                                <a href="tel:0991231231" class="bd-6 bg-success mr-2 px-2 py-1"><i class="fas fa-phone mr-2"></i>0993845345</a>
+
+                                            </div>
+                                            <div class="motel-posts-zalo">
+
+                                                <a href=" https://chat.zalo.me/?phone=0923853243234" class="bd-6 bg-primary px-2 py-1">Nhắn zalo</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- end-post-item -->
+
+                            <!-- post-item -->
+                            <div class="motel-posts-item d-flex">
+                                <img style="max-width:240px; height:auto;border-radius:6px" src="{{ asset('assets/img/motels/motels1.jpg') }}" alt="">
+
+                                <div class="motel-posts-content ml-3">
+                                    <div class="motel-posts-title d-flex justify-content-between">
+                                        <span class="mr-3">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <a href="#"> Cho thuê phòng trọ giá 1.000.000đ/tháng tại 52 Duy Tân</a>
+                                        </span>
+                                        <img style="width:25px; height:25px;" src="{{ asset('assets/img/hot-post.svg') }}" alt="">
+                                    </div>
+                                    <div class="motel-posts-prop d-flex justify-content-between">
+                                        <span class="font-weight-bold text-success ">1.000.000/tháng</span>
+                                        <span><i class="fas fa-chart-area mr-1"></i>15m2</span>
+                                        <span><i class="fas fa-sort-numeric-down mr-1"></i>52 Duy Tân</span>
+                                        <span class="text-muted">7 giờ trước</span>
+                                    </div>
+
+                                    <div class="motel-posts-desc text-muted">
+                                        Cho thuê phòng Q.5 giá 1,000,000đ/ tháng. Sạch sẽ,
+                                        thoáng mát Ngay trung tâm Q.5, thuận tiện cho việc đi lại.
+                                        Địa chỉ: 31 Lầu 1, Nguyễn Tri Phương, P.6, Q.5.
+                                        Cho thuê phòng Q.5 giá 1,000,000đ/ tháng. Sạch sẽ,
+                                        thoáng mát Ngay trung tâm Q.5, thuận tiện cho việc đi lại.
+                                        Địa chỉ: 31 Lầu 1, Nguyễn Tri Phương, P.6, Q.5.
+                                    </div>
+
+                                    <div class="motel-posts-contact mt-2 d-flex justify-content-between align-items-center">
+                                        <div class="motel-posts-user text-muted">
+                                            <img style="width:40px; height:40px; border-radius: 50%" src="{{ asset('assets/img/users/user.jpg') }}" alt="">
+                                            <span class="ml-1">Nguyên Trần</span>
+                                        </div>
+                                        <div class="motel-posts-social d-flex">
+                                            <div class="motel-posts-phone">
+
+                                                <a href="tel:0991231231" class="bd-6 bg-success mr-2 px-2 py-1"><i class="fas fa-phone mr-2"></i>0993845345</a>
+
+                                            </div>
+                                            <div class="motel-posts-zalo">
+
+                                                <a href=" https://chat.zalo.me/?phone=0923853243234" class="bd-6 bg-primary px-2 py-1">Nhắn zalo</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- end-post-item -->
+
+                        </div>
+                        <div class="motel-posts-all py-3 text-center">
+                            <a href="#" class="btn">Xem tất cả</a>
                         </div>
                     </div>
-                    <!-- Riht content -->
+                    <!-- Right content -->
                     <div class="col-lg-4">
-                        
+                        <div class="motel-posts-trending ml-2 w-100 h-100">
+
+                            <!-- trendding-items -->
+                            <aside class="">
+                                <h4 class="posts-trending-title p-3">Bài đăng nổi bật</h4>
+
+                                <!-- trendding-item -->
+                                <div class="media post_item posts-trending-item mx-3">
+                                    <img src="{{asset('assets/img/posts/post2.jpg')}}" alt="post" style="height: 80px; width: 80px">
+                                    <div style="height: 80px;" class="media-body pl-2 d-flex flex-column justify-content-between">
+                                        <a href="single-blog.html">
+                                            <h5>Nhà trọ duy tân</h5>
+                                        </a>
+                                        <span class="text-primary ">52 Duy Tân</span>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="text-success font-weight-bold ">1.000.000đ/tháng</span>
+
+                                            <span class='text-muted lead small'>Vừa mới đăng</span>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--End trendding-item -->
+
+                                <!-- trendding-item -->
+                                <div class="media post_item posts-trending-item mx-3">
+                                    <img src="{{asset('assets/img/posts/post2.jpg')}}" alt="post" style="height: 80px; width: 80px">
+                                    <div style="height: 80px;" class="media-body pl-2 d-flex flex-column justify-content-between">
+                                        <a href="single-blog.html">
+                                            <h5>Nhà trọ duy tân</h5>
+                                        </a>
+                                        <span class="text-primary ">52 Duy Tân</span>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="text-success font-weight-bold ">1.000.000đ/tháng</span>
+
+                                            <span class='text-muted lead small'>Vừa mới đăng</span>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--End trendding-item -->
+
+                            </aside>
+
+                        </div>
+
                     </div>
                 </div>
+
+
             </div>
         </div>
     </div>
     <!-- Trending Area End -->
-    <!--   Weekly-News start -->
-    <div class="weekly-news-area pt-50">
-        <div class="container">
-            <div class="weekly-wrapper">
-                <!-- section Tittle -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="section-tittle mb-30">
-                            <h3>Weekly Top News</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="weekly-news-active dot-style d-flex dot-style">
-                            <div class="weekly-single">
-                                <div class="weekly-img">
-                                    <img src="{{asset('assets/img/news/weeklyNews2.jpg')}}" alt="">
-                                </div>
-                                <div class="weekly-caption">
-                                    <span class="color1">Strike</span>
-                                    <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
-                                </div>
-                            </div>
-                            <div class="weekly-single active">
-                                <div class="weekly-img">
-                                    <img src="{{asset('assets/img/news/weeklyNews1.jpg')}}" alt="">
-                                </div>
-                                <div class="weekly-caption">
-                                    <span class="color1">Strike</span>
-                                    <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
-                                </div>
-                            </div>
-                            <div class="weekly-single">
-                                <div class="weekly-img">
-                                    <img src="{{asset('assets/img/news/weeklyNews3.jpg')}}" alt="">
-                                </div>
-                                <div class="weekly-caption">
-                                    <span class="color1">Strike</span>
-                                    <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
-                                </div>
-                            </div>
-                            <div class="weekly-single">
-                                <div class="weekly-img">
-                                    <img src="{{asset('assets/img/news/weeklyNews1.jpg')}}" alt="">
-                                </div>
-                                <div class="weekly-caption">
-                                    <span class="color1">Strike</span>
-                                    <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Weekly-News -->
-    <!-- Whats New Start -->
-    <section class="whats-news-area pt-50 pb-20">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="row d-flex justify-content-between">
-                        <div class="col-lg-3 col-md-3">
-                            <div class="section-tittle mb-30">
-                                <h3>Whats New</h3>
-                            </div>
-                        </div>
-                        <div class="col-lg-9 col-md-9">
-                            <div class="properties__button">
-                                <!--Nav Button  -->
-                                <nav>
-                                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">All</a>
-                                        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Lifestyle</a>
-                                        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Travel</a>
-                                        <a class="nav-item nav-link" id="nav-last-tab" data-toggle="tab" href="#nav-last" role="tab" aria-controls="nav-contact" aria-selected="false">Fashion</a>
-                                        <a class="nav-item nav-link" id="nav-Sports" data-toggle="tab" href="#nav-nav-Sport" role="tab" aria-controls="nav-contact" aria-selected="false">Sports</a>
-                                        <a class="nav-item nav-link" id="nav-technology" data-toggle="tab" href="#nav-techno" role="tab" aria-controls="nav-contact" aria-selected="false">Technology</a>
-                                    </div>
-                                </nav>
-                                <!--End Nav Button  -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <!-- Nav Card -->
-                            <div class="tab-content" id="nav-tabContent">
-                                <!-- card one -->
-                                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                                    <div class="whats-news-caption">
-                                        <div class="row">
-                                            <div class="col-lg-6 col-md-6">
-                                                <div class="single-what-news mb-100">
-                                                    <div class="what-img">
-                                                        <img src="{{asset('assets/img/news/whatNews1.jpg')}}" alt="">
-                                                    </div>
-                                                    <div class="what-cap">
-                                                        <span class="color1">Night party</span>
-                                                        <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6">
-                                                <div class="single-what-news mb-100">
-                                                    <div class="what-img">
-                                                        <img src="{{asset('assets/img/news/whatNews2.jpg')}}" alt="">
-                                                    </div>
-                                                    <div class="what-cap">
-                                                        <span class="color1">Night party</span>
-                                                        <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6">
-                                                <div class="single-what-news mb-100">
-                                                    <div class="what-img">
-                                                        <img src="{{asset('assets/img/news/whatNews3.jpg')}}" alt="">
-                                                    </div>
-                                                    <div class="what-cap">
-                                                        <span class="color1">Night party</span>
-                                                        <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6">
-                                                <div class="single-what-news mb-100">
-                                                    <div class="what-img">
-                                                        <img src="{{asset('assets/img/news/whatNews4.jpg')}}" alt="">
-                                                    </div>
-                                                    <div class="what-cap">
-                                                        <span class="color1">Night party</span>
-                                                        <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Card two -->
-                                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                                    <div class="whats-news-caption">
-                                        <div class="row">
-                                            <div class="col-lg-6 col-md-6">
-                                                <div class="single-what-news mb-100">
-                                                    <div class="what-img">
-                                                        <img src="{{asset('assets/img/news/whatNews1.jpg')}}" alt="">
-                                                    </div>
-                                                    <div class="what-cap">
-                                                        <span class="color1">Night party</span>
-                                                        <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6">
-                                                <div class="single-what-news mb-100">
-                                                    <div class="what-img">
-                                                        <img src="{{asset('assets/img/news/whatNews2.jpg')}}" alt="">
-                                                    </div>
-                                                    <div class="what-cap">
-                                                        <span class="color1">Night party</span>
-                                                        <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6">
-                                                <div class="single-what-news mb-100">
-                                                    <div class="what-img">
-                                                        <img src="{{asset('assets/img/news/whatNews3.jpg')}}" alt="">
-                                                    </div>
-                                                    <div class="what-cap">
-                                                        <span class="color1">Night party</span>
-                                                        <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6">
-                                                <div class="single-what-news mb-100">
-                                                    <div class="what-img">
-                                                        <img src="{{asset('assets/img/news/whatNews4.jpg')}}" alt="">
-                                                    </div>
-                                                    <div class="what-cap">
-                                                        <span class="color1">Night party</span>
-                                                        <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Card three -->
-                                <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                                    <div class="whats-news-caption">
-                                        <div class="row">
-                                            <div class="col-lg-6 col-md-6">
-                                                <div class="single-what-news mb-100">
-                                                    <div class="what-img">
-                                                        <img src="{{asset('assets/img/news/whatNews1.jpg')}}" alt="">
-                                                    </div>
-                                                    <div class="what-cap">
-                                                        <span class="color1">Night party</span>
-                                                        <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6">
-                                                <div class="single-what-news mb-100">
-                                                    <div class="what-img">
-                                                        <img src="{{asset('assets/img/news/whatNews2.jpg')}}" alt="">
-                                                    </div>
-                                                    <div class="what-cap">
-                                                        <span class="color1">Night party</span>
-                                                        <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6">
-                                                <div class="single-what-news mb-100">
-                                                    <div class="what-img">
-                                                        <img src="{{asset('assets/img/news/whatNews3.jpg')}}" alt="">
-                                                    </div>
-                                                    <div class="what-cap">
-                                                        <span class="color1">Night party</span>
-                                                        <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6">
-                                                <div class="single-what-news mb-100">
-                                                    <div class="what-img">
-                                                        <img src="{{asset('assets/img/news/whatNews4.jpg')}}" alt="">
-                                                    </div>
-                                                    <div class="what-cap">
-                                                        <span class="color1">Night party</span>
-                                                        <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- card fure -->
-                                <div class="tab-pane fade" id="nav-last" role="tabpanel" aria-labelledby="nav-last-tab">
-                                    <div class="whats-news-caption">
-                                        <div class="row">
-                                            <div class="col-lg-6 col-md-6">
-                                                <div class="single-what-news mb-100">
-                                                    <div class="what-img">
-                                                        <img src="{{asset('assets/img/news/whatNews1.jpg')}}" alt="">
-                                                    </div>
-                                                    <div class="what-cap">
-                                                        <span class="color1">Night party</span>
-                                                        <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6">
-                                                <div class="single-what-news mb-100">
-                                                    <div class="what-img">
-                                                        <img src="{{asset('assets/img/news/whatNews2.jpg')}}" alt="">
-                                                    </div>
-                                                    <div class="what-cap">
-                                                        <span class="color1">Night party</span>
-                                                        <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6">
-                                                <div class="single-what-news mb-100">
-                                                    <div class="what-img">
-                                                        <img src="{{asset('assets/img/news/whatNews3.jpg')}}" alt="">
-                                                    </div>
-                                                    <div class="what-cap">
-                                                        <span class="color1">Night party</span>
-                                                        <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6">
-                                                <div class="single-what-news mb-100">
-                                                    <div class="what-img">
-                                                        <img src="{{asset('assets/img/news/whatNews4.jpg')}}" alt="">
-                                                    </div>
-                                                    <div class="what-cap">
-                                                        <span class="color1">Night party</span>
-                                                        <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- card Five -->
-                                <div class="tab-pane fade" id="nav-nav-Sport" role="tabpanel" aria-labelledby="nav-Sports">
-                                    <div class="whats-news-caption">
-                                        <div class="row">
-                                            <div class="col-lg-6 col-md-6">
-                                                <div class="single-what-news mb-100">
-                                                    <div class="what-img">
-                                                        <img src="{{asset('assets/img/news/whatNews1.jpg')}}" alt="">
-                                                    </div>
-                                                    <div class="what-cap">
-                                                        <span class="color1">Night party</span>
-                                                        <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6">
-                                                <div class="single-what-news mb-100">
-                                                    <div class="what-img">
-                                                        <img src="{{asset('assets/img/news/whatNews2.jpg')}}" alt="">
-                                                    </div>
-                                                    <div class="what-cap">
-                                                        <span class="color1">Night party</span>
-                                                        <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6">
-                                                <div class="single-what-news mb-100">
-                                                    <div class="what-img">
-                                                        <img src="{{asset('assets/img/news/whatNews3.jpg')}}" alt="">
-                                                    </div>
-                                                    <div class="what-cap">
-                                                        <span class="color1">Night party</span>
-                                                        <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6">
-                                                <div class="single-what-news mb-100">
-                                                    <div class="what-img">
-                                                        <img src="{{asset('assets/img/news/whatNews4.jpg')}}" alt="">
-                                                    </div>
-                                                    <div class="what-cap">
-                                                        <span class="color1">Night party</span>
-                                                        <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- card Six -->
-                                <div class="tab-pane fade" id="nav-techno" role="tabpanel" aria-labelledby="nav-technology">
-                                    <div class="whats-news-caption">
-                                        <div class="row">
-                                            <div class="col-lg-6 col-md-6">
-                                                <div class="single-what-news mb-100">
-                                                    <div class="what-img">
-                                                        <img src="{{asset('assets/img/news/whatNews1.jpg')}}" alt="">
-                                                    </div>
-                                                    <div class="what-cap">
-                                                        <span class="color1">Night party</span>
-                                                        <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6">
-                                                <div class="single-what-news mb-100">
-                                                    <div class="what-img">
-                                                        <img src="{{asset('assets/img/news/whatNews2.jpg')}}" alt="">
-                                                    </div>
-                                                    <div class="what-cap">
-                                                        <span class="color1">Night party</span>
-                                                        <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6">
-                                                <div class="single-what-news mb-100">
-                                                    <div class="what-img">
-                                                        <img src="{{asset('assets/img/news/whatNews3.jpg')}}" alt="">
-                                                    </div>
-                                                    <div class="what-cap">
-                                                        <span class="color1">Night party</span>
-                                                        <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6">
-                                                <div class="single-what-news mb-100">
-                                                    <div class="what-img">
-                                                        <img src="{{asset('assets/img/news/whatNews4.jpg')}}" alt="">
-                                                    </div>
-                                                    <div class="what-cap">
-                                                        <span class="color1">Night party</span>
-                                                        <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Nav Card -->
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <!-- Section Tittle -->
-                    <div class="section-tittle mb-40">
-                        <h3>Follow Us</h3>
-                    </div>
-                    <!-- Flow Socail -->
-                    <div class="single-follow mb-45">
-                        <div class="single-box">
-                            <div class="follow-us d-flex align-items-center">
-                                <div class="follow-social">
-                                    <a href="#"><img src="{{asset('assets/img/news/icon-fb.png')}}" alt=""></a>
-                                </div>
-                                <div class="follow-count">
-                                    <span>8,045</span>
-                                    <p>Fans</p>
-                                </div>
-                            </div>
-                            <div class="follow-us d-flex align-items-center">
-                                <div class="follow-social">
-                                    <a href="#"><img src="{{asset('assets/img/news/icon-tw.png')}}" alt=""></a>
-                                </div>
-                                <div class="follow-count">
-                                    <span>8,045</span>
-                                    <p>Fans</p>
-                                </div>
-                            </div>
-                            <div class="follow-us d-flex align-items-center">
-                                <div class="follow-social">
-                                    <a href="#"><img src="{{asset('assets/img/news/icon-ins.png')}}" alt=""></a>
-                                </div>
-                                <div class="follow-count">
-                                    <span>8,045</span>
-                                    <p>Fans</p>
-                                </div>
-                            </div>
-                            <div class="follow-us d-flex align-items-center">
-                                <div class="follow-social">
-                                    <a href="#"><img src="{{asset('assets/img/news/icon-yo.png')}}" alt=""></a>
-                                </div>
-                                <div class="follow-count">
-                                    <span>8,045</span>
-                                    <p>Fans</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- New Poster -->
-                    <div class="news-poster d-none d-lg-block">
-                        <img src="{{asset('assets/img/news/news_card.jpg')}}" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Whats New End -->
+
+
     <!--   Weekly2-News start -->
-    <div class="weekly2-news-area  weekly2-pading gray-bg">
+    <div class="weekly2-news-area  weekly2-pading ">
         <div class="container">
             <div class="weekly2-wrapper">
                 <!-- section Tittle -->
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="section-tittle mb-30">
-                            <h3>Weekly Top News</h3>
+                            <h4>Bài viết nổi bật</h4>
                         </div>
                     </div>
                 </div>
@@ -600,51 +490,72 @@
                                     <img src="{{asset('assets/img/news/weekly2News1.jpg')}}" alt="">
                                 </div>
                                 <div class="weekly2-caption">
-                                    <span class="color1">Corporate</span>
-                                    <p>25 Jan 2020</p>
-                                    <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
+                                    <span class="color1">Tìm người ở ghép</span>
+                                    <div class="d-flex justify-content-between">
+                                        <p class="font-weight-bold text-success">1.000.000đ/tháng</p>
+                                        <p class="text-muted small lead">9 giờ trước</p>
+                                    </div>
+                                    <h4><a href="#">Tìm người ở ghép gần trường y dược Huế</a></h4>
                                 </div>
                             </div>
                             <div class="weekly2-single">
                                 <div class="weekly2-img">
-                                    <img src="{{asset('assets/img/news/weekly2News2.jpg')}}" alt="">
+                                    <img src="{{asset('assets/img/news/weekly2News1.jpg')}}" alt="">
                                 </div>
                                 <div class="weekly2-caption">
-                                    <span class="color1">Event night</span>
-                                    <p>25 Jan 2020</p>
-                                    <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
+                                    <span class="color1">Tìm người ở ghép</span>
+                                    <div class="d-flex justify-content-between">
+                                        <p class="font-weight-bold text-success">1.000.000đ/tháng</p>
+                                        <p class="text-muted small lead">9 giờ trước</p>
+                                    </div>
+                                    <h4><a href="#">Tìm người ở ghép gần trường y dược Huế</a></h4>
                                 </div>
                             </div>
                             <div class="weekly2-single">
                                 <div class="weekly2-img">
-                                    <img src="{{asset('assets/img/news/weekly2News3.jpg')}}" alt="">
+                                    <img src="{{asset('assets/img/news/weekly2News1.jpg')}}" alt="">
                                 </div>
                                 <div class="weekly2-caption">
-                                    <span class="color1">Corporate</span>
-                                    <p>25 Jan 2020</p>
-                                    <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
+                                    <span class="color1">Tìm người ở ghép</span>
+                                    <div class="d-flex justify-content-between">
+                                        <p class="font-weight-bold text-success">1.000.000đ/tháng</p>
+                                        <p class="text-muted small lead">9 giờ trước</p>
+                                    </div>
+                                    <h4><a href="#">Tìm người ở ghép gần trường y dược Huế</a></h4>
                                 </div>
                             </div>
                             <div class="weekly2-single">
                                 <div class="weekly2-img">
-                                    <img src="{{asset('assets/img/news/weekly2News4.jpg')}}" alt="">
+                                    <img src="{{asset('assets/img/news/weekly2News1.jpg')}}" alt="">
                                 </div>
                                 <div class="weekly2-caption">
-                                    <span class="color1">Event time</span>
-                                    <p>25 Jan 2020</p>
-                                    <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
+                                    <span class="color1">Tìm người ở ghép</span>
+                                    <div class="d-flex justify-content-between">
+                                        <p class="font-weight-bold text-success">1.000.000đ/tháng</p>
+                                        <p class="text-muted small lead">9 giờ trước</p>
+                                    </div>
+                                    <h4><a href="#">Tìm người ở ghép gần trường y dược Huế</a></h4>
                                 </div>
                             </div>
                             <div class="weekly2-single">
                                 <div class="weekly2-img">
-                                    <img src="{{asset('assets/img/news/weekly2News4.jpg')}}" alt="">
+                                    <img src="{{asset('assets/img/news/weekly2News1.jpg')}}" alt="">
                                 </div>
                                 <div class="weekly2-caption">
-                                    <span class="color1">Corporate</span>
-                                    <p>25 Jan 2020</p>
-                                    <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
+                                    <span class="color1">Tìm người ở ghép</span>
+                                    <div class="d-flex justify-content-between">
+                                        <p class="font-weight-bold text-success">1.000.000đ/tháng</p>
+                                        <p class="text-muted small lead">9 giờ trước</p>
+                                    </div>
+                                    <h4><a href="#">Tìm người ở ghép gần trường y dược Huế</a></h4>
                                 </div>
                             </div>
+
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="weekly2-news-all text-center mt-5">
+                            <a href="#" class="btn">Xem tất cả</a>
                         </div>
                     </div>
                 </div>
@@ -652,163 +563,109 @@
         </div>
     </div>
     <!-- End Weekly-News -->
-    <!-- Start Youtube -->
-    <div class="youtube-area video-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="video-items-active">
-                        <div class="video-items text-center">
-                            <iframe src="https://www.youtube.com/embed/CicQIuG8hBo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        </div>
-                        <div class="video-items text-center">
-                            <iframe src="https://www.youtube.com/embed/rIz00N40bag" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        </div>
-                        <div class="video-items text-center">
-                            <iframe src="https://www.youtube.com/embed/CONfhrASy44" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+    <!-- Start why-choose-us -->
+    <div class="why-choose-us mb-5">
+
+        <div class="container text-center px-5">
+            <h4 class="py-3">Tại sao chọn phongtroHue.com</h4>
+            <p class="text-muted">Chúng tôi biết bạn có rất nhiều lựa chọn, nhưng Phongtro123.com tự hào
+                là trang web đứng top google về các từ khóa:<span class="text-primary">
+                    cho thuê phòng trọ, nhà trọ, thuê nhà nguyên căn, cho thuê căn hộ, tìm người ở ghép,
+                    cho thuê mặt bằng...</span>Vì vậy tin của bạn đăng trên website sẽ tiếp cận được với nhiều khách hàng hơn,
+                do đó giao dịch nhanh hơn, tiết kiệm chi phí hơn</p>
+            <div class="choose-us-number d-flex justify-content-around text-primary mb-3">
+                <div>
+                    <h4 class="text-primary">1.675+</h4>
+                    <span>thành viên</span>
+                </div>
+                <div>
+                    <h4 class="text-primary">10.675+</h4>
+                    <span>Tin đăng</span>
+                </div>
+                <div>
+                    <h4 class="text-primary">11.675+</h4>
+                    <span>Lượt truy cập/tháng</span>
+                </div>
+                <div>
+                    <h4 class="text-primary">111.675+</h4>
+                    <span>Lượt xem/tháng</span>
+                </div>
+            </div>
+            <h5>Chi phí thấp, hiệu quả tối đa</h5>
+            <div>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+            <p class="my-2 text-muted font-italic">"Trước khi biết website phongtroHue,
+                mình phải tốn nhiều công sức và chi phí cho việc đăng
+                tin cho thuê: từ việc phát tờ rơi, dán giấy, và đăng lên
+                các website khác nhưng hiệu quả không cao.
+                Từ khi biết website phongtroHue.com, mình đã thử đăng tin lên
+                và đánh giá hiệu quả khá cao trong khi chi phí khá thấp,
+                không còn tình trạng phòng trống kéo dài."</p>
+            <p>Anh Đạt (chủ hệ thống phòng trọ tại Tp.Huế)</p>
+
+            <h4>Bạn đang có phòng trọ / căn hộ cho thuê?</h4>
+            <p>Không phải lo tìm người cho thuê, phòng trống kéo dài</p>
+            <div class=" py-4 text-center">
+                <a href="#" class="btn">Đăng tin ngay</a>
+            </div>
+        </div>
+
+    </div>
+    <!-- End why-choose-us -->
+
+
+    <!-- Start contact-us -->
+    <div class="contact-us">
+        <div class="container my-3">
+            <div class="">
+                <div class="contact-bg my-4">
+
+                </div>
+                <div class="list-contact text-center">
+                    <span >Liên hệ với chúng tôi nếu bạn cần hỗ trợ:</span>
+                    <div class="mt-4 list-contact-item d-flex justify-content-around">
+                        <div>
+                            <h6>Hỗ trợ thanh toán</h6>
+                            <p>Điện thoại: 090945656234</p>
+                            <p>Zalo: 090945656234</p>
 
                         </div>
-                        <div class="video-items text-center">
-                            <iframe src="https://www.youtube.com/embed/lq6fL2ROWf8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <div>
+                            <h6>Hỗ trợ đăng tin</h6>
+                            <p>Điện thoại: 090945656234</p>
+                            <p>Zalo: 090945656234</p>
 
                         </div>
-                        <div class="video-items text-center">
-                            <iframe src="https://www.youtube.com/embed/0VxlQlacWV4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <div>
+                            <h6>Hotline 24/7</h6>
+                            <p>Điện thoại: 090945656234</p>
+                            <p>Zalo: 090945656234</p>
+
                         </div>
+
                     </div>
                 </div>
-            </div>
-            <div class="video-info">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="video-caption">
-                            <div class="top-caption">
-                                <span class="color1">Politics</span>
-                            </div>
-                            <div class="bottom-caption">
-                                <h2>Welcome To The Best Model Winner Contest At Look of the year</h2>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod ipsum dolor sit. Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod ipsum dolor sit. Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod ipsum dolor sit lorem ipsum dolor sit.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="testmonial-nav text-center">
-                            <div class="single-video">
-                                <iframe src="https://www.youtube.com/embed/CicQIuG8hBo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                <div class="video-intro">
-                                    <h4>Welcotme To The Best Model Winner Contest</h4>
-                                </div>
-                            </div>
-                            <div class="single-video">
-                                <iframe src="https://www.youtube.com/embed/rIz00N40bag" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                <div class="video-intro">
-                                    <h4>Welcotme To The Best Model Winner Contest</h4>
-                                </div>
-                            </div>
-                            <div class="single-video">
-                                <iframe src="https://www.youtube.com/embed/CONfhrASy44" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                <div class="video-intro">
-                                    <h4>Welcotme To The Best Model Winner Contest</h4>
-                                </div>
-                            </div>
-                            <div class="single-video">
-                                <iframe src="https://www.youtube.com/embed/lq6fL2ROWf8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                <div class="video-intro">
-                                    <h4>Welcotme To The Best Model Winner Contest</h4>
-                                </div>
-                            </div>
-                            <div class="single-video">
-                                <iframe src="https://www.youtube.com/embed/0VxlQlacWV4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                <div class="video-intro">
-                                    <h4>Welcotme To The Best Model Winner Contest</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="py-5 text-center">
+                    <a href="#" class="btn">Gửi liên hệ</a>
                 </div>
             </div>
+
         </div>
     </div>
-    <!-- End Start youtube -->
-    <!--  Recent Articles start -->
-    <div class="recent-articles">
-        <div class="container">
-            <div class="recent-wrapper">
-                <!-- section Tittle -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="section-tittle mb-30">
-                            <h3>Recent Articles</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="recent-active dot-style d-flex dot-style">
-                            <div class="single-recent mb-100">
-                                <div class="what-img">
-                                    <img src="{{asset('assets/img/news/recent1.jpg')}}" alt="">
-                                </div>
-                                <div class="what-cap">
-                                    <span class="color1">Night party</span>
-                                    <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
-                                </div>
-                            </div>
-                            <div class="single-recent mb-100">
-                                <div class="what-img">
-                                    <img src="{{asset('assets/img/news/recent2.jpg')}}" alt="">
-                                </div>
-                                <div class="what-cap">
-                                    <span class="color1">Night party</span>
-                                    <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
-                                </div>
-                            </div>
-                            <div class="single-recent mb-100">
-                                <div class="what-img">
-                                    <img src="{{asset('assets/img/news/recent3.jpg')}}" alt="">
-                                </div>
-                                <div class="what-cap">
-                                    <span class="color1">Night party</span>
-                                    <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
-                                </div>
-                            </div>
-                            <div class="single-recent mb-100">
-                                <div class="what-img">
-                                    <img src="{{asset('assets/img/news/recent2.jpg')}}" alt="">
-                                </div>
-                                <div class="what-cap">
-                                    <span class="color1">Night party</span>
-                                    <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--Recent Articles End -->
-    <!--Start pagination -->
-    <div class="pagination-area pb-45 text-center">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="single-wrap d-flex justify-content-center">
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination justify-content-start">
-                                <li class="page-item"><a class="page-link" href="#"><span class="flaticon-arrow roted"></span></a></li>
-                                <li class="page-item active"><a class="page-link" href="#">01</a></li>
-                                <li class="page-item"><a class="page-link" href="#">02</a></li>
-                                <li class="page-item"><a class="page-link" href="#">03</a></li>
-                                <li class="page-item"><a class="page-link" href="#"><span class="flaticon-arrow right-arrow"></span></a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End pagination  -->
+    <!-- End contact-us -->
+
+
+
+
+
+
 </main>
 
 @endsection
