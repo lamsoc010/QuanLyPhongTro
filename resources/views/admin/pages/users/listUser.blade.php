@@ -439,11 +439,12 @@ div.dataTables_wrapper div.dataTables_filter label {
 
     // show modal details
     function Details(url) {
+        console.log(url);
         $.ajax({
             url: url,
             type: 'GET',
             success: function (data) {
-            console.log(data);
+                console.log(data);
                  $('.dt-name').html(data[0].name);
                  $('.dt-email').html(data[0].email);
                  $('.dt-address').html(data[0].address);
