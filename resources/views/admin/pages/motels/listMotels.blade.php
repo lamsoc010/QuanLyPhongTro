@@ -106,8 +106,8 @@
     <!-- /.card -->
     {{-- button --}}
    
-    </div>
-  </section>
+  </div>
+  {{-- </section>  --}}
 
 {{-- dataTable --}}
 <section class="content">
