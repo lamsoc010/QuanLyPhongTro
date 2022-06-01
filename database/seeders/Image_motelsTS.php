@@ -70,6 +70,144 @@ class Image_motelsTS extends Seeder
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ],
+            [
+                'idMotels' => rand($minIdMotel, $maxIdMotel),
+                'image' => 'motels4.jpg',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ],
+            [
+                'idMotels' => rand($minIdMotel, $maxIdMotel),
+                'image' => 'motels5.jpg',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ],
+            [
+                'idMotels' => rand($minIdMotel, $maxIdMotel),
+                'image' => 'motels6.jpg',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ],
+            [
+                'idMotels' => rand($minIdMotel, $maxIdMotel),
+                'image' => 'motels7.jpg',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ],
+            [
+                'idMotels' => rand($minIdMotel, $maxIdMotel),
+                'image' => 'motels8.jpg',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ],
+            [
+                'idMotels' => rand($minIdMotel, $maxIdMotel),
+                'image' => 'motels9.jpg',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ],
+            [
+                'idMotels' => rand($minIdMotel, $maxIdMotel),
+                'image' => 'motels5.jpg',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ],
+            [
+                'idMotels' => rand($minIdMotel, $maxIdMotel),
+                'image' => 'motels6.jpg',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ],
+            [
+                'idMotels' => rand($minIdMotel, $maxIdMotel),
+                'image' => 'motels7.jpg',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ],
+            [
+                'idMotels' => rand($minIdMotel, $maxIdMotel),
+                'image' => 'motels8.jpg',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ],
+            [
+                'idMotels' => rand($minIdMotel, $maxIdMotel),
+                'image' => 'motels9.jpg',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ],
+            [
+                'idMotels' => rand($minIdMotel, $maxIdMotel),
+                'image' => 'motels9.jpg',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ],
+            [
+                'idMotels' => rand($minIdMotel, $maxIdMotel),
+                'image' => 'motels4.jpg',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ],
+            [
+                'idMotels' => rand($minIdMotel, $maxIdMotel),
+                'image' => 'motels5.jpg',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ],
+            [
+                'idMotels' => rand($minIdMotel, $maxIdMotel),
+                'image' => 'motels6.jpg',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ],
+            [
+                'idMotels' => rand($minIdMotel, $maxIdMotel),
+                'image' => 'motels7.jpg',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ],
+            [
+                'idMotels' => rand($minIdMotel, $maxIdMotel),
+                'image' => 'motels8.jpg',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ],
+            [
+                'idMotels' => rand($minIdMotel, $maxIdMotel),
+                'image' => 'motels9.jpg',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ],
+            [
+                'idMotels' => rand($minIdMotel, $maxIdMotel),
+                'image' => 'motels5.jpg',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ],
+            [
+                'idMotels' => rand($minIdMotel, $maxIdMotel),
+                'image' => 'motels6.jpg',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ],
+            [
+                'idMotels' => rand($minIdMotel, $maxIdMotel),
+                'image' => 'motels7.jpg',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ],
+            [
+                'idMotels' => rand($minIdMotel, $maxIdMotel),
+                'image' => 'motels8.jpg',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ],
+            [
+                'idMotels' => rand($minIdMotel, $maxIdMotel),
+                'image' => 'motels9.jpg',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ],
         ];
         DB::table('image_motels')->insert($data);
     }

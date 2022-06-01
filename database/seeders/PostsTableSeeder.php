@@ -30,8 +30,9 @@ class PostsTableSeeder extends Seeder
                 Chúng ta hãy cùng nhau phân tích ưu điểm, nhược điểm của 2 kiểu tìm phòng trọ này để xem rằng liệu nên chọn tìm theo kiểu nào và cần chú ý những gì khi tìm kiếm phòng trọ theo cách đó.',
                 'status' => rand(0,1),
                 'views' => rand(0,10),
+                'image' => 'post1.jpg',
                 'idUser' => rand($minIdUser, $maxIdUser),
-                'idCategory' => rand($minIdCategory, $maxIdCategory),
+                'idCategory' => 6,
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ],
@@ -45,8 +46,9 @@ class PostsTableSeeder extends Seeder
                 Chúng ta hãy cùng nhau phân tích ưu điểm, nhược điểm của 2 kiểu tìm phòng trọ này để xem rằng liệu nên chọn tìm theo kiểu nào và cần chú ý những gì khi tìm kiếm phòng trọ theo cách đó.',
                 'status' => rand(0,1),
                 'views' => rand(0,10),
+                'image' => 'post2.jpg',
                 'idUser' => rand($minIdUser, $maxIdUser),
-                'idCategory' => rand($minIdCategory, $maxIdCategory),
+                'idCategory' => 6,
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ],
@@ -57,8 +59,9 @@ class PostsTableSeeder extends Seeder
                 Để giải đáp thắc mắc trên thì sau đây, phongtro123.com sẽ liệt kê danh sách 9 vật dụng cần thiết khi ở trọ. Các bạn tân sinh viên có thể tham khảo, chuẩn bị trước, để sẵn sàng với cuộc sống tự lập xa gia đình.',
                 'status' => rand(0,1),
                 'views' => rand(0,10),
+                'image' => 'post3.jpg',
                 'idUser' => rand($minIdUser, $maxIdUser),
-                'idCategory' => rand($minIdCategory, $maxIdCategory),
+                'idCategory' => 6,
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ],
@@ -69,19 +72,46 @@ class PostsTableSeeder extends Seeder
                 Và hiện nay không chỉ những người lao động có thu nhập ổn định thuê căn hộ mà có rất nhiều lượng lớn các bạn học sinh, sinh viên đang tìm thuê những căn hộ. Vậy sinh viên thuê căn hộ có thực sự tốt và có nên thuê căn hộ thay vì thuê phòng trọ trọ hay không. Hãy cùng chúng tôi tìm hiểu sau đây',
                 'status' => rand(0,1),
                 'views' => rand(0,10),
+                'image' => 'post4.jpg',
                 'idUser' => rand($minIdUser, $maxIdUser),
-                'idCategory' => rand($minIdCategory, $maxIdCategory),
+                'idCategory' => 6,
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ],
             [
-                'title' => 'Nên hay không sinh viên chọn thuê căn hộ thay vì nhà trọ',
+                'title' => 'Tìm người ở ghép phòng trọ ở Điện Biên Phủ',
                 'content' => 'Hiện nay nhu cầu tìm thuê chỗ ở tại các thành phố là vô cùng lớn, rất nhiều căn hộ, phòng trọ được xây dựng, yêu cầu về chỗ ở đang ngày càng tăng lên. Rất nhiều người đã lựa chọn thuê những căn hộ có chất lượng cao, đảm bảo, có những tiện ích tốt thay vì thuê nhà trọ đồng giá mà không có những tiện ích hay những chất lượng như căn hộ.
                 Và hiện nay không chỉ những người lao động có thu nhập ổn định thuê căn hộ mà có rất nhiều lượng lớn các bạn học sinh, sinh viên đang tìm thuê những căn hộ. Vậy sinh viên thuê căn hộ có thực sự tốt và có nên thuê căn hộ thay vì thuê phòng trọ trọ hay không. Hãy cùng chúng tôi tìm hiểu sau đây',
                 'status' => rand(0,1),
                 'views' => rand(0,10),
+                'image' => 'post1.jpg',
                 'idUser' => rand($minIdUser, $maxIdUser),
-                'idCategory' => rand($minIdCategory, $maxIdCategory),
+                'idCategory' => 4,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ],
+            [
+                'title' => 'Phòng khách sạn cho thuê giá rẻ tại trung tâm Tp.Huế chỉ 2 triệu/tháng',
+                'content' => 'HỖ TRỢ GIÁ MÙA DỊCH 2TR/ THÁNG
+                ️ LIÊN HỆ NGAY: 09 16 12 16 90 để đến xem phòng miễn phí
+                ‍ Đối tượng cho thuê: Học sinh, sinh viên, nghiên cứu sinh, người công tác theo dự án
+                ĐỊA CHỈ: 22 Điện Biên Phủ (vị trí không bị ngập lụt, gần trường Quốc Học, đại học Y Dược, Ga Huế, chợ Bến Ngự )',
+                'status' => rand(0,1),
+                'views' => rand(0,10),
+                'image' => 'post1.jpg',
+                'idUser' => rand($minIdUser, $maxIdUser),
+                'idCategory' => 2,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ],
+            [
+                'title' => 'Sinh viên thoải mái chọn phòng trọ',
+                'content' => 'TTH - Trong khi một số tỉnh, thành như Hà Nội, TP. Hồ Chí Minh, Đà Nẵng bắt đầu xảy ra tình trạng “sốt” nhà trọ khi năm học mới sắp bắt đầu thì ở Huế, hiện sinh viên vẫn khá thoải mái lựa chọn chỗ ở.',
+                'status' => rand(0,1),
+                'views' => rand(0,10),
+                'image' => 'post2.jpg',
+                'idUser' => rand($minIdUser, $maxIdUser),
+                'idCategory' => 1,
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ],

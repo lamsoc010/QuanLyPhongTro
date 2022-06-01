@@ -16,34 +16,41 @@ class CategoryTableSeeder extends Seeder
         $data = [
             [
                 'name' => 'Giới thiệu',
-                'status' => rand(0,1),
+                'status' => 1,
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ],
             [
                 'name' => 'Cho thuê phòng trọ',
-                'status' => rand(0,1),
+                'status' => 1,
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ],
             [
                 'name' => 'Phản ánh',
-                'status' => rand(0,1),
+                'status' => 1,
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ],
             [
                 'name' => 'Tìm người ở ghép',
-                'status' => rand(0,1),
+                'status' => 1,
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ],
             [
                 'name' => 'Cho thuê nhà nguyên căn',
-                'status' => rand(0,1),
+                'status' => 1,
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ],
+            [
+                'name' => 'Chia sẽ kinh nghiệm',
+                'status' => 1,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ],
+
         ];
         DB::table('category')->insert($data);
     }

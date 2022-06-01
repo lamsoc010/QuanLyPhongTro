@@ -76,21 +76,20 @@
 </style>
 <section class="blog_area single-post-area section-padding">
    <div class="container">
-      <button type="button" id="load" >Load</button>
       <div class="row">
          <div class="col-lg-8 posts-list">
             <div class="single-post">
                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                  <ol class="carousel-indicators">
-                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                  <ol class="carousel-indicators" id="carousel-indicators">
+                     {{-- <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li> --}}
                   </ol>
-                  <div class="carousel-inner">
-                     @foreach ($image_motels as $image)
+                  <div class="carousel-inner" id="carousel-inner">
+                     {{-- @foreach ($image_motels as $image)
                         <div class="carousel-item {{ $image_motels[0] == $image ? 'active' : '' }}">
                            <img class="d-block w-100" style="height: 500px;" src="{{ asset('assets/img/motels/'.$image->image) }}" alt="Second slide">
                         </div>
-                     @endforeach
+                     @endforeach --}}
                   </div>
                   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -106,105 +105,7 @@
                      <img class="img-fluid" src="assets/img/blog/single_blog_1.png" alt="">
                   </div> -->
                <div class="blog_details">
-
-                  <div class="row">
-                     <div class="col-md-7">
-                        <h2>
-                           <i class="fas fa-star"></i>
-                           <i class="fas fa-star"></i>
-                           <i class="fas fa-star"></i>
-                           <i class="fas fa-star"></i>
-                           <i class="fas fa-star"></i>
-                           {{ $motel->name}}
-                        </h2>
-                        <ul class="blog-info-link mt-4 ">
-                           <li class="motels_area"><i class="fas fa-map-marker-alt"></i>Địa chỉ: {{ $motel->address}}</li>
-                        </ul>
-                        <ul class="blog-info-link mt-4 mb-4">
-                           <li class="motels_price"><i class="fas fa-dollar-sign"></i>Giá từ: {{ $motel->min_price}} - {{ $motel->max_price}}/tháng</li>
-                        </ul>
-                        <ul class="blog-info-link mt-4 mb-4">
-                           <li class="ms-4"><i class="fas fa-chart-area"></i>{{ $motel->area}}/m2 </li>
-                           <li><i class="fas fa-sort-numeric-down"></i>{{ $motel->room_quantity}} phòng </li>
-                        </ul>
-                     </div>
-                     <div class="col-md-5">
-                        <div class="card align-items-center">
-                           <div class="card_img text-center my-3" style="width: 100px; height: 100px; ">
-                           @if ($motel->image)
-                              <img class="" src="{{asset('assets/img/users/'.$motel->image)}}" alt="Card image cap" style="width: 100%; height: 100%;border-radius: 50%; ">
-                           @else 
-                              <img class="" src="{{asset('assets/img/users/user.jpg')}}" alt="Card image cap" style="width: 100%; height: 100%;border-radius: 50%; ">
-                           @endif
-
-                           </div>
-                           <div class="card_body">
-                              <h5 class="card-title text-center">{{$motel->name}}</h5>
-                              <div class="card-info d-flex mb-2 justify-content-between">
-                                 <a href="tel:0991231231" class="user_phone bg-success mr-2"><i class="fas fa-phone mr-2"></i>{{$motel->phone}}</a>
-                                 <a href=" https://chat.zalo.me/?phone={{$motel->phone}}" class="user_zalo bg-light text-primary d-flex">
-                                    <i class="zalo"></i>
-                                    <span>Nhắn zalo</span></a>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-
-                  <div class="row mt-3">
-                     <h3 class="">Thông tin mô tả</h3>
-                     <p class="excert">
-                        {{$motel->descreption}}
-                     </p>
-                     
-                  </div>
-                  <div class="quote-wrapper">
-                     <div class="quotes">
-                        <h5 class="mb-2">Đặc điểm tin đăng:</h5>
-                        <table class="table table-striped table-borderless">
-                           <tbody>
-                              <tr>
-                                 <td>Nhà trọ:</td>
-                                 <td>{{$motel->name}}</td>
-                              </tr>
-                              <tr>
-                                 <td>Đối tượng:</td>
-                                 <td>Nữ</td>
-                              </tr>
-                              <tr>
-                                 <td>Ngày đăng:</td>
-                                 <td>{{$motel->created_at}}</td>
-                              </tr>
-
-                              <tr class="mt-4" style="background:white;">
-                                 <td>
-                                    <h5>Thông tin liên hệ:</h5>
-                                 </td>
-
-                              </tr>
-                              <tr>
-                                 <td>Chủ trọ:</td>
-                                 <td>{{$motel->name}}</td>
-                              </tr>
-                              <tr>
-                                 <td>Điện thoại:</td>
-                                 <td>{{$motel->phone}}</td>
-                              </tr>
-                              <tr>
-                                 <td>Zalo:</td>
-                                 <td>{{$motel->phone}}</td>
-                              </tr>
-
-                           </tbody>
-                        </table>
-
-                        <h5>Bản đồ:</h5>
-                        <p>Địa chỉ: {{$motel->address}}</p>
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3826.510709589605!2d107.59306051417487!3d16.449657933501125!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3141a142ff2bf65f%3A0xcf77f7367ff61dea!2zNTIgRHV5IFTDom4sIEFuIEPhu7F1LCBUaMOgbmggcGjhu5EgSHXhur8sIFRo4burYSBUaGnDqm4gSHXhur8sIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1653405663150!5m2!1svi!2s"
-                            width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                     </div>
-                  </div>
-
+                  {{-- render --}}
                </div>
             </div>
             <div class="navigation-top">
@@ -236,40 +137,7 @@
                </div>
             </div>
             <div class="comments-area">
-               <h4>{{$listComments->count()}} Comments</h4>
-               @foreach ($listComments as $item)
-                  <div class="comment-list">
-                     <div class="single-comment justify-content-between d-flex">
-                        <div class="user justify-content-between d-flex">
-                           <div class="thumb">
-                              @if ($item->image)
-                                 <img src="{{asset('assets/img/users/'.$item->image)}}" alt="" style="height: 80px; width:80px">
-                              @else 
-                                 <img src="{{asset('assets/img/users/user.jpg')}}" alt="" style="height: 80px; width:80px">
-                              @endif
-                           </div>
-                           <div class="desc">
-                              <p class="comment">
-                                 {{$item->contents}}
-                              </p>
-                              <div class="d-flex justify-content-between">
-                                 <div class="d-flex align-items-center">
-                                    <h5>
-                                       <a href="#">{{$item->name}}</a>
-                                    </h5>
-                                    <p class="date">{{$item->created_at}}</p>
-                                 </div>
-                                 <div class="reply-btn">
-                                    <a href="#" class="btn-reply text-uppercase">reply</a>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                   
-               @endforeach
-               
+               {{-- render comment --}}
             </div>
             <div class="comment-form">
                <h4>Gửi phản hồi</h4>
@@ -304,10 +172,6 @@
          </div>
          <div class="col-lg-4">
             <div class="blog_right_sidebar">
-
-
-
-
                <aside class="single_sidebar_widget search_widget">
                   <form action="#">
                      <div class="form-group">
@@ -321,8 +185,6 @@
                      <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn" type="submit">Search</button>
                   </form>
                </aside>
-
-
                {{-- <aside class="single_sidebar_widget post_category_widget">
                   <h4 class="widget_title">Category</h4>
                   <ul class="list cat-list">
@@ -364,36 +226,8 @@
                      </li>
                   </ul>
                </aside>  --}}
-               <aside class="single_sidebar_widget popular_post_widget">
-                  <h3 class="widget_title">Nhà trọ nổi bật</h3>
-               
-                  @foreach ($listMotelsMost as $item)
-                     <div class="media post_item">
-                        <img src="{{asset('assets/img/motels/'.$item->image)}}" style="height: 100px; width: 100px" alt="post">
-                        <div class="media-body">
-                           <a href="single-blog.html">
-                              <h3>{{$item->name}}</h3>
-                           </a>
-                           <p >{{$item->address}}</p>
-                           <div class="d-flex justify-content-between align-items-center">
-                              <p class="text-success font-weight-bold">{{$item->min_price}} đ/tháng</p>
-                              @php
-                                 $hours = floor(abs(strtotime($item->created_at) - strtotime(date('Y-m-d H:i:s'))) / (60*60));
-                                 
-                              @endphp
-                              @if ($hours == 0) 
-                                    <p>Vừa mới đăng</p>
-                              @else
-                                 <p>{{$hours}} giờ trước</p>
-                              @endif
-
-                           </div>
-                        </div>
-                     </div>
-                          
-                  @endforeach
-                  
-                  
+               <aside class="single_sidebar_widget popular_post_widget" id="motelsMost">
+                  {{-- render nhà trọ nổi bật --}}
                </aside>
                <aside class="single_sidebar_widget tag_cloud_widget">
                   <h4 class="widget_title">Tag Clouds</h4>
@@ -403,36 +237,8 @@
                      </li>
                   </ul>
                </aside>
-               <aside class="single_sidebar_widget popular_post_widget">
-                  <h3 class="widget_title">Bài đăng nổi bật</h3>
-                  @foreach ($listPostsMost as $item)
-                     <div class="media post_item">
-                        <img src="{{asset('assets/img/posts/'.$item->image)}}" alt="post" style="height: 80px; width: 80px">
-                        <div class="media-body">
-                           <a href="single-blog.html">
-                              <h3>{{$item->title}}</h3>
-                           </a>
-                           <div class="d-flex justify-content-between align-items-center">
-                              <p class="text-success font-weight-bold">{{$item->name}}</p>
-                              @php
-                                 //  $diff = abs(strtotime($item->created_at) - strtotime(date('Y-m-d H:i:s')));
-                                 //  $years = floor($diff / (365*60*60*24));   
-                                 //  $months = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));   
-                                 //  $days = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24) / (60*60*24));   
-                                 //  $hours = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24 - $days*60*60*24) / (60*60));
-                                 $hours = floor(abs(strtotime($item->created_at) - strtotime(date('Y-m-d H:i:s'))) / (60*60));
-                              @endphp
-                              @if ($hours == 0) 
-                                 <p>Vừa mới đăng</p>
-                              @else
-                                 <p>{{$hours}} giờ trước</p>
-                              @endif
-
-                           </div>
-                        </div>
-                     </div>
-                      
-                  @endforeach
+               <aside class="single_sidebar_widget popular_post_widget" id="postsMost">
+                  {{-- render bài viếT nổi bật --}}
                   
                </aside>
                <aside class="single_sidebar_widget newsletter_widget">
@@ -452,19 +258,272 @@
 <!--================ Blog Area end =================-->
 @endsection
 @section('scripts')
+   <script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
    <script>
       $(document).ready(function() {
-         // let url = '{{route('details')}}';
          let url = document.location.href;
+         // console.log()
+         // get id in url
+         let id = url.split('/').pop();
          $.ajax({
-            url: '/handleDetails/5',
+            url: '/handleDetails/'+id,
             type: 'GET',
             dataType: 'json',
             success: function(response) {
-               console.log(response);
+               // console.log(response.image_motels);
+               $('#carousel-indicators').html(carousel_indicators(response.image_motels));
+               $('#carousel-inner').html(carousel_inner(response.image_motels));
+               // $('#information_blog_details').html(information_blog_details(response.motel));
+               $('.blog_details').html(blog_details(response.motel));
+               $('.comments-area').html(comments_area(response.listComments));
+               $('#motelsMost').html(motels_Most(response.listMotelsMost));
+               $('#postsMost').html(posts_Most(response.listPostsMost));
             }
          });
-      })
+      });
+      function formatPrice(price) {
+            const formatter = new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'VND',
+                minimumFractionDigits: 0
+            });
+            return formatter.format(price);
+            
+        }
+      function carousel_indicators(image_motels) {
+         let html = '';
+         for (let i = 0; i < image_motels.length; i++) {
+            html += `
+               <li data-target="#carouselExampleIndicators" data-slide-to="${i}" class="${i == 0 ? 'active' : ''}"></li>
+            `;
+         }
+         return html;
+      }
+      function carousel_inner(image_motels) {
+         let html = '';
+         for (let i = 0; i < image_motels.length; i++) {
+            html += `
+               <div class="carousel-item ${i == 0 ? 'active' : ''}">
+                  <img class="d-block w-100" src="{{asset('assets/img/motels/')}}/${image_motels[i].image}" alt="First slide" style="height:500px">
+               </div>
+            `;
+         }
+         return html;
+      }
+      function information_blog_details(motel) {
+         let html = '';
+         let image_avatar = '';
+         if(!motel.image_avatar) {
+            image_avatar = `<img class="" src="{{asset('assets/img/users/user.jpg')}}" alt="Card image cap" style="width: 100%; height: 100%;border-radius: 50%; ">`;
+         } else {
+            image_avatar = `<img class="" src="{{asset('assets/img/users/${motel.imageUser}')}}" alt="Card image cap" style="width: 100%; height: 100%;border-radius: 50%; ">`;
+         }
+         html += `
+            <div class="col-md-7" >
+               <h2>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  ${motel.name}
+               </h2>
+               <ul class="blog-info-link mt-4 ">
+                  <li class="motels_area"><i class="fas fa-map-marker-alt"></i>Địa chỉ: ${motel.address}</li>
+               </ul>
+               <ul class="blog-info-link mt-4 mb-4">
+                  <li class="motels_price"><i class="fas fa-dollar-sign"></i>Giá từ: ${formatPrice(motel.min_price)} - ${formatPrice(motel.max_price)}/tháng</li>
+               </ul>
+               <ul class="blog-info-link mt-4 mb-4">
+                  <li class="ms-4"><i class="fas fa-chart-area"></i>${motel.area}/m2 </li>
+                  <li><i class="fas fa-sort-numeric-down"></i>${motel.room_quantity} phòng </li>
+               </ul>
+            </div>
+            <div class="col-md-5">
+               <div class="card align-items-center">
+                  <div class="card_img text-center my-3" style="width: 100px; height: 100px; ">
+                  ${image_avatar}
+                  </div>
+                  <div class="card_body">
+                     <h5 class="card-title text-center">${motel.nameUser}</h5>
+                     <div class="card-info d-flex mb-2 justify-content-between">
+                        <a href="tel:${motel.phone}" class="user_phone bg-success mr-2"><i class="fas fa-phone mr-2"></i>${motel.phone}</a>
+                        <a href=" https://chat.zalo.me/?phone=${motel.phone}" class="user_zalo bg-light text-primary d-flex">
+                           <i class="zalo"></i>
+                           <span>Nhắn zalo</span></a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         `
+         return html;
+      }
+      function blog_details(motel) {
+         let html = '';
+         html += `
+            <div class="row" id="information_blog_details">
+               ${information_blog_details(motel)}
+            </div>
+
+            <div class="row mt-3">
+               <h3 class="">Thông tin mô tả</h3>
+               <p class="excert">
+                  ${motel.descreption}
+               </p>
+            </div>
+            <div class="quote-wrapper">
+               <div class="quotes">
+                  <h5 class="mb-2">Đặc điểm tin đăng:</h5>
+                  <table class="table table-striped table-borderless">
+                     <tbody>
+                        <tr>
+                           <td>Nhà trọ:</td>
+                           <td>${motel.name}</td>
+                        </tr>
+                        <tr>
+                           <td>Đối tượng:</td>
+                           <td>${motel.person}</td>
+                        </tr>
+                        <tr>
+                           <td>Ngày đăng:</td>
+                           <td>${motel.created_at}</td>
+                        </tr>
+                        <tr class="mt-4" style="background:white;">
+                           <td>
+                              <h5>Thông tin liên hệ:</h5>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Chủ trọ:</td>
+                           <td>${motel.nameUser}</td>
+                        </tr>
+                        <tr>
+                           <td>Điện thoại:</td>
+                           <td>${motel.phone}</td>
+                        </tr>
+                        <tr>
+                           <td>Zalo:</td>
+                           <td>${motel.phone}</td>
+                        </tr>
+                     </tbody>
+                  </table>
+
+                  <h5>Bản đồ:</h5>
+                  <p>Địa chỉ: ${motel.address}</p>
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3826.510709589605!2d107.59306051417487!3d16.449657933501125!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3141a142ff2bf65f%3A0xcf77f7367ff61dea!2zNTIgRHV5IFTDom4sIEFuIEPhu7F1LCBUaMOgbmggcGjhu5EgSHXhur8sIFRo4burYSBUaGnDqm4gSHXhur8sIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1653405663150!5m2!1svi!2s"
+                        width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+               </div>
+            </div>
+         `;
+         return html;
+      }
+      function comments_area(listComments) {
+         let html = `<h4>${listComments.length} Comments</h4>`;
+         for(let i = 0; i < listComments.length; i++) {
+            let item = listComments[i];
+            let image_avatar = '';
+            console.log(item.image );
+            if(!item.image) {
+               image_avatar = `<img src="{{asset('assets/img/users/user.jpg')}}" alt="" style="height: 80px; width:80px">`;
+            } else {
+               image_avatar = `<img src="{{asset('assets/img/users/${item.image}')}}" alt="" style="height: 80px; width:80px">`;
+            };
+            html += `
+               <div class="comment-list">
+                  <div class="single-comment justify-content-between d-flex">
+                     <div class="user justify-content-between d-flex">
+                        <div class="thumb">
+                           ${image_avatar}
+                        </div>
+                        <div class="desc">
+                           <p class="comment">
+                              ${item.contents}
+                           </p>
+                           <div class="d-flex justify-content-between">
+                              <div class="d-flex align-items-center">
+                                 <h5>
+                                    <a href="#">${item.name}</a>
+                                 </h5>
+                                 <p class="date">${item.created_at}</p>
+                              </div>
+                              <div class="reply-btn">
+                                 <a href="#" class="btn-reply text-uppercase">reply</a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            `;
+         }
+         return html;
+      }
+      function motels_Most(listMotelsMost) {
+         let html = `<h3 class="widget_title">Nhà trọ nổi bật</h3>`;
+         for(let i = 0; i < listMotelsMost.length; i++) {
+            let item = listMotelsMost[i];
+            let time_now = moment(new Date());
+            let time_created_at = moment(item.created_at);
+            let time_diff = time_now.diff(time_created_at, 'hours');
+            if(time_diff == 0) {
+            time_diff = `<p>Vừa mới xong</p>`;
+            } else if(time_diff >= 24){
+               time_diff = `<p>${Math.floor(time_diff/24)} ngày trước</p>`;
+            } else {
+               time_diff = `<p>${time_diff} giờ trước</p>`;
+            }
+
+            html += `
+               <div class="media post_item">
+                  <img src="{{asset('assets/img/motels/${item.image}')}}" style="height: 80px; width: 80px" alt="post">
+                  <div class="media-body">
+                     <a href="/details/${item.id}">
+                        <h3>${item.name}</h3>
+                     </a>
+                     <p >${item.address}</p>
+                     <div class="d-flex justify-content-between align-items-center">
+                        <p class="text-success font-weight-bold">${formatPrice(item.min_price)} /tháng</p>
+                        ${time_diff}
+
+                     </div>
+                  </div>
+               </div>
+            `;
+         }
+         return html;
+      }
+      function posts_Most(listPostsMost) {
+         let html = `<h3 class="widget_title">Bài đăng nổi bật</h3>`;
+         for(let i = 0 ; i < listPostsMost.length; i++) {
+            let item = listPostsMost[i];
+            let time_now = moment(new Date());
+            let time_created_at = moment(item.created_at);
+            let time_diff = time_now.diff(time_created_at, 'hours');
+            if(time_diff == 0) {
+            time_diff = `<p>Vừa mới xong</p>`;
+            } else if(time_diff >= 24){
+               time_diff = `<p>${Math.floor(time_diff/24)} ngày trước</p>`;
+            } else {
+               time_diff = `<p>${time_diff} giờ trước</p>`;
+            }
+            html += `
+               <div class="media post_item">
+                  <img src="{{asset('assets/img/posts/${item.image}')}}" alt="post" style="height: 80px; width: 80px">
+                  <div class="media-body">
+                     <a href="single-blog.html">
+                        <h3>${item.title}</h3>
+                     </a>
+                     <div class="d-flex justify-content-between align-items-center">
+                        <p class="text-success font-weight-bold">${item.name}</p>
+                        ${time_diff}
+                     </div>
+                  </div>
+               </div>
+            `;
+         }
+         console.log(html);
+         return html;
+      }
    </script>
 @endsection

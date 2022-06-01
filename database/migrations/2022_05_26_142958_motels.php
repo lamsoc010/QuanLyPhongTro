@@ -24,6 +24,7 @@ class Motels extends Migration
             $table->integer('views');
             $table->text('descreption');
             $table->string('status');
+            $table->string('image');
             $table->string('person');
             $table->bigInteger('idUser')->unsigned();
             $table->timestamps();
