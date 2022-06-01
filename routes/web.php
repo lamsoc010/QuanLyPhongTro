@@ -79,6 +79,10 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function() {
         Route::get('/motels/getList', 'MotelsController@anyData');
         // get all name motels --- admin/motels/getAllNameMotels
         Route::get('/motels/getAllNameMotels', 'MotelsController@getAllNameMotels');
+
+        //-------------------------------------------Rooms----------------------------------------------------
+        // show view rooms 
+        Route::get('/rooms/listRooms', 'RoomsController@index');
     });
     
     Route::post('logout', 'Auth\AuthenticatedSessionController@destroy')->name('logout');

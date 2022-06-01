@@ -14,102 +14,100 @@
 @section('content')
  <!-- Content Wrapper. Contains page content -->
  <div class="content-wrapper pt-2">
- <section class="content">
+
   <div class="container-fluid">
-  <!-- SELECT2 EXAMPLE -->
-  <div class="card card-default">
-    <div class="card-header">
-      <h3 class="card-title">Quản lý dãy trọ</h3>
-
-      <div class="card-tools">
-        <button type="button" class="btn btn-tool" data-card-widget="collapse">
-          <i class="fas fa-minus"></i>
-        </button>
-        <button type="button" class="btn btn-tool" data-card-widget="remove">
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
-    </div>
-    <!-- /.card-header -->
-    <div class="card-body">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group row">
-            <div class="col-md-2">
-              <label>Giá:</label>
-            </div>
-            <div class="col-md">
-              <select class="form-control select2" >
-                <option selected="selected" value="0">--tất cả--</option>
-                <option value="1">Dưới 500.000 vnđ</option>
-                <option value="2">Từ 500.000 - 700.000 vnđ</option>
-                <option value="3">Từ 700.000 - 1.000.000 vnđ</option>
-                <option value="4">Từ 1.000.000 - 1.500.000 vnđ</option>
-                <option value="5">Từ 1.500.000 - 2.000.000 vnđ</option>
-                <option value="6">Trên 2.000.000 vnđ</option>
-              </select>
-            </div>
-         
-          </div>
-          <!-- /.form-group -->
-          <div class="form-group row">
-            <div class="col-md-2">
-              <label>Trạng thái:</label>
-            </div>
-            <div class="col-md">
-              <select class="form-control select2" >
-                <option selected="selected">--tất cả--</option>
-                <option>Còn phòng</option>
-                <option>Hết phòng</option>
-              </select>
-            </div>
-         
-          </div>
-          <!-- /.form-group -->
-        </div>
-        <!-- /.col -->
-        <div class="col-md-6">
-          <div class="form-group row">
-            <div class="col-md-2">
-              <label>Phân loại:</label>
-            </div>
-            <div class="col-md">
-              <select class="form-control select2" >
-                <option selected="selected">--tất cả--</option>
-                <option>Nam</option>
-                <option>Nữ</option>
-              </select>
-            </div>
-         
-          </div>
-          <!-- /.form-group -->
-          <div class="form-group row">
-            <div class="col-md-2">
-              <label>Tên trọ: </label>
-            </div>
-            <div class="col-md">
-              <select class="form-control select2" name="nameMotels" style="width: 100%;">
-                <option selected="selected">--tất cả--</option>
-
-              </select>
-            </div>
-           
-          </div>
-          <!-- /.form-group -->
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-      <button>tra cứu</button>
-
-    </div>
+    <div class="card card-default">
+      <div class="card-header">
+        <h3 class="card-title">Quản lý dãy trọ</h3>
   
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse">
+            <i class="fas fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-tool" data-card-widget="remove">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+      <!-- /.card-header -->
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <div class="col-md-2">
+                <label>Giá:</label>
+              </div>
+              <div class="col-md">
+                <select class="form-control select2"  name="price" id="price">
+                  <option selected="selected" value="" >--tất cả--</option>
+                  <option value="0">Dưới 500.000 vnđ</option>
+                  <option value="500000">Từ 500.000 - 1.000.000 vnđ</option>
+                  <option value="1000000">Từ 1.000.000 - 1.500.000 vnđ</option>
+                  <option value="1500000">Từ 1.500.000 - 2.000.000 vnđ</option>
+                  <option value="2000000">Trên 2.000.000 vnđ</option>
+                </select>
+              </div>
+           
+            </div>
+            <!-- /.form-group -->
+            <div class="form-group row">
+              <div class="col-md-2">
+                <label>Trạng thái:</label>
+              </div>
+              <div class="col-md">
+                <select class="form-control select2" id="status" name='status'>
+                  <option selected="selected" value="" >--tất cả--</option>
+                  <option value="Còn phòng">Còn phòng</option>
+                  <option value="Hết phòng">Hết phòng</option>
+                </select>
+              </div>
+           
+            </div>
+            <!-- /.form-group -->
+          </div>
+          <!-- /.col -->
+          <div class="col-md-6">
+            <div class="form-group row">
+              <div class="col-md-2">
+                <label>Phân loại:</label>
+              </div>
+              <div class="col-md">
+                <select class="form-control select2"  name="sex" id="sex">
+                  <option selected="selected" value="" >--tất cả--</option>
+                  <option value="Nam">Nam</option>
+                  <option value="Nữ">Nữ</option>
+                </select>
+              </div>
+           
+            </div>
+            <!-- /.form-group -->
+            <div class="form-group row">
+              <div class="col-md-2">
+                <label>Tên trọ: </label>
+              </div>
+              <div class="col-md">
+                <select class="form-control select2" id="nameMotels" name="nameMotels" style="width: 100%;">
+                  <option selected="selected" value="">--tất cả--</option>
+  
+                </select>
+              </div>
+             
+            </div>
+            <!-- /.form-group -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+        <button onclick="filterData()" id="filterData">tra cứu</button>
+  
+      </div>
+    
+    </div>
+    <!-- /.card -->
+    {{-- button --}}
+   
   </div>
-  <!-- /.card -->
-  {{-- button --}}
- 
-  </div>
-</section>
+  {{-- </section>  --}}
 
 {{-- dataTable --}}
 <section class="content">
@@ -164,11 +162,11 @@
    <script src="{{asset('AdminPTH/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
   <!-- jQuery -->
   <script> 
+    var filterInp = null;
+    var nameMotels = null;
+    var sex = null ;
+    var price = null;
      $(document).ready(function(){
-      var filter = null;
-        var nameMotels = null;
-        var sex = null ;
-        var price = null;
     //    datatable
       var table =   $("#tabMotels").DataTable({
             processing: true, 
@@ -181,11 +179,15 @@
             // ],
             ajax: {
                 url:  "{{asset('admin/motels/getList')}}",
-                data:  {
-                  filter,
-                  nameMotels,
-                  sex,
-                  price,
+                data: function(data){
+                  var price = $('#price').val();
+                  var nameMotels = $('#nameMotels').val();
+                  var sex = $('#sex').val();
+                  var status = $('#status').val();
+                  data.searchByPrice= price;
+                  data.searchBynameMotels= nameMotels;
+                  data.searchBySex = sex;
+                  data.searchByStatus= status;
                 }
             },
             columnDefs: [{
@@ -236,12 +238,11 @@
                 type: "GET",
                 url:  "{{asset('admin/motels/getAllNameMotels')}}",
                 success: function (data) {
-                  console.log("get data success");
+                  // console.log("get data success");
                 //  $("select[name='nameMotels'").html('');
                   $.each(data, function(key, value){
-                    console.log(key, value)
                       $("select[name='nameMotels']").append(
-                          "<option value=" + value.id + ">" + value.name + "</option>"
+                         `<option value="${value.name}">${value.name}</option>`
                       );
                   });
                 },
@@ -249,7 +250,28 @@
                   console.log("get data fail");
                 },
             });
-       
+
+
+            //bộ lọc
+            $('#price').change(function(){
+                table.draw();
+             });
+             $('#nameMotels').change(function(){
+                table.draw();
+             });
+             $('#sex').change(function(){
+                table.draw();
+             });
+             $('#status').change(function(){
+                table.draw();
+             });
       })
+     
+      function  filterData(){
+        var price = $('#price :selected').val();
+        var nameMotels = $('#nameMotels :selected').val();
+        var sex = $('#sex :selected').val();
+        var status = $('#status :selected').val();
+      }
   </script>
   @endsection
