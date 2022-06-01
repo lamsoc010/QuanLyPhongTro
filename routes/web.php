@@ -79,6 +79,14 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function() {
         //-------------------------------------------Rooms----------------------------------------------------
         // show view rooms 
         Route::get('/rooms/listRooms', 'RoomsController@index');
+
+        //-------------------------------------------Posts----------------------------------------------------
+        // show view posts
+        Route::get('/posts/listPosts', 'PostsController@index');
+        // get all posts with datatable
+        Route::get('/posts/getList', 'PostsController@anyData');
+        // get all name category --- admin/posts/getAllNameCategory
+        Route::get('/posts/getAllNameCategory', 'PostsController@getAllNameCategory');
     });
     
     Route::post('logout', 'Auth\AuthenticatedSessionController@destroy')->name('logout');

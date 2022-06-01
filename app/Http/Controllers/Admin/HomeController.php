@@ -34,7 +34,10 @@ class HomeController extends Controller
         // get dataBase
         $users = DB::table('users');
         $totalRecords = $users->count();
-        $users = $users->offset($start1)->limit($end1)->get();
+        $users = $users
+                ->offset($start1)
+                ->limit($end1)
+                ->get();
         $data1 = [
             "draw"=> $request->draw,
             "recordsFiltered"=> $totalRecords,
@@ -51,7 +54,9 @@ class HomeController extends Controller
         $idUser = $request->id;
         
         // get database
-        $users = DB::table('users')->where('id', $idUser)->get();
+        $users = DB::table('users')
+                ->where('id', $idUser)
+                ->get();
         
         return  response()->json($users);
     }
@@ -61,7 +66,9 @@ class HomeController extends Controller
         $idUser = $request->id;
         
         // get database
-        $users = DB::table('users')->where('id', $idUser)->get();
+        $users = DB::table('users')
+                ->where('id', $idUser)
+                ->get();
         
         return  response()->json($users);
     }
