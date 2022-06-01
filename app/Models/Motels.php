@@ -19,6 +19,7 @@ class Motels extends Model
         'view',
         'descreption',
         'status',
+        'image',
         'person',
         'idUser',
         'created_at',

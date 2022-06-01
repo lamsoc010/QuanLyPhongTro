@@ -15,6 +15,8 @@ use App\Http\Controllers\Clients\HomeController;
 
 // Clients
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/handleIndex', [HomeController::class, 'handleIndex'])->name('handleIndex');
+
 Route::get('/category', [HomeController::class, 'category'])->name('category');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/latest_news', [HomeController::class, 'latest_news'])->name('latest_news');
@@ -22,7 +24,9 @@ Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('/element', [HomeController::class, 'element'])->name('element');
 Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
 Route::get('/blog_details', [HomeController::class, 'blog_details'])->name('blog_details');
-Route::get('/details', [HomeController::class, 'details'])->name('details');
+
+Route::get('/details/{id}', [HomeController::class, 'details'])->name('details');
+// Route::get('/details', [HomeController::class, 'details'])->name('details');
 Route::get('/handleDetails/{id}', [HomeController::class, 'handleDetails'])->name('handleDetails');
 
 Route::get('/dashboard', function () {

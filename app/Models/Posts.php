@@ -13,6 +13,7 @@ class Posts extends Model
         'content',
         'status',
         'views',
+        'image',
         'idCategory',
         'idUser',
         'created_at',
