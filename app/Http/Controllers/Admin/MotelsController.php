@@ -16,11 +16,45 @@ class MotelsController extends Controller
         $end1 = $request->length;
         $draw = $request->draw;
 
+        // filter
+        $searchByPrice = $request->searchByPrice;
+        $searchBynameMotels = $request->searchBynameMotels;
+        $searchBySex = $request->searchBySex;
+        $searchByStatus = $request->searchByStatus;
+
+
+        // query
+       // get dataBase
+       $data = DB::table('motels')
+       ->join('users', 'users.id', '=', 'motels.idUser');
+        if($searchByPrice !=""){
+            $data=  $data
+                    ->where('min_price', '<',  $searchByPrice + 500000)
+                    ->where('min_price', '>=',  $searchByPrice);
+        }
+        if($searchBynameMotels !=""){
+            $data=  $data
+            ->where('motels.name', '=', $searchBynameMotels);
+        };
+        if($searchBySex !=""){
+            $data=  $data
+            ->where('motels.person', '=', $searchBySex);
+        }
+        if($searchByStatus !=""){
+            $data=  $data
+            ->where('motels.status', '=', $searchByStatus);
+        }
+     
+        $data = $data
+             ->select('motels.*', 'users.name as nameUser')
+             ->get();
+
+
         // get dataBase
-        $data = DB::table('motels')
-        ->join('users', 'users.id', '=', 'motels.idUser')
-        ->select('motels.*', 'users.name as nameUser')
-        ->get();
+        // $data = DB::table('motels')
+        // ->join('users', 'users.id', '=', 'motels.idUser')
+        // ->select('motels.*', 'users.name as nameUser')
+        // ->get();
 
         $totalRecords = count($data);
 
