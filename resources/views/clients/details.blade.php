@@ -76,6 +76,7 @@
 </style>
 <section class="blog_area single-post-area section-padding">
    <div class="container">
+      <button type="button" id="load" >Load</button>
       <div class="row">
          <div class="col-lg-8 posts-list">
             <div class="single-post">
@@ -115,24 +116,17 @@
                            <i class="fas fa-star"></i>
                            <i class="fas fa-star"></i>
                            {{ $motel->name}}
-                           
                         </h2>
                         <ul class="blog-info-link mt-4 ">
                            <li class="motels_area"><i class="fas fa-map-marker-alt"></i>Địa chỉ: {{ $motel->address}}</li>
-
                         </ul>
                         <ul class="blog-info-link mt-4 mb-4">
-
                            <li class="motels_price"><i class="fas fa-dollar-sign"></i>Giá từ: {{ $motel->min_price}} - {{ $motel->max_price}}/tháng</li>
-
-
                         </ul>
                         <ul class="blog-info-link mt-4 mb-4">
                            <li class="ms-4"><i class="fas fa-chart-area"></i>{{ $motel->area}}/m2 </li>
                            <li><i class="fas fa-sort-numeric-down"></i>{{ $motel->room_quantity}} phòng </li>
-
                         </ul>
-
                      </div>
                      <div class="col-md-5">
                         <div class="card align-items-center">
@@ -146,19 +140,14 @@
                            </div>
                            <div class="card_body">
                               <h5 class="card-title text-center">{{$motel->name}}</h5>
-
                               <div class="card-info d-flex mb-2 justify-content-between">
                                  <a href="tel:0991231231" class="user_phone bg-success mr-2"><i class="fas fa-phone mr-2"></i>{{$motel->phone}}</a>
                                  <a href=" https://chat.zalo.me/?phone={{$motel->phone}}" class="user_zalo bg-light text-primary d-flex">
                                     <i class="zalo"></i>
                                     <span>Nhắn zalo</span></a>
-
                               </div>
-
-
                            </div>
                         </div>
-
                      </div>
                   </div>
 
@@ -461,5 +450,21 @@
    </div>
 </section>
 <!--================ Blog Area end =================-->
-
+@endsection
+@section('scripts')
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+   <script>
+      $(document).ready(function() {
+         // let url = '{{route('details')}}';
+         let url = document.location.href;
+         $.ajax({
+            url: '/handleDetails/5',
+            type: 'GET',
+            dataType: 'json',
+            success: function(response) {
+               console.log(response);
+            }
+         });
+      })
+   </script>
 @endsection

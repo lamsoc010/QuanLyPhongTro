@@ -23,6 +23,7 @@ Route::get('/element', [HomeController::class, 'element'])->name('element');
 Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
 Route::get('/blog_details', [HomeController::class, 'blog_details'])->name('blog_details');
 Route::get('/details', [HomeController::class, 'details'])->name('details');
+Route::get('/handleDetails/{id}', [HomeController::class, 'handleDetails'])->name('handleDetails');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
