@@ -86,9 +86,6 @@
 </head>
 
 <body>
-
-
-
     <header>
         <!-- Header Start -->
         <div class="header-area">
@@ -186,7 +183,6 @@
                                                     <li><a href="{{route('element')}}">Element</a></li>
                                                     <li><a href="{{route('blog')}}">Blog</a></li>
                                                     <li><a href="{{route('blog_details')}}">Blog Details</a></li>
-                                                    <li><a href="{{route('details')}}">Categori Details</a></li>
                                                 </ul>
                                             </li>
                                         </ul>

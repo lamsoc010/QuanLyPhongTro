@@ -53,6 +53,36 @@ class Image_postsTS extends Seeder
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ],
+            [
+                'idPosts' => rand($minIdPost, $maxIdPost),
+                'image' => 'post3.jpg',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ],
+            [
+                'idPosts' => rand($minIdPost, $maxIdPost),
+                'image' => 'post4.jpg',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ],
+            [
+                'idPosts' => rand($minIdPost, $maxIdPost),
+                'image' => 'post5.jpg',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ],
+            [
+                'idPosts' => rand($minIdPost, $maxIdPost),
+                'image' => 'post6.jpg',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ],
+            [
+                'idPosts' => rand($minIdPost, $maxIdPost),
+                'image' => 'post7.jpg',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ],
         ];
         DB::table('image_posts')->insert($data);
     }

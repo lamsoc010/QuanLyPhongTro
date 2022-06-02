@@ -19,6 +19,7 @@ class Posts extends Migration
             $table->text('content');
             $table->string('status');
             $table->integer('views');
+            $table->string('image');
             $table->bigInteger('idCategory')->unsigned();
             $table->bigInteger('idUser')->unsigned();
             $table->timestamps();

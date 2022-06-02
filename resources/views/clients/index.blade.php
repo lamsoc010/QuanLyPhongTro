@@ -232,180 +232,10 @@
                 <!-- post block -->
                 <div class="row">
 
-                    <div class="col-lg-8 motel-posts-wrapper">
-                        <h4 class="m-3">Danh sách tin đăng</h4>
-                        <div class="motel-posts-block">
-
-                            <!-- post-item -->
-                            <div class="motel-posts-item d-flex">
-                                <img style="max-width:240px; height:auto;border-radius:6px" src="{{ asset('assets/img/motels/motels1.jpg') }}" alt="">
-
-                                <div class="motel-posts-content ml-3">
-                                    <div class="motel-posts-title d-flex justify-content-between">
-                                        <span class="mr-3">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <a href="#"> Cho thuê phòng trọ giá 1.000.000đ/tháng tại 52 Duy Tân</a>
-                                        </span>
-                                        <img style="width:25px; height:25px;" src="{{ asset('assets/img/hot-post.svg') }}" alt="">
-                                    </div>
-                                    <div class="motel-posts-prop d-flex justify-content-between">
-                                        <span class="font-weight-bold text-success ">1.000.000/tháng</span>
-                                        <span><i class="fas fa-chart-area mr-1"></i>15m2</span>
-                                        <span><i class="fas fa-sort-numeric-down mr-1"></i>52 Duy Tân</span>
-                                        <span class="text-muted">7 giờ trước</span>
-                                    </div>
-
-                                    <div class="motel-posts-desc text-muted">
-                                        Cho thuê phòng Q.5 giá 1,000,000đ/ tháng. Sạch sẽ,
-                                        thoáng mát Ngay trung tâm Q.5, thuận tiện cho việc đi lại.
-                                        Địa chỉ: 31 Lầu 1, Nguyễn Tri Phương, P.6, Q.5.…
-                                        Cho thuê phòng Q.5 giá 1,000,000đ/ tháng. Sạch sẽ,
-                                        thoáng mát Ngay trung tâm Q.5, thuận tiện cho việc đi lại.
-                                        Địa chỉ: 31 Lầu 1, Nguyễn Tri Phương, P.6, Q.5.…
-                                        Cho thuê phòng Q.5 giá 1,000,000đ/ tháng. Sạch sẽ,
-                                        thoáng mát Ngay trung tâm Q.5, thuận tiện cho việc đi lại.
-                                        Địa chỉ: 31 Lầu 1, Nguyễn Tri Phương, P.6, Q.5.…
-                                    </div>
-
-                                    <div class="motel-posts-contact mt-2 d-flex justify-content-between align-items-center">
-                                        <div class="motel-posts-user text-muted">
-                                            <img style="width:40px; height:40px; border-radius: 50%" src="{{ asset('assets/img/users/user.jpg') }}" alt="">
-                                            <span class="ml-1">Nguyên Trần</span>
-                                        </div>
-                                        <div class="motel-posts-social d-flex">
-                                            <div class="motel-posts-phone">
-
-                                                <a href="tel:0991231231" class="bd-6 bg-success mr-2 px-2 py-1"><i class="fas fa-phone mr-2"></i>0993845345</a>
-
-                                            </div>
-                                            <div class="motel-posts-zalo">
-
-                                                <a href=" https://chat.zalo.me/?phone=0923853243234" class="bd-6 bg-primary px-2 py-1">Nhắn zalo</a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <!-- end-post-item -->
-                            <!-- post-item -->
-                            <div class="motel-posts-item d-flex">
-                                <img style="max-width:240px; height:auto;border-radius:6px" src="{{ asset('assets/img/motels/motels1.jpg') }}" alt="">
-
-                                <div class="motel-posts-content ml-3">
-                                    <div class="motel-posts-title d-flex justify-content-between">
-                                        <span class="mr-3">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <a href="#"> Cho thuê phòng trọ giá 1.000.000đ/tháng tại 52 Duy Tân</a>
-                                        </span>
-                                        <img style="width:25px; height:25px;" src="{{ asset('assets/img/hot-post.svg') }}" alt="">
-                                    </div>
-                                    <div class="motel-posts-prop d-flex justify-content-between">
-                                        <span class="font-weight-bold text-success ">1.000.000/tháng</span>
-                                        <span><i class="fas fa-chart-area mr-1"></i>15m2</span>
-                                        <span><i class="fas fa-sort-numeric-down mr-1"></i>52 Duy Tân</span>
-                                        <span class="text-muted">7 giờ trước</span>
-                                    </div>
-
-                                    <div class="motel-posts-desc text-muted">
-                                        Cho thuê phòng Q.5 giá 1,000,000đ/ tháng. Sạch sẽ,
-                                        thoáng mát Ngay trung tâm Q.5, thuận tiện cho việc đi lại.
-                                        Địa chỉ: 31 Lầu 1, Nguyễn Tri Phương, P.6, Q.5.…
-                                        Cho thuê phòng Q.5 giá 1,000,000đ/ tháng. Sạch sẽ,
-                                        thoáng mát Ngay trung tâm Q.5, thuận tiện cho việc đi lại.
-                                        Địa chỉ: 31 Lầu 1, Nguyễn Tri Phương, P.6, Q.5.…
-                                        Cho thuê phòng Q.5 giá 1,000,000đ/ tháng. Sạch sẽ,
-                                        thoáng mát Ngay trung tâm Q.5, thuận tiện cho việc đi lại.
-                                        Địa chỉ: 31 Lầu 1, Nguyễn Tri Phương, P.6, Q.5.…
-                                    </div>
-
-                                    <div class="motel-posts-contact mt-2 d-flex justify-content-between align-items-center">
-                                        <div class="motel-posts-user text-muted">
-                                            <img style="width:40px; height:40px; border-radius: 50%" src="{{ asset('assets/img/users/user.jpg') }}" alt="">
-                                            <span class="ml-1">Nguyên Trần</span>
-                                        </div>
-                                        <div class="motel-posts-social d-flex">
-                                            <div class="motel-posts-phone">
-
-                                                <a href="tel:0991231231" class="bd-6 bg-success mr-2 px-2 py-1"><i class="fas fa-phone mr-2"></i>0993845345</a>
-
-                                            </div>
-                                            <div class="motel-posts-zalo">
-
-                                                <a href=" https://chat.zalo.me/?phone=0923853243234" class="bd-6 bg-primary px-2 py-1">Nhắn zalo</a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <!-- end-post-item -->
-
-                            <!-- post-item -->
-                            <div class="motel-posts-item d-flex">
-                                <img style="max-width:240px; height:auto;border-radius:6px" src="{{ asset('assets/img/motels/motels1.jpg') }}" alt="">
-
-                                <div class="motel-posts-content ml-3">
-                                    <div class="motel-posts-title d-flex justify-content-between">
-                                        <span class="mr-3">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <a href="#"> Cho thuê phòng trọ giá 1.000.000đ/tháng tại 52 Duy Tân</a>
-                                        </span>
-                                        <img style="width:25px; height:25px;" src="{{ asset('assets/img/hot-post.svg') }}" alt="">
-                                    </div>
-                                    <div class="motel-posts-prop d-flex justify-content-between">
-                                        <span class="font-weight-bold text-success ">1.000.000/tháng</span>
-                                        <span><i class="fas fa-chart-area mr-1"></i>15m2</span>
-                                        <span><i class="fas fa-sort-numeric-down mr-1"></i>52 Duy Tân</span>
-                                        <span class="text-muted">7 giờ trước</span>
-                                    </div>
-
-                                    <div class="motel-posts-desc text-muted">
-                                        Cho thuê phòng Q.5 giá 1,000,000đ/ tháng. Sạch sẽ,
-                                        thoáng mát Ngay trung tâm Q.5, thuận tiện cho việc đi lại.
-                                        Địa chỉ: 31 Lầu 1, Nguyễn Tri Phương, P.6, Q.5.
-                                        Cho thuê phòng Q.5 giá 1,000,000đ/ tháng. Sạch sẽ,
-                                        thoáng mát Ngay trung tâm Q.5, thuận tiện cho việc đi lại.
-                                        Địa chỉ: 31 Lầu 1, Nguyễn Tri Phương, P.6, Q.5.
-                                    </div>
-
-                                    <div class="motel-posts-contact mt-2 d-flex justify-content-between align-items-center">
-                                        <div class="motel-posts-user text-muted">
-                                            <img style="width:40px; height:40px; border-radius: 50%" src="{{ asset('assets/img/users/user.jpg') }}" alt="">
-                                            <span class="ml-1">Nguyên Trần</span>
-                                        </div>
-                                        <div class="motel-posts-social d-flex">
-                                            <div class="motel-posts-phone">
-
-                                                <a href="tel:0991231231" class="bd-6 bg-success mr-2 px-2 py-1"><i class="fas fa-phone mr-2"></i>0993845345</a>
-
-                                            </div>
-                                            <div class="motel-posts-zalo">
-
-                                                <a href=" https://chat.zalo.me/?phone=0923853243234" class="bd-6 bg-primary px-2 py-1">Nhắn zalo</a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <!-- end-post-item -->
-
+                    <div class="col-lg-8 motel-posts-wrapper" >
+                        <h4 class="m-3">Dãy trọ mới đăng</h4>
+                        <div class="motel-posts-block" id="listMotelsNew">
+                            {{-- render danh sách dãy trọ --}}
                         </div>
                         <div class="motel-posts-all py-3 text-center">
                             <a href="#" class="btn">Xem tất cả</a>
@@ -416,46 +246,9 @@
                         <div class="motel-posts-trending ml-2 w-100 h-100">
 
                             <!-- trendding-items -->
-                            <aside class="">
-                                <h4 class="posts-trending-title p-3">Bài đăng nổi bật</h4>
-
-                                <!-- trendding-item -->
-                                <div class="media post_item posts-trending-item mx-3">
-                                    <img src="{{asset('assets/img/posts/post2.jpg')}}" alt="post" style="height: 80px; width: 80px">
-                                    <div style="height: 80px;" class="media-body pl-2 d-flex flex-column justify-content-between">
-                                        <a href="single-blog.html">
-                                            <h5>Nhà trọ duy tân</h5>
-                                        </a>
-                                        <span class="text-primary ">52 Duy Tân</span>
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <span class="text-success font-weight-bold ">1.000.000đ/tháng</span>
-
-                                            <span class='text-muted lead small'>Vừa mới đăng</span>
-
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--End trendding-item -->
-
-                                <!-- trendding-item -->
-                                <div class="media post_item posts-trending-item mx-3">
-                                    <img src="{{asset('assets/img/posts/post2.jpg')}}" alt="post" style="height: 80px; width: 80px">
-                                    <div style="height: 80px;" class="media-body pl-2 d-flex flex-column justify-content-between">
-                                        <a href="single-blog.html">
-                                            <h5>Nhà trọ duy tân</h5>
-                                        </a>
-                                        <span class="text-primary ">52 Duy Tân</span>
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <span class="text-success font-weight-bold ">1.000.000đ/tháng</span>
-
-                                            <span class='text-muted lead small'>Vừa mới đăng</span>
-
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--End trendding-item -->
+                            <h4 class="posts-trending-title p-3">Dãy trọ phổ biến</h4>
+                            <aside class="" id="listMotelsMost">
+                                {{-- render bài đăng nổi bật --}}
 
                             </aside>
 
@@ -463,8 +256,6 @@
 
                     </div>
                 </div>
-
-
             </div>
         </div>
     </div>
@@ -485,8 +276,33 @@
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        <div class="weekly2-news-active dot-style d-flex dot-style">
-                            <div class="weekly2-single">
+                        <div class="weekly2-news-active dot-style d-flex dot-style" id="slidePosts">
+                            @foreach ($listPostsMost as $item)
+                            @php
+                                $hours = floor(abs(strtotime($item->created_at) - strtotime(date('Y-m-d H:i:s'))) / (60*60));
+                                if($hours == 0) {
+                                    $time_diff = 'Vừa mới xong';
+                                } else if($hours >= 24) {
+                                    $time_diff = floor($hours/24).' ngày trước';
+                                } else {
+                                    $time_diff = $hours.'giờ trước';
+                                }
+                            @endphp
+                                <div class="weekly2-single">
+                                    <div class="weekly2-img">
+                                        <img src="{{asset('assets/img/posts/'.$item->image)}}" alt="" style="height: 180px">
+                                    </div>
+                                    <div class="weekly2-caption">
+                                        <span class="color1">{{$item->nameCategory}}</span>
+                                        <div class="d-flex justify-content-between">
+                                            <p class="font-weight-bold text-success">{{$item->nameUser}}</p>
+                                            <p class="text-muted small lead">{{$time_diff}}</p>
+                                        </div>
+                                        <h4><a href="#">{{$item->title}}</a></h4>
+                                    </div>
+                                </div>
+                            @endforeach
+                            {{-- <div class="weekly2-single">
                                 <div class="weekly2-img">
                                     <img src="{{asset('assets/img/news/weekly2News1.jpg')}}" alt="">
                                 </div>
@@ -537,20 +353,7 @@
                                     </div>
                                     <h4><a href="#">Tìm người ở ghép gần trường y dược Huế</a></h4>
                                 </div>
-                            </div>
-                            <div class="weekly2-single">
-                                <div class="weekly2-img">
-                                    <img src="{{asset('assets/img/news/weekly2News1.jpg')}}" alt="">
-                                </div>
-                                <div class="weekly2-caption">
-                                    <span class="color1">Tìm người ở ghép</span>
-                                    <div class="d-flex justify-content-between">
-                                        <p class="font-weight-bold text-success">1.000.000đ/tháng</p>
-                                        <p class="text-muted small lead">9 giờ trước</p>
-                                    </div>
-                                    <h4><a href="#">Tìm người ở ghép gần trường y dược Huế</a></h4>
-                                </div>
-                            </div>
+                            </div> --}}
 
                         </div>
                     </div>
@@ -661,12 +464,177 @@
         </div>
     </div>
     <!-- End contact-us -->
-
-
-
-
-
-
 </main>
 
+@endsection
+@section('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // alert('hello');
+            $.ajax({
+                url: '/handleIndex',
+                type: 'GET',
+                dataType: 'json',
+                success: function(response) {
+                    console.log(response);
+                    $('#listMotelsNew').html(listMotelsNew(response.listMotelsNew));
+                    $('#listMotelsMost').html(listMotelsMost(response.listMotelsMost));
+                    // $('.slick-track').append(slidePosts(response.listPostsMost));
+                }
+            })
+        })
+        
+        function listMotelsNew(listMotelsNew) {
+            let html = ``;
+            for(let i = 0; i < listMotelsNew.length; i++) {
+                let item = listMotelsNew[i];
+                // time_diff
+                let time_now = moment(new Date());
+                let time_created_at = moment(item.created_at);
+                let time_diff = time_now.diff(time_created_at, 'hours');
+                if(time_diff == 0) {
+                time_diff = `<p>Vừa mới xong</p>`;
+                } else if(time_diff >= 24){
+                time_diff = `<p>${Math.floor(time_diff/24)} ngày trước</p>`;
+                } else {
+                time_diff = `<p>${time_diff} giờ trước</p>`;
+                }
+
+                // avatar
+                let image_avatar = '';
+                if(!item.image) {
+                    image_avatar = `<img style="width:40px; height:40px; border-radius: 50%" src="{{asset('assets/img/users/user.jpg')}}" alt="">`;
+                } else {
+                    image_avatar = `<img style="width:40px; height:40px; border-radius: 50%" src="{{asset('assets/img/users/${item.imageUser}')}}" alt="">`;
+                }
+                html += `
+                    <!-- post-item -->
+                    <div class="motel-posts-item d-flex">
+                        <img style="min-width:240px; height:180px;border-radius:6px" src="{{asset('assets/img/motels/${item.image}')}}" alt="">
+                        <div class="motel-posts-content ml-3">
+                            <div class="motel-posts-title d-flex justify-content-between">
+                                <span class="mr-3">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <a href="/details/${item.id}"> ${item.name}</a>
+                                </span>
+                                <img style="width:25px; height:25px;" src="{{asset('assets/img/hot-post.svg')}}" alt="">
+                            </div>
+                            <div class="motel-posts-prop d-flex justify-content-between">
+                                <span class="font-weight-bold text-success ">${formatPrice(item.min_price)}/tháng</span>
+                                <span><i class="fas fa-chart-area mr-1"></i>${item.area}m2</span>
+                                <span><i class="fas fa-sort-numeric-down mr-1"></i>${item.address}</span>
+                                ${time_diff}
+                            </div>
+
+                            <div class="motel-posts-desc text-muted">
+                                ${item.descreption}
+                            </div>
+
+                            <div class="motel-posts-contact mt-2 d-flex justify-content-between align-items-center">
+                                <div class="motel-posts-user text-muted">
+                                    ${image_avatar}
+                                    <span class="ml-1">${item.nameUser}</span>
+                                </div>
+                                <div class="motel-posts-social d-flex">
+                                    <div class="motel-posts-phone">
+                                        <a href="tel:${item.phone}" class="bd-6 bg-success mr-2 px-2 py-1"><i class="fas fa-phone mr-2"></i>${item.phone}</a>
+                                    </div>
+                                    <div class="motel-posts-zalo">
+                                        <a href=" https://chat.zalo.me/?phone=${item.phone}" class="bd-6 bg-primary px-2 py-1">Nhắn zalo</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- end-post-item -->
+                `;
+            }
+            return html;
+        }
+        function formatPrice(price) {
+            const formatter = new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'VND',
+                minimumFractionDigits: 0
+            });
+            return formatter.format(price);
+            
+        }
+        function listMotelsMost(listMotelsMost) {
+            let html = ``;
+            for(let i = 0; i < listMotelsMost.length; i++) {
+                let item = listMotelsMost[i];
+
+                let time_now = moment(new Date());
+                let time_created_at = moment(item.created_at);
+                let time_diff = time_now.diff(time_created_at, 'hours');
+                if(time_diff == 0) {
+                time_diff = `<p>Vừa mới xong</p>`;
+                } else if(time_diff >= 24){
+                    time_diff = `<p>${Math.floor(time_diff/24)} ngày trước</p>`;
+                } else {
+                    time_diff = `<p>${time_diff} giờ trước</p>`;
+                }
+
+                html += `
+                    <!-- trendding-item -->
+                    <div class="media post_item">
+                        <img src="{{asset('assets/img/motels/${item.image}')}}" alt="post" style="height: 80px; width: 80px">
+                        <div class="media-body ml-3">
+                            <a href="/details/${item.id}"><h6>${item.name}</h6></a>
+                            <span>${item.address}</span>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <p class="text-success font-weight-bold">${formatPrice(item.min_price)}/tháng</p>
+                                ${time_diff}
+                            </div>
+                        </div>
+                    </div>
+                    <!--End trendding-item -->
+                `;
+            }
+            return html;
+        }
+        function slidePosts(listPostsMost) {
+            let html = ``;
+            for(let i = 0; i < listPostsMost.length; i++) {
+                let item = listPostsMost[i];
+
+                let time_now = moment(new Date());
+                let time_created_at = moment(item.created_at);
+                let time_diff = time_now.diff(time_created_at, 'hours');
+                if(time_diff == 0) {
+                time_diff = `<p>Vừa mới xong</p>`;
+                } else if(time_diff >= 24){
+                    time_diff = `<p>${Math.floor(time_diff/24)} ngày trước</p>`;
+                } else {
+                    time_diff = `<p>${time_diff} giờ trước</p>`;
+                }
+
+                html += `
+                    <div class="weekly2-single">
+                        <div class="weekly2-img">
+                            <img src="{{asset('assets/img/posts/${item.imagePost}')}}" alt="">
+                        </div>
+                        <div class="weekly2-caption">
+                            <span class="color1">${item.nameCategory}</span>
+                            <div class="d-flex justify-content-between">
+                                <p class="font-weight-bold text-success">${item.nameUser}</p>
+                                <p class="text-muted small lead">${time_diff}</p>
+                            </div>
+                            <h4><a href="#">${item.title}</a></h4>
+                        </div>
+                    </div>
+                `;
+            }
+            return html;
+        }
+    </script>
+    
 @endsection

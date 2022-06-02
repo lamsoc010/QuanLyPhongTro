@@ -26,7 +26,7 @@ class MotelsController extends Controller
         // query
        // get dataBase
        $data = DB::table('motels')
-       ->join('users', 'users.id', '=', 'motels.idUser');
+                ->join('users', 'users.id', '=', 'motels.idUser');
         if($searchByPrice !=""){
             $data=  $data
                     ->where('min_price', '<',  $searchByPrice + 500000)
