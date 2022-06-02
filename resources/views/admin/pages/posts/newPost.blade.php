@@ -66,7 +66,7 @@
                 <div id="preview"></div>
               </div>
               <div class="col-12 pt-2">
-                <button type="submit" class="btn btn-primary">Đăng bài</button>
+                <button type="button" class="btn btn-primary" onclick="AddPost()">Đăng bài</button>
               </div>
             </div>
             
@@ -131,9 +131,7 @@ function readAndPreview(file) {
         image.src = this.result;
         preview.appendChild(image);
     });
-
     reader.readAsDataURL(file);
-
 }
 
 }
@@ -157,6 +155,32 @@ function readAndPreview(file) {
         console.log("get data fail");
       },
     });
-});
+  });
+
+  // add post
+  function AddPost(){
+    var title = $('input[name="title"]').val();
+    var category = $('select[name="category"]').val();
+    var content = $('#summernote').summernote('code');
+    var image = $('#preview').html();
+    var data = {
+      title: title,
+      category: category,
+      content: content,
+      image: image,
+    };
+    $.ajax({
+      type: "POST",
+      url:  "{{asset('admin/posts/create')}}",
+      data: data,
+      success: function (data) {
+        alert('Thêm bài viết thành công');
+        window.location.href = "{{asset('admin/posts')}}";
+      },
+      error: function (data, textStatus, errorThrown) {
+        console.log("get data fail");
+      },
+    });
+  }
 </script>
   @endsection

@@ -91,6 +91,8 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function() {
         Route::get('/posts/getList', 'PostsController@anyData');
         // get all name category --- admin/posts/getAllNameCategory
         Route::get('/posts/getAllNameCategory', 'PostsController@getAllNameCategory');
+        // add new post
+        Route::post('/posts/create', 'PostsController@create');
     });
     
     Route::post('logout', 'Auth\AuthenticatedSessionController@destroy')->name('logout');

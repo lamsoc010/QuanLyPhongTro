@@ -46,5 +46,10 @@ class PostsController extends Controller
 
         return response()->json($data);
     }
+
+    // add new post
+    public function create(Request $request){
+        
+    }
     
 }
