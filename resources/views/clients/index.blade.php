@@ -130,6 +130,7 @@
     }
 
     .contact-us .container {
+        border-radius: 8px;
         border: 7px dashed red;
         background-color: #fff;
     }
