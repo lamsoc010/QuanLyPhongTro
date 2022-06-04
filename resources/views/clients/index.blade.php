@@ -130,6 +130,7 @@
     }
 
     .contact-us .container {
+        border-radius: 8px;
         border: 7px dashed red;
         background-color: #fff;
     }
@@ -140,14 +141,15 @@
         background-size: contain;
 
     }
-    .list-contact-item h6{
+
+    .list-contact-item h6 {
         color: #E13427;
         text-transform: uppercase;
     }
 
-    .list-contact-item p{
+    .list-contact-item p {
         margin: 6px 0;
-        font-size:18px;
+        font-size: 18px;
         font-weight: 600;
         color: #233762 !important;
     }
@@ -231,7 +233,7 @@
                 <!-- post block -->
                 <div class="row">
 
-                    <div class="col-lg-8 motel-posts-wrapper" >
+                    <div class="col-lg-8 motel-posts-wrapper">
                         <h4 class="m-3">Dãy trọ mới đăng</h4>
                         <div class="motel-posts-block" id="listMotelsNew">
                             {{-- render danh sách dãy trọ --}}
@@ -278,92 +280,92 @@
                         <div class="weekly2-news-active dot-style d-flex dot-style" id="slidePosts">
                             @foreach ($listPostsMost as $item)
                             @php
-                                $hours = floor(abs(strtotime($item->created_at) - strtotime(date('Y-m-d H:i:s'))) / (60*60));
-                                if($hours == 0) {
-                                    $time_diff = 'Vừa mới xong';
-                                } else if($hours >= 24) {
-                                    $time_diff = floor($hours/24).' ngày trước';
-                                } else {
-                                    $time_diff = $hours.'giờ trước';
-                                }
+                            $hours = floor(abs(strtotime($item->created_at) - strtotime(date('Y-m-d H:i:s'))) / (60*60));
+                            if($hours == 0) {
+                            $time_diff = 'Vừa mới xong';
+                            } else if($hours >= 24) {
+                            $time_diff = floor($hours/24).' ngày trước';
+                            } else {
+                            $time_diff = $hours.'giờ trước';
+                            }
                             @endphp
-                                <div class="weekly2-single">
-                                    <div class="weekly2-img">
-                                        <img src="{{asset('assets/img/posts/'.$item->image)}}" alt="" style="height: 180px">
-                                    </div>
-                                    <div class="weekly2-caption">
-                                        <span class="color1">{{$item->nameCategory}}</span>
-                                        <div class="d-flex justify-content-between">
-                                            <p class="font-weight-bold text-success">{{$item->nameUser}}</p>
-                                            <p class="text-muted small lead">{{$time_diff}}</p>
-                                        </div>
-                                        <h4><a href="#">{{$item->title}}</a></h4>
-                                    </div>
+                            <div class="weekly2-single">
+                                <div class="weekly2-img">
+                                    <img src="{{asset('assets/img/posts/'.$item->image)}}" alt="" style="height: 180px">
                                 </div>
+                                <div class="weekly2-caption">
+                                    <span class="color1">{{$item->nameCategory}}</span>
+                                    <div class="d-flex justify-content-between">
+                                        <p class="font-weight-bold text-success">{{$item->nameUser}}</p>
+                                        <p class="text-muted small lead">{{$time_diff}}</p>
+                                    </div>
+                                    <h4><a href="#">{{$item->title}}</a></h4>
+                                </div>
+                            </div>
                             @endforeach
                             {{-- <div class="weekly2-single">
                                 <div class="weekly2-img">
                                     <img src="{{asset('assets/img/news/weekly2News1.jpg')}}" alt="">
-                                </div>
-                                <div class="weekly2-caption">
-                                    <span class="color1">Tìm người ở ghép</span>
-                                    <div class="d-flex justify-content-between">
-                                        <p class="font-weight-bold text-success">1.000.000đ/tháng</p>
-                                        <p class="text-muted small lead">9 giờ trước</p>
-                                    </div>
-                                    <h4><a href="#">Tìm người ở ghép gần trường y dược Huế</a></h4>
-                                </div>
+                        </div>
+                        <div class="weekly2-caption">
+                            <span class="color1">Tìm người ở ghép</span>
+                            <div class="d-flex justify-content-between">
+                                <p class="font-weight-bold text-success">1.000.000đ/tháng</p>
+                                <p class="text-muted small lead">9 giờ trước</p>
                             </div>
-                            <div class="weekly2-single">
-                                <div class="weekly2-img">
-                                    <img src="{{asset('assets/img/news/weekly2News1.jpg')}}" alt="">
-                                </div>
-                                <div class="weekly2-caption">
-                                    <span class="color1">Tìm người ở ghép</span>
-                                    <div class="d-flex justify-content-between">
-                                        <p class="font-weight-bold text-success">1.000.000đ/tháng</p>
-                                        <p class="text-muted small lead">9 giờ trước</p>
-                                    </div>
-                                    <h4><a href="#">Tìm người ở ghép gần trường y dược Huế</a></h4>
-                                </div>
+                            <h4><a href="#">Tìm người ở ghép gần trường y dược Huế</a></h4>
+                        </div>
+                    </div>
+                    <div class="weekly2-single">
+                        <div class="weekly2-img">
+                            <img src="{{asset('assets/img/news/weekly2News1.jpg')}}" alt="">
+                        </div>
+                        <div class="weekly2-caption">
+                            <span class="color1">Tìm người ở ghép</span>
+                            <div class="d-flex justify-content-between">
+                                <p class="font-weight-bold text-success">1.000.000đ/tháng</p>
+                                <p class="text-muted small lead">9 giờ trước</p>
                             </div>
-                            <div class="weekly2-single">
-                                <div class="weekly2-img">
-                                    <img src="{{asset('assets/img/news/weekly2News1.jpg')}}" alt="">
-                                </div>
-                                <div class="weekly2-caption">
-                                    <span class="color1">Tìm người ở ghép</span>
-                                    <div class="d-flex justify-content-between">
-                                        <p class="font-weight-bold text-success">1.000.000đ/tháng</p>
-                                        <p class="text-muted small lead">9 giờ trước</p>
-                                    </div>
-                                    <h4><a href="#">Tìm người ở ghép gần trường y dược Huế</a></h4>
-                                </div>
+                            <h4><a href="#">Tìm người ở ghép gần trường y dược Huế</a></h4>
+                        </div>
+                    </div>
+                    <div class="weekly2-single">
+                        <div class="weekly2-img">
+                            <img src="{{asset('assets/img/news/weekly2News1.jpg')}}" alt="">
+                        </div>
+                        <div class="weekly2-caption">
+                            <span class="color1">Tìm người ở ghép</span>
+                            <div class="d-flex justify-content-between">
+                                <p class="font-weight-bold text-success">1.000.000đ/tháng</p>
+                                <p class="text-muted small lead">9 giờ trước</p>
                             </div>
-                            <div class="weekly2-single">
-                                <div class="weekly2-img">
-                                    <img src="{{asset('assets/img/news/weekly2News1.jpg')}}" alt="">
-                                </div>
-                                <div class="weekly2-caption">
-                                    <span class="color1">Tìm người ở ghép</span>
-                                    <div class="d-flex justify-content-between">
-                                        <p class="font-weight-bold text-success">1.000.000đ/tháng</p>
-                                        <p class="text-muted small lead">9 giờ trước</p>
-                                    </div>
-                                    <h4><a href="#">Tìm người ở ghép gần trường y dược Huế</a></h4>
-                                </div>
-                            </div> --}}
+                            <h4><a href="#">Tìm người ở ghép gần trường y dược Huế</a></h4>
+                        </div>
+                    </div>
+                    <div class="weekly2-single">
+                        <div class="weekly2-img">
+                            <img src="{{asset('assets/img/news/weekly2News1.jpg')}}" alt="">
+                        </div>
+                        <div class="weekly2-caption">
+                            <span class="color1">Tìm người ở ghép</span>
+                            <div class="d-flex justify-content-between">
+                                <p class="font-weight-bold text-success">1.000.000đ/tháng</p>
+                                <p class="text-muted small lead">9 giờ trước</p>
+                            </div>
+                            <h4><a href="#">Tìm người ở ghép gần trường y dược Huế</a></h4>
+                        </div>
+                    </div> --}}
 
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="weekly2-news-all text-center mt-5">
-                            <a href="#" class="btn">Xem tất cả</a>
-                        </div>
-                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="weekly2-news-all text-center mt-5">
+                    <a href="#" class="btn">Xem tất cả</a>
                 </div>
             </div>
         </div>
+    </div>
+    </div>
     </div>
     <!-- End Weekly-News -->
 
@@ -432,7 +434,7 @@
 
                 </div>
                 <div class="list-contact text-center">
-                    <span >Liên hệ với chúng tôi nếu bạn cần hỗ trợ:</span>
+                    <span>Liên hệ với chúng tôi nếu bạn cần hỗ trợ:</span>
                     <div class="mt-4 list-contact-item d-flex justify-content-around">
                         <div>
                             <h6>Hỗ trợ thanh toán</h6>
@@ -467,48 +469,48 @@
 
 @endsection
 @section('scripts')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            // alert('hello');
-            $.ajax({
-                url: '/handleIndex',
-                type: 'GET',
-                dataType: 'json',
-                success: function(response) {
-                    console.log(response);
-                    $('#listMotelsNew').html(listMotelsNew(response.listMotelsNew));
-                    $('#listMotelsMost').html(listMotelsMost(response.listMotelsMost));
-                    // $('.slick-track').append(slidePosts(response.listPostsMost));
-                }
-            })
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // alert('hello');
+        $.ajax({
+            url: '/handleIndex',
+            type: 'GET',
+            dataType: 'json',
+            success: function(response) {
+                console.log(response);
+                $('#listMotelsNew').html(listMotelsNew(response.listMotelsNew));
+                $('#listMotelsMost').html(listMotelsMost(response.listMotelsMost));
+                // $('.slick-track').append(slidePosts(response.listPostsMost));
+            }
         })
-        
-        function listMotelsNew(listMotelsNew) {
-            let html = ``;
-            for(let i = 0; i < listMotelsNew.length; i++) {
-                let item = listMotelsNew[i];
-                // time_diff
-                let time_now = moment(new Date());
-                let time_created_at = moment(item.created_at);
-                let time_diff = time_now.diff(time_created_at, 'hours');
-                if(time_diff == 0) {
-                time_diff = `<p>Vừa mới xong</p>`;
-                } else if(time_diff >= 24){
-                time_diff = `<p>${Math.floor(time_diff/24)} ngày trước</p>`;
-                } else {
-                time_diff = `<p>${time_diff} giờ trước</p>`;
-                }
+    })
 
-                // avatar
-                let image_avatar = '';
-                if(!item.image) {
-                    image_avatar = `<img style="width:40px; height:40px; border-radius: 50%" src="{{asset('assets/img/users/user.jpg')}}" alt="">`;
-                } else {
-                    image_avatar = `<img style="width:40px; height:40px; border-radius: 50%" src="{{asset('assets/img/users/${item.imageUser}')}}" alt="">`;
-                }
-                html += `
+    function listMotelsNew(listMotelsNew) {
+        let html = ``;
+        for (let i = 0; i < listMotelsNew.length; i++) {
+            let item = listMotelsNew[i];
+            // time_diff
+            let time_now = moment(new Date());
+            let time_created_at = moment(item.created_at);
+            let time_diff = time_now.diff(time_created_at, 'hours');
+            if (time_diff == 0) {
+                time_diff = `<p>Vừa mới xong</p>`;
+            } else if (time_diff >= 24) {
+                time_diff = `<span>${Math.floor(time_diff/24)} ngày trước</span>`;
+            } else {
+                time_diff = `<span>${time_diff} giờ trước</span>`;
+            }
+
+            // avatar
+            let image_avatar = '';
+            if (!item.image) {
+                image_avatar = `<img style="width:40px; height:40px; border-radius: 50%" src="{{asset('assets/img/users/user.jpg')}}" alt="">`;
+            } else {
+                image_avatar = `<img style="width:40px; height:40px; border-radius: 50%" src="{{asset('assets/img/users/${item.imageUser}')}}" alt="">`;
+            }
+            html += `
                     <!-- post-item -->
                     <div class="motel-posts-item d-flex">
                         <img style="min-width:240px; height:180px;border-radius:6px" src="{{asset('assets/img/motels/${item.image}')}}" alt="">
@@ -528,7 +530,7 @@
                                 <span class="font-weight-bold text-success ">${formatPrice(item.min_price)}/tháng</span>
                                 <span><i class="fas fa-chart-area mr-1"></i>${item.area}m2</span>
                                 <span><i class="fas fa-sort-numeric-down mr-1"></i>${item.address}</span>
-                                ${time_diff}
+                                 ${time_diff}  
                             </div>
 
                             <div class="motel-posts-desc text-muted">
@@ -554,39 +556,41 @@
                     </div>
                     <!-- end-post-item -->
                 `;
-            }
-            return html;
         }
-        function formatPrice(price) {
-            const formatter = new Intl.NumberFormat('en-US', {
-                style: 'currency',
-                currency: 'VND',
-                minimumFractionDigits: 0
-            });
-            return formatter.format(price);
-            
-        }
-        function listMotelsMost(listMotelsMost) {
-            let html = ``;
-            for(let i = 0; i < listMotelsMost.length; i++) {
-                let item = listMotelsMost[i];
+        return html;
+    }
 
-                let time_now = moment(new Date());
-                let time_created_at = moment(item.created_at);
-                let time_diff = time_now.diff(time_created_at, 'hours');
-                if(time_diff == 0) {
+    function formatPrice(price) {
+        const formatter = new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'VND',
+            minimumFractionDigits: 0
+        });
+        return formatter.format(price);
+
+    }
+
+    function listMotelsMost(listMotelsMost) {
+        let html = ``;
+        for (let i = 0; i < listMotelsMost.length; i++) {
+            let item = listMotelsMost[i];
+
+            let time_now = moment(new Date());
+            let time_created_at = moment(item.created_at);
+            let time_diff = time_now.diff(time_created_at, 'hours');
+            if (time_diff == 0) {
                 time_diff = `<p>Vừa mới xong</p>`;
-                } else if(time_diff >= 24){
-                    time_diff = `<p>${Math.floor(time_diff/24)} ngày trước</p>`;
-                } else {
-                    time_diff = `<p>${time_diff} giờ trước</p>`;
-                }
+            } else if (time_diff >= 24) {
+                time_diff = `<p class="small">${Math.floor(time_diff/24)} ngày trước</p>`;
+            } else {
+                time_diff = `<p class="small">${time_diff} giờ trước</p>`;
+            }
 
-                html += `
+            html += `
                     <!-- trendding-item -->
                     <div class="media post_item">
                         <img src="{{asset('assets/img/motels/${item.image}')}}" alt="post" style="height: 80px; width: 80px">
-                        <div class="media-body ml-3">
+                        <div class="media-body ml-3 mr-2">
                             <a href="/details/${item.id}"><h6>${item.name}</h6></a>
                             <span>${item.address}</span>
                             <div class="d-flex justify-content-between align-items-center">
@@ -597,26 +601,27 @@
                     </div>
                     <!--End trendding-item -->
                 `;
-            }
-            return html;
         }
-        function slidePosts(listPostsMost) {
-            let html = ``;
-            for(let i = 0; i < listPostsMost.length; i++) {
-                let item = listPostsMost[i];
+        return html;
+    }
 
-                let time_now = moment(new Date());
-                let time_created_at = moment(item.created_at);
-                let time_diff = time_now.diff(time_created_at, 'hours');
-                if(time_diff == 0) {
+    function slidePosts(listPostsMost) {
+        let html = ``;
+        for (let i = 0; i < listPostsMost.length; i++) {
+            let item = listPostsMost[i];
+
+            let time_now = moment(new Date());
+            let time_created_at = moment(item.created_at);
+            let time_diff = time_now.diff(time_created_at, 'hours');
+            if (time_diff == 0) {
                 time_diff = `<p>Vừa mới xong</p>`;
-                } else if(time_diff >= 24){
-                    time_diff = `<p>${Math.floor(time_diff/24)} ngày trước</p>`;
-                } else {
-                    time_diff = `<p>${time_diff} giờ trước</p>`;
-                }
+            } else if (time_diff >= 24) {
+                time_diff = `<p>${Math.floor(time_diff/24)} ngày trước</p>`;
+            } else {
+                time_diff = `<p>${time_diff} giờ trước</p>`;
+            }
 
-                html += `
+            html += `
                     <div class="weekly2-single">
                         <div class="weekly2-img">
                             <img src="{{asset('assets/img/posts/${item.imagePost}')}}" alt="">
@@ -631,9 +636,9 @@
                         </div>
                     </div>
                 `;
-            }
-            return html;
         }
-    </script>
-    
+        return html;
+    }
+</script>
+
 @endsection
