@@ -3,12 +3,26 @@
 <link rel="stylesheet" href="{{asset('AdminPTH/plugins/codemirror/codemirror.css')}}">
 <link rel="stylesheet" href="{{asset('AdminPTH/plugins/codemirror/theme/monokai.css')}}">
 <!-- SimpleMDE -->
+ <!-- Message -->
+ <link rel="stylesheet" href="{{asset('AdminPTH/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css')}}">
 @endsection
 
 @extends('admin.layouts.layout')
 @section('content')
- <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+<div class="content-wrapper">
+
+    <form method="post" id="upload-image-form" class="p-2" enctype="multipart/form-data" >
+      @csrf
+        {{-- @csrf
+        <div class="form-group">
+            <input type="file" name="file" class="form-control" id="image-input">
+            <span class="text-danger" id="image-input-error"></span>
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-success">Upload</button>
+        </div> --}}
+        
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
@@ -36,7 +50,7 @@
               <div class="row">
                 <div class="col-md-6">
                   <h3>Tiêu đề</h3>
-                  <input class="form-control" type="text" placeholder="Title">
+                  <input class="form-control" type="text" name="title" placeholder="Title">
                 </div>
                 <div class="col-md-6">
                   <div class="col-md">
@@ -52,7 +66,7 @@
                 {{-- Place <em>some</em> <u>text</u> <strong>here</strong> --}}
               {{-- </textarea> --}}
               <h3>Nội dung</h3>
-              <textarea id="summernote">
+              <textarea id="summernote" name="content">
                 {{-- Place <em>some</em> <u>text</u> <strong>here</strong> --}}
               </textarea>
 
@@ -61,12 +75,14 @@
               <div class="chooseFile">
                 {{-- <input type="file" class="custom-file-input" id="exampleInputFile">
                           <label class="custom-file-label" for="exampleInputFile">Choose file</label> --}}
-                <input id="file-input" type="file" class="custom-file-input" multiple>
+                <input id="file-input" type="file" name="file" class="custom-file-input" multiple>
                 <label class="custom-file-label" for="file-input">Chọn ảnh</label>
+                <span class="text-danger" id="image-input-error"></span>
                 <div id="preview"></div>
               </div>
               <div class="col-12 pt-2">
-                <button type="button" class="btn btn-primary" onclick="AddPost()">Đăng bài</button>
+                <button type="submit" class="btn btn-primary" >Đăng bài</button>
+                {{-- <button type="submit" class="btn btn-primary" id="submit">Submit</button> --}}
               </div>
             </div>
             
@@ -80,8 +96,10 @@
     </section>
     <!-- /.content -->
 
-  </div>
-  <!-- /.content-wrapper -->
+    </form>
+
+</div>
+
   @endsection
 
   @section('scripts')
@@ -92,8 +110,42 @@
 <script src="{{asset('AdminPTH/plugins/codemirror/mode/css/css.js')}}"></script>
 <script src="{{asset('AdminPTH/plugins/codemirror/mode/xml/xml.js')}}"></script>
 <script src="{{asset('AdminPTH/plugins/codemirror/mode/htmlmixed/htmlmixed.js')}}"></script>
-
+<!-- Message -->
+<script src="{{asset('AdminPTH/plugins/sweetalert2/sweetalert2.min.js')}}"></script>
 <!-- Page specific script -->
+{{-- <script>
+  $.ajaxSetup({
+      headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+  });
+
+ $('#upload-image-form').submit(function(e) {
+     e.preventDefault();
+     let formData = new FormData(this);
+     console.log("this", this)
+     $('#image-input-error').text('');
+
+     $.ajax({
+        type:'POST',
+        url: "{{asset('admin/posts/create')}}",
+         data: formData,
+         contentType: false,
+         processData: false,
+         success: (response) => {
+           if (response) {
+             this.reset();
+             alert('Image has been uploaded successfully');
+           }
+         },
+         error: function(response){
+            console.log(response);
+              $('#image-input-error').text(response.responseJSON.errors.file);
+         }
+     });
+});
+
+</script> --}}
 <script>
   $(function () {
     // Summernote
@@ -106,7 +158,7 @@
       theme: "monokai"
     });
   });
-  // upload multiple image\
+  // upload multiple image
   function previewImages() {
 
 var preview = document.querySelector('#preview');
@@ -147,7 +199,7 @@ function readAndPreview(file) {
       success: function (data) {
         $.each(data, function(key, value){
             $("select[name='category']").append(
-                `<option value="${value.name}">${value.name}</option>`
+                `<option value="${key}">${value.name}</option>`
             );
         });
       },
@@ -157,30 +209,50 @@ function readAndPreview(file) {
     });
   });
 
+  // cấu hình message
+  var Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000
+              });
   // add post
-  function AddPost(){
-    var title = $('input[name="title"]').val();
-    var category = $('select[name="category"]').val();
-    var content = $('#summernote').summernote('code');
-    var image = $('#preview').html();
-    var data = {
-      title: title,
-      category: category,
-      content: content,
-      image: image,
-    };
-    $.ajax({
-      type: "POST",
-      url:  "{{asset('admin/posts/create')}}",
-      data: data,
-      success: function (data) {
-        alert('Thêm bài viết thành công');
-        window.location.href = "{{asset('admin/posts')}}";
-      },
-      error: function (data, textStatus, errorThrown) {
-        console.log("get data fail");
-      },
+  $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
     });
-  }
+  $('#upload-image-form').submit(function(e) {
+    e.preventDefault();
+    var formData = new FormData(this);
+    //$('#image-input-error').text('');
+
+    $.ajax({
+       type:'POST',
+       url: "{{asset('admin/posts/create')}}",
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: (response) => {
+          if (response) {
+            this.reset();
+            Toast.fire({
+              type: 'success',
+              title: 'Đăng bài thành công'
+            });
+            // setTimeout(function(){
+            //   window.location.href = "{{asset('admin/posts')}}";
+            // }, 3000);
+          }
+        },
+        error: function(response){
+           console.log(response);
+           //  $('#image-input-error').text(response.responseJSON.errors.file);
+        }
+    });
+  });
 </script>
+
+
+
   @endsection
