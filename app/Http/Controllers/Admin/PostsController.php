@@ -99,7 +99,8 @@ class PostsController extends Controller
                 // $upload = $file->storeAs('public/uploads', $file_name);
                 $upload = $file->storeAs($path, $file_name, 'public');
 
-
+                // insert data
+                
                 
                 if($upload){
                     return response()->json(['code'=> 1 ,'message'=>'Upload success']);

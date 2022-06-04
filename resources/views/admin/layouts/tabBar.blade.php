@@ -51,7 +51,7 @@
                           </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="/admin/hosts/listHosts" class="nav-link">
                                 <i class="fas fa-street-view mr-2"></i>
                               <p>Chủ trọ</p>
                             </a>

@@ -93,6 +93,12 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function() {
         Route::get('/posts/getAllNameCategory', 'PostsController@getAllNameCategory');
         // add new post
         Route::post('/posts/create', 'PostsController@create');
+
+        //-------------------------------------------Host----------------------------------------------------
+        // show view host
+        Route::get('/hosts/listHosts', 'HostsController@index');
+        // get all host with datatable(chủ nhà)
+        Route::get('/hosts/getHost', 'HomeController@anyData');
     });
     
     Route::post('logout', 'Auth\AuthenticatedSessionController@destroy')->name('logout');
