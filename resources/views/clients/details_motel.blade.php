@@ -2,6 +2,9 @@
 @section('main')
 <!--================Blog Area =================-->
 <style>
+   .section-padding {
+      padding-top: 20px;
+   }
    .blog-info-link {
       line-height: 25px;
    }
@@ -153,12 +156,42 @@
       min-width: 60%;
    }
 
-   .zz {}
+   .breadcrumb-box .breadcrumb {
+      background: transparent;
+      padding-left: 0;
+   }
+
+   .breadcrumb-box .breadcrumb a {
+      color: #007BFF;
+      transition: all 0.3s ease-in-out;
+   }
+
+   .breadcrumb-box .breadcrumb a:hover {
+      text-decoration: underline;
+   }
+   .breadcrumb-item.active a{
+    color: #6c757d;
+
+}
 </style>
 <section class="blog_area single-post-area section-padding">
    <div class="container">
-      <div class="row">
-         <div class="col-lg-8 posts-list">
+      <div class="breadcrumb-box pb-0">
+         <div class="row">
+            <div class="col-lg-12">
+               <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                     <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+                     <li class="breadcrumb-item"><a href="/all-motels">Cho thuê phòng trọ</a></li>
+                     <li class="breadcrumb-item active nameMotelBreadcrumb" aria-current="page"></li>
+                  </ol>
+               </nav>
+            </div>
+         </div>
+      </div>
+
+
+      <div class="row">  <div class="col-lg-8 posts-list">
             <div class="single-post">
                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                   <ol class="carousel-indicators" id="carousel-indicators">
@@ -305,7 +338,7 @@
                </div>
             </div>
             <!-- end  đây Lãm  -->
-            
+
 
          </div>
 
@@ -437,7 +470,7 @@
       // get id in url
       let id = url.split('/').pop();
       $.ajax({
-         url: '/handleDetails/' + id,
+         url: '/handleDetailsMotel/' + id,
          type: 'GET',
          dataType: 'json',
          success: function(response) {
@@ -449,6 +482,9 @@
             // $('.comments-area').html(comments_area(response.listComments));
             $('#motelsMost').html(motels_Most(response.listMotelsMost));
             $('#postsMost').html(posts_Most(response.listPostsMost));
+
+
+            $('.nameMotelBreadcrumb').html(`${response.motel.name}`);
          }
       });
    });
@@ -655,7 +691,7 @@
                <div class="media post_item">
                   <img src="{{asset('assets/img/motels/${item.image}')}}" style="height: 80px; width: 80px" alt="post">
                   <div class="media-body">
-                     <a href="/details/${item.id}">
+                     <a href="/details-motel/${item.id}">
                         <h3>${item.name}</h3>
                      </a>
                      <p >${item.address}</p>
@@ -689,7 +725,7 @@
                <div class="media post_item">
                   <img src="{{asset('assets/img/posts/${item.image}')}}" alt="post" style="height: 80px; width: 80px">
                   <div class="media-body">
-                     <a href="single-blog.html">
+                     <a href="/details-post/${item.id}">
                         <h3>${item.title}</h3>
                      </a>
                      <div class="d-flex justify-content-between align-items-center">

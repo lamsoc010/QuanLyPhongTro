@@ -112,15 +112,27 @@
     .posts-trending-item:last-child {
         border: none;
     }
-    .post_item h6{
+    .post_item h3{
         color: #0066D4;
 
     }
-    .post_item h6:hover {
+    .post_item h3:hover {
+        color: #0066D4 !important;
         text-decoration: underline;
     }
 
-    
+    .breadcrumb-box .breadcrumb {
+        background: transparent;
+        padding-left: 0;
+    }
+
+    .breadcrumb-box .breadcrumb a {
+        color: #007BFF;
+        transition: all 0.3s ease-in-out;
+    }
+    .breadcrumb-box .breadcrumb a:hover {
+        text-decoration: underline;
+    }
 </style>
 <main>
     <!-- Trending Area Start -->
@@ -132,7 +144,7 @@
                 <div class="col-md-12">
                     <div class="filter-blog  d-flex justify-content-around align-items-center">
 
-                        <div class="filter-price  filter-block w-20 bg-white d-flex justify-content-between  align-items-center text-dark">
+                        <!-- <div class="filter-price  filter-block w-20 bg-white d-flex justify-content-between  align-items-center text-dark">
 
 
                             <div class="filter-sub w-100">
@@ -144,7 +156,7 @@
                                 </select>
                             </div>
 
-                        </div>
+                        </div> -->
 
                         <div class="filter-price filter-block bg-white d-flex justify-content-between  align-items-center text-dark">
 
@@ -178,6 +190,19 @@
                 </div>
             </div>
 
+            <div class="breadcrumb-box  mt-4 pb-0">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+                                <li class="breadcrumb-item active" aria-current="page"><a href="#">Cho thuê phòng trọ</a></li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
             <div class="">
                 <!-- post Tittle -->
                 <div class="row">
@@ -198,22 +223,22 @@
                 </div>
 
                 <!-- post block -->
-                <div class="row">
+                <div class="row mb-5">
 
                     <div class="col-lg-8 motel-posts-wrapper">
-                        <h4 class="m-3">Dãy trọ mới đăng</h4>
-                        <div class="motel-posts-block" id="listMotelsNew">
+                        <h4 class="m-3">Danh sách dãy trọ</h4>
+                        <div class="motel-posts-block" id="listAllMotels">
                             {{-- render danh sách dãy trọ --}}
                         </div>
                         <div class="motel-posts-all py-3 text-center">
-                            <a href="/all-motels" class="btn">Xem tất cả</a>
+                            <a href="#" class="btn">pagination</a>
                         </div>
                     </div>
                     <!-- Right content -->
-                    <div class="col-lg-4">
+                    <!-- <div class="col-lg-4">
                         <div class="motel-posts-trending ml-2 w-100 h-100">
 
-                            <!-- trendding-items -->
+                            trendding-items
                             <h4 class="posts-trending-title p-3">Dãy trọ phổ biến</h4>
                             <aside class="" id="listMotelsMost">
                                 {{-- render bài đăng nổi bật --}}
@@ -222,7 +247,43 @@
 
                         </div>
 
+                    </div> -->
+
+
+                    <div class="col-lg-4">
+                        <div class="blog_right_sidebar">
+                            <aside class="single_sidebar_widget search_widget">
+                                <form action="#">
+                                    <div class="form-group">
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control" placeholder='Search Keyword' onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Keyword'">
+                                            <div class="input-group-append">
+                                                <button class="btns" type="button"><i class="ti-search"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn" type="submit">Search</button>
+                                </form>
+                            </aside>
+
+
+
+                            <aside class="single_sidebar_widget popular_post_widget" id="postsMost">
+                                {{-- render bài viếT nổi bật --}}
+
+                            </aside>
+                            <aside class="single_sidebar_widget newsletter_widget">
+                                <h4 class="widget_title">Newsletter</h4>
+                                <form action="#">
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email'" placeholder='Enter email' required>
+                                    </div>
+                                    <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn" type="submit">Subscribe</button>
+                                </form>
+                            </aside>
+                        </div>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -230,114 +291,10 @@
     <!-- Trending Area End -->
 
 
-    <!--   Weekly2-News start -->
-    <div class="weekly2-news-area  weekly2-pading ">
-        <div class="container">
-            <div class="weekly2-wrapper">
-                <!-- section Tittle -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="section-tittle mb-30">
-                            <h4>Bài viết nổi bật</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="weekly2-news-active dot-style d-flex dot-style" id="slidePosts">
-                            @foreach ($listPostsMost as $item)
-                            @php
-                            $hours = floor(abs(strtotime($item->created_at) - strtotime(date('Y-m-d H:i:s'))) / (60*60));
-                            if($hours == 0) {
-                            $time_diff = 'Vừa mới xong';
-                            } else if($hours >= 24) {
-                            $time_diff = floor($hours/24).' ngày trước';
-                            } else {
-                            $time_diff = $hours.'giờ trước';
-                            }
-                            @endphp
-                            <div class="weekly2-single">
-                                <div class="weekly2-img">
-                                    <img src="{{asset('assets/img/posts/'.$item->image)}}" alt="" style="height: 180px">
-                                </div>
-                                <div class="weekly2-caption">
-                                    <span class="color1">{{$item->nameCategory}}</span>
-                                    <div class="d-flex justify-content-between">
-                                        <p class="font-weight-bold text-success">{{$item->nameUser}}</p>
-                                        <p class="text-muted small lead">{{$time_diff}}</p>
-                                    </div>
-                                    <h4><a href="{{'/details-post/'.$item->id}}">{{$item->title}}</a></h4>
-                                </div>
-                            </div>
-                            @endforeach
-                            {{-- <div class="weekly2-single">
-                                <div class="weekly2-img">
-                                    <img src="{{asset('assets/img/news/weekly2News1.jpg')}}" alt="">
-                        </div>
-                        <div class="weekly2-caption">
-                            <span class="color1">Tìm người ở ghép</span>
-                            <div class="d-flex justify-content-between">
-                                <p class="font-weight-bold text-success">1.000.000đ/tháng</p>
-                                <p class="text-muted small lead">9 giờ trước</p>
-                            </div>
-                            <h4><a href="#">Tìm người ở ghép gần trường y dược Huế</a></h4>
-                        </div>
-                    </div>
-                    <div class="weekly2-single">
-                        <div class="weekly2-img">
-                            <img src="{{asset('assets/img/news/weekly2News1.jpg')}}" alt="">
-                        </div>
-                        <div class="weekly2-caption">
-                            <span class="color1">Tìm người ở ghép</span>
-                            <div class="d-flex justify-content-between">
-                                <p class="font-weight-bold text-success">1.000.000đ/tháng</p>
-                                <p class="text-muted small lead">9 giờ trước</p>
-                            </div>
-                            <h4><a href="#">Tìm người ở ghép gần trường y dược Huế</a></h4>
-                        </div>
-                    </div>
-                    <div class="weekly2-single">
-                        <div class="weekly2-img">
-                            <img src="{{asset('assets/img/news/weekly2News1.jpg')}}" alt="">
-                        </div>
-                        <div class="weekly2-caption">
-                            <span class="color1">Tìm người ở ghép</span>
-                            <div class="d-flex justify-content-between">
-                                <p class="font-weight-bold text-success">1.000.000đ/tháng</p>
-                                <p class="text-muted small lead">9 giờ trước</p>
-                            </div>
-                            <h4><a href="#">Tìm người ở ghép gần trường y dược Huế</a></h4>
-                        </div>
-                    </div>
-                    <div class="weekly2-single">
-                        <div class="weekly2-img">
-                            <img src="{{asset('assets/img/news/weekly2News1.jpg')}}" alt="">
-                        </div>
-                        <div class="weekly2-caption">
-                            <span class="color1">Tìm người ở ghép</span>
-                            <div class="d-flex justify-content-between">
-                                <p class="font-weight-bold text-success">1.000.000đ/tháng</p>
-                                <p class="text-muted small lead">9 giờ trước</p>
-                            </div>
-                            <h4><a href="#">Tìm người ở ghép gần trường y dược Huế</a></h4>
-                        </div>
-                    </div> --}}
-
-                </div>
-            </div>
-            <div class="col-12">
-                <div class="weekly2-news-all text-center mt-5">
-                    <a href="/all-posts" class="btn">Xem tất cả</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-    </div>
-    <!-- End Weekly-News -->
 
 
-    
+
+
 </main>
 
 @endsection
@@ -346,24 +303,25 @@
 <script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js"></script>
 <script>
     $(document).ready(function() {
-        // alert('hello');
+        let url = document.location.href;
+        // console.log()
+        // get id in url
         $.ajax({
-            url: '/handleIndex',
+            url: '/handleAllMotels',
             type: 'GET',
             dataType: 'json',
             success: function(response) {
-                console.log(response);
-                $('#listMotelsNew').html(listMotelsNew(response.listMotelsNew));
-                $('#listMotelsMost').html(listMotelsMost(response.listMotelsMost));
-                // $('.slick-track').append(slidePosts(response.listPostsMost));
-            }
-        })
-    })
 
-    function listMotelsNew(listMotelsNew) {
+                $('#listAllMotels').html(listAllMotels(response.listAllMotels));
+                $('#postsMost').html(posts_Most(response.listPostsMost));
+            }
+        });
+    });
+
+    function listAllMotels(listAllMotels) {
         let html = ``;
-        for (let i = 0; i < listMotelsNew.length; i++) {
-            let item = listMotelsNew[i];
+        for (let i = 0; i < listAllMotels.length; i++) {
+            let item = listAllMotels[i];
             // time_diff
             let time_now = moment(new Date());
             let time_created_at = moment(item.created_at);
@@ -443,46 +401,10 @@
 
     }
 
-    function listMotelsMost(listMotelsMost) {
-        let html = ``;
-        for (let i = 0; i < listMotelsMost.length; i++) {
-            let item = listMotelsMost[i];
-
-            let time_now = moment(new Date());
-            let time_created_at = moment(item.created_at);
-            let time_diff = time_now.diff(time_created_at, 'hours');
-            if (time_diff == 0) {
-                time_diff = `<p>Vừa mới xong</p>`;
-            } else if (time_diff >= 24) {
-                time_diff = `<p class="small">${Math.floor(time_diff/24)} ngày trước</p>`;
-            } else {
-                time_diff = `<p class="small">${time_diff} giờ trước</p>`;
-            }
-
-            html += `
-                    <!-- trendding-item -->
-                    <div class="media post_item">
-                        <img src="{{asset('assets/img/motels/${item.image}')}}" alt="post" style="height: 80px; width: 80px">
-                        <div class="media-body ml-3 mr-2">
-                            <a href="/details-motel/${item.id}"><h6>${item.name}</h6></a>
-                            <span>${item.address}</span>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <p class="text-success font-weight-bold">${formatPrice(item.min_price)}/tháng</p>
-                                ${time_diff}
-                            </div>
-                        </div>
-                    </div>
-                    <!--End trendding-item -->
-                `;
-        }
-        return html;
-    }
-
-    function slidePosts(listPostsMost) {
-        let html = ``;
+    function posts_Most(listPostsMost) {
+        let html = `<h3 class="widget_title">Bài đăng nổi bật</h3>`;
         for (let i = 0; i < listPostsMost.length; i++) {
             let item = listPostsMost[i];
-
             let time_now = moment(new Date());
             let time_created_at = moment(item.created_at);
             let time_diff = time_now.diff(time_created_at, 'hours');
@@ -493,23 +415,22 @@
             } else {
                 time_diff = `<p>${time_diff} giờ trước</p>`;
             }
-
             html += `
-                    <div class="weekly-single">
-                        <div class="weekly-img">
-                            <img src="{{asset('assets/img/posts/${item.imagePost}')}}" alt="">
-                        </div>
-                        <div class="weekly2-caption">
-                            <span class="color1">${item.nameCategory}</span>
-                            <div class="d-flex justify-content-between">
-                                <p class="font-weight-bold text-success">${item.nameUser}</p>
-                                <p class="text-muted small lead">${time_diff}</p>
-                            </div>
-                            <h4><a href="/details-post/${item.id}">${item.title}</a></h4>
-                        </div>
-                    </div>
-                `;
+               <div class="media post_item">
+                  <img src="{{asset('assets/img/posts/${item.image}')}}" alt="post" style="height: 80px; width: 80px">
+                  <div class="media-body">
+                     <a href="/details-post/${item.id}">
+                        <h3>${item.title}</h3>    
+                     </a>
+                     <div class="d-flex justify-content-between align-items-center">
+                        <p class="text-success font-weight-bold">${item.nameUser}</p>
+                        ${time_diff}
+                     </div>
+                  </div>
+               </div>
+            `;
         }
+        console.log(html);
         return html;
     }
 </script>

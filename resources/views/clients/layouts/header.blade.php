@@ -174,9 +174,9 @@
                                     <nav>
                                         <ul id="navigation">
                                             <li><a href="{{route('home')}}">Trang chủ</a></li>
-                                            <li><a href="{{route('category')}}">Cho thuê phòng trọ</a></li>
-                                            <li><a href="{{route('about')}}">Tìm người ở ghép</a></li>
-                                            <li><a href="{{route('latest_news')}}">Bài đăng</a></li>
+                                            <li><a href="/all-motels">Cho thuê phòng trọ</a></li>
+                                            <li><a href="/all-posts">Bài viết</a></li>
+                                            <li><a href="{{route('latest_news')}}">Liên hệ</a></li>
                                             <li><a href="{{route('contact')}}">Hướng dẫn</a></li>
                                             <li><a href="#">Pages</a>
                                                 <ul class="submenu">
