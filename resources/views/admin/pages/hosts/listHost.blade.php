@@ -43,7 +43,7 @@ div.dataTables_wrapper div.dataTables_filter label {
     <div id="ShowModal"></div>
     <button type="button" class="btn btn-primary" data-toggle="modal"
             data-target="#modal-create">
-        Thêm chủ trọ
+            <i class="fas fa-plus mr-2"></i>   Thêm chủ trọ
     </button>
 </div>
 
@@ -75,6 +75,7 @@ div.dataTables_wrapper div.dataTables_filter label {
         <!-- /.container-fluid -->
     </div>
 </div>
+</section>
 </div>
 
 
@@ -346,8 +347,12 @@ div.dataTables_wrapper div.dataTables_filter label {
                 orderable: false,
                 targets: 1,
                 },
+                {
+                width: "20%",
+                targets: 6 
+                },
 
-        ],
+            ],
             columns: [
             { "data": "id", "name": "id"  },
             { "data": null},
@@ -372,9 +377,9 @@ div.dataTables_wrapper div.dataTables_filter label {
                 "render": function(data, type, full, meta) {
                     var myUrl = '{{asset('admin/users/details')}}/'+full.id;
                     return (
-                        `<button type="button" class="btn btn-primary" data-toggle="modal" onclick=Details("${myUrl}")  data-target="#modal-details" >Chi tiết </button>
-                        <button type="button" class="btn btn-primary" onclick=Edit("${myUrl}")  data-toggle="modal" data-target="#modal-edit">Sửa </button>
-                        <a href="{{asset('admin/posts/newPost/${full.id}')}}" class="btn btn-primary" >Đăng bài </a>`
+                        `<button type="button" class="btn btn-outline-success mx-3" data-toggle="modal" onclick=Details("${myUrl}")  data-target="#modal-details" ><i class="fas fa-eye"></i> </button>
+                        <button type="button" class="btn btn-outline-warning mr-3" onclick=Edit("${myUrl}")  data-toggle="modal" data-target="#modal-edit"><i class="fas fa-pen"></i> </button>
+                        <a href="{{asset('admin/posts/newPost/${full.id}')}}" class="btn btn-outline-primary " ><i class="fas fa-folder-plus"></i> </a>`
                     );
                 }
             },

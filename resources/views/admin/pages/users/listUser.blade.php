@@ -31,8 +31,9 @@ div.dataTables_wrapper div.dataTables_filter label {
 @endsection
 @extends('admin.layouts.layout')
 @section('content')
-
+<div class="content-wrapper">
 <section class="content px-4">
+    <h2>Danh sách người dùng</h2>
 <div class="create-new-user d-flex align-items-end flex-column  pb-1 pt-1">
     <!--<button type="button" class="btn btn-primary " data-toggle="modal"
     data-target="#modal-create" >
@@ -42,10 +43,10 @@ div.dataTables_wrapper div.dataTables_filter label {
     <div id="ShowModal"></div>
     <button type="button" class="btn btn-primary" data-toggle="modal"
             data-target="#modal-create">
-        Thêm người dùng
+            <i class="fas fa-plus mr-2"></i>  Thêm người dùng
     </button>
 </div>
-<div class="content-wrapper">
+{{-- <div class="content-wrapper"> --}}
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -60,7 +61,7 @@ div.dataTables_wrapper div.dataTables_filter label {
                             <th> Số điện thoại</th>
                             <th> Địa chỉ</th>
                             <th> Chi tiết</th>
-                            <th>Sửa</th>
+                            {{-- <th>Sửa</th> --}}
                             </tr>
                         </thead>
                     </table>
@@ -71,7 +72,9 @@ div.dataTables_wrapper div.dataTables_filter label {
         </div>
         <!-- /.container-fluid -->
     </div>
+{{-- </div> --}}
 </div>
+</section>
 </div>
 
 
@@ -341,6 +344,11 @@ div.dataTables_wrapper div.dataTables_filter label {
                 orderable: false,
                 targets: 1,
                 },
+                {
+                width: "15%",
+                targets: 6 
+                },
+
 
         ],
             columns: [
@@ -350,19 +358,29 @@ div.dataTables_wrapper div.dataTables_filter label {
             { "data": "email", "name": "email"  },
             { "data": "phone","name": "phone" },
             { "data": "address", "name": "address"  },
+            // {
+            //     "render": function(data, type, full, meta) {
+            //         var myUrl = '{{asset('admin/users/details')}}/'+full.id;
+            //         return `<button type="button" class="btn btn-primary" data-toggle="modal" onclick=Details("${myUrl}")  data-target="#modal-details" >Chi tiết </button>`;
+            //     }
+            // },
+            // {
+            //     data: null,
+            //     render: function(data, type, row) {
+            //         var myUrl = '{{asset('admin/users/edit')}}/'+row.id;
+            //         return `<button type="button" class="btn btn-primary" onclick=Edit("${myUrl}")  data-toggle="modal" data-target="#modal-edit">Sửa </button>`;
+            //     }
+            // },
             {
                 "render": function(data, type, full, meta) {
                     var myUrl = '{{asset('admin/users/details')}}/'+full.id;
-                    return `<button type="button" class="btn btn-primary" data-toggle="modal" onclick=Details("${myUrl}")  data-target="#modal-details" >Chi tiết </button>`;
+                    var myUrlEdit = '{{asset('admin/users/edit')}}/'+full.id;
+                    return (
+                            `<button type="button" class="btn btn-outline-success mx-3" data-toggle="modal" onclick=Details("${myUrl}")  data-target="#modal-details" ><i class="fas fa-eye"></i> </button>
+                            <button type="button" class="btn btn-outline-warning mr-3" onclick=Edit("${myUrlEdit}")  data-toggle="modal" data-target="#modal-edit"><i class="fas fa-pen"></i> </button>`
+                        );
                 }
-            },
-            {
-                data: null,
-                render: function(data, type, row) {
-                    var myUrl = '{{asset('admin/users/edit')}}/'+row.id;
-                    return `<button type="button" class="btn btn-primary" onclick=Edit("${myUrl}")  data-toggle="modal" data-target="#modal-edit">Sửa </button>`;
-                }
-            },
+            }
             ],
         });
         table.on( 'order.dt search.dt', function () {
