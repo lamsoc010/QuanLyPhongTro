@@ -266,74 +266,8 @@
 
          <div class="comments-area">
             {{-- render comment --}}
-
-            <!-- Cắt từ đây Lãm  -->
-            {{-- <div class="comment-list">
-               <div class="single-comment d-flex">
-                  <div class="thumb">
-                     <img src="{{asset('assets/img/users/user.jpg')}}" alt="" style="height: 70px; width:70px">
-                  </div>
-                  <div class="comment-block flex-grow-1">
-                     <div class="comment-content">
-                        <h5>
-                           Nguyên Trần
-                        </h5>
-                        <p class="mt-2 mb-0">hay lắm</p>
-                     </div>
-                     <div class="comment-desc d-flex align-items-center mt-2">
-                        <div class="">
-                           <span onclick="showBoxReplyComment()" class="comment-reply-link">Trả lời</span>
-                        </div>
-                        <div class="text-muted small">7 giờ trước</div>
-                     </div>
-
-                     <!-- comment replied -->
-                     <div class="comment-replied-block d-flex mt-3">
-                        <div class="user-reply-thumb">
-                           <img src="{{asset('assets/img/users/user.jpg')}}" alt="" style="height: 30px; width:30px">
-                        </div>
-                        <div class="ml-2 w-100">
-                           <div class="comment-content">
-                              <h5>
-                                 Kim Cương Trần
-                              </h5>
-                              <p class="mt-2 mb-0">
-                                 <span class="comment-reply-user mr-1">
-                                    Nguyên Trần
-                                 </span>
-                                 hay lắm hay lắm hay lắm hay lắm hay lắm hay lắm hay lắm hay lắm
-                              </p>
-                           </div>
-                           <div class="comment-desc d-flex align-items-center mt-2">
-                              <div class="text-muted small ml-3">7 giờ trước</div>
-                           </div>
-                        </div>
-                     </div>
-
-                     <!-- comment reply -->
-                     <div class="comment-reply-block d-none   mt-3">
-                        <div class="user-reply-thumb">
-                           <img src="{{asset('assets/img/users/user.jpg')}}" alt="" style="height: 30px; width:30px">
-                        </div>
-                        <div class="ml-3 w-100">
-                           <div class="comment-reply-box ">
-                              <span class="comment-reply-user mr-2">
-                                 Nguyên Trần
-                              </span>
-                              <div class="comment-reply-content d-inline-block" tabindex="0" contenteditable="true" role="textbox" aria-multiline="true" spellcheck="false" autocapitalize="true"></div>
-                           </div>
-                           <div class="comment-reply-btn d-flex justify-content-end mt-2 mr-2">
-                              <button onclick="hideBoxReplyComment()" class="reply-btn btn-reply-cancel mr-2">Huỷ</button>
-                              <button class="reply-btn btn-reply-add">Trả lời</button>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-
-               </div>
-            </div> --}}
-            <!-- end  đây Lãm  -->
-
+            <div id="countComment"></div>
+            <div class="comment_list"></div>
 
          </div>
 
@@ -469,13 +403,13 @@
          type: 'GET',
          dataType: 'json',
          success: function(response) {
-            console.log(response.motel);
+            // console.log(response.listComments);
             $('#carousel-indicators').html(carousel_indicators(response.image_motels));
             $('#carousel-inner').html(carousel_inner(response.image_motels));
             // $('#information_blog_details').html(information_blog_details(response.motel));
             $('.blog_details').html(blog_details(response.motel));
-            $('.comments-area').html(comments_area1(response.listComments, response.listReplyComments, id));
-            // $('.comments-area').html("123");
+            $('.comment_list').html(comments_area1(response.listComments, response.listReplyComments, id));
+            $('#countComment').html(countComment(response.listComments.length, id));
             $('#motelsMost').html(motels_Most(response.listMotelsMost));
             $('#postsMost').html(posts_Most(response.listPostsMost));
 
@@ -776,13 +710,16 @@
       `;
       return html;
    }
-
-   // Render dữ liệU của comment
-   function comments_area1(listComments, listReplyComments, idMotels) {
+   function countComment(countListComment, idMotels) {
       let html = `
-         <h4>${listComments.length} Comments</h4>
+         <h4>${countListComment} Comments</h4>
          ${showCommentBlock(idMotels)}
       `;
+      return html;
+   }
+   // Render dữ liệU của comment
+   function comments_area1(listComments, listReplyComments, idMotels) {
+      let html = ``;
       for(let i = 0; i < listComments.length; i++) {
          let itemComment = listComments[i];
          html += `
@@ -975,7 +912,7 @@
             name: name
          }
          $.ajax({
-            url: '/handleReplyComment',
+            url: '/handleReplyCommentMotels',
             type: 'get',
             data: {
                contents: contents,
@@ -1004,7 +941,7 @@
                return;
             }
             $.ajax({
-               url: '/handleComment',
+               url: '/handleCommentMotels',
                type: 'get',
                data: {
                   contents: contents,
@@ -1015,7 +952,8 @@
                success: function(response) {
                   console.log(response.itemComment);
                   console.log(response.listReplyComments);
-                  $('.comments-area').append(itemComment_area(JSON.stringify(response.itemComment), response.listReplyComments));
+                  $('.comment_list').prepend(itemComment_area(JSON.stringify(response.itemComment), response.listReplyComments));
+                  $('#countComment').html(countComment(response.countListComment, response.itemComment.idMotels));
                   $('#comment-content').val('');
                }
             });

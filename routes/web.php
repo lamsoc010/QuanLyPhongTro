@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Clients\HomeController;
+use App\Http\Controllers\Clients\MotelController;
+use App\Http\Controllers\Clients\PostController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,23 +18,6 @@ use App\Http\Controllers\Clients\HomeController;
 // Clients
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/handleIndex', [HomeController::class, 'handleIndex'])->name('handleIndex');
-
-
-
-Route::get('/all-motels', [HomeController::class, 'all_motels'])->name('all_motels');
-Route::get('/handleAllMotels', [HomeController::class, 'handleAllMotels'])->name('handleAllMotels');
-Route::get('/details-motel/{id}', [HomeController::class, 'detailsMotel'])->name('details_motel');
-Route::get('/handleDetailsMotel/{id}', [HomeController::class, 'handleDetailsMotel'])->name('handleDetailsMotel');
-
-
-
-Route::get('/all-posts', [HomeController::class, 'all_posts'])->name('all_posts');
-Route::get('/handleAllPosts', [HomeController::class, 'handleAllPosts'])->name('handleAllPosts');
-Route::get('/details-post/{id}', [HomeController::class, 'detailsPost'])->name('details_post');
-Route::get('/handleDetailsPost/{id}', [HomeController::class, 'handleDetailsPost'])->name('handleDetailsPost');
-
-
-
 Route::get('/category', [HomeController::class, 'category'])->name('category');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/latest_news', [HomeController::class, 'latest_news'])->name('latest_news');
@@ -41,9 +26,24 @@ Route::get('/element', [HomeController::class, 'element'])->name('element');
 Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
 Route::get('/blog_details', [HomeController::class, 'blog_details'])->name('blog_details');
 
+// Post
+Route::get('/all-posts', [PostController::class, 'all_posts'])->name('all_posts');
+Route::get('/handleAllPosts', [PostController::class, 'handleAllPosts'])->name('handleAllPosts');
+Route::get('/details-post/{id}', [PostController::class, 'detailsPost'])->name('details_post');
+Route::get('/handleDetailsPost/{id}', [PostController::class, 'handleDetailsPost'])->name('handleDetailsPost');
+Route::get('/handleReplyCommentPosts' , [PostController::class, 'handleReplyComment'])->name('posts.handleReplyComment');
+Route::get('/handleCommentPosts' , [PostController::class, 'handleComment'])->name('posts.handleComment');
 
-Route::get('/handleReplyComment' , [HomeController::class, 'handleReplyComment'])->name('handleReplyComment');
-Route::get('/handleComment' , [HomeController::class, 'handleComment'])->name('handleComment');
+// Motels
+Route::get('/all-motels', [MotelController::class, 'all_motels'])->name('all_motels');
+Route::get('/handleAllMotels', [MotelController::class, 'handleAllMotels'])->name('handleAllMotels');
+Route::get('/details-motel/{id}', [MotelController::class, 'detailsMotel'])->name('details_motel');
+Route::get('/handleDetailsMotel/{id}', [MotelController::class, 'handleDetailsMotel'])->name('handleDetailsMotel');
+Route::get('/handleReplyCommentMotels' , [MotelController::class, 'handleReplyComment'])->name('handleReplyComment');
+Route::get('/handleCommentMotels' , [MotelController::class, 'handleComment'])->name('handleComment');
+
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
