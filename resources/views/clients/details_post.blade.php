@@ -507,7 +507,7 @@
          @auth
          <div>
             <!-- comment reply -->
-               <div class="comment-reply-block mt-3 d-flex">
+               <div class="comment-reply-block my-3 d-flex">
                   <div class="user-reply-thumb">
                      @auth
                      <img src="{{asset('assets/img/users/'.Auth::user()->image)}}" alt="" style="height: 70px; width:70px">
@@ -548,7 +548,7 @@
       };
       html += `
          <!-- Cắt từ đây Lãm  -->
-         <div class="comment-list">
+         <div class="comment-list pb-3">
             <div class="single-comment d-flex">
                <div class="thumb">
                   ${image_avatar}
@@ -594,7 +594,7 @@
                         </div>
                      </div>
                   </div>
-                  <div id="showShowHideBlockReplyComment-${itemComment.id}">
+                  <div id="showShowHideBlockReplyComment-${itemComment.id}" class="mt-2"> 
                      ${showShowHideBlockReplyComment(itemComment.id, listReplyComments)}
                   </div>
                   <div id="block-reply-${itemComment.id}" style="display: none">
