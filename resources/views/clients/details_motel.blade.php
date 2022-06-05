@@ -914,7 +914,7 @@
    function showBoxReplyComment(idItemComment) {
       $(document).ready(function() {
          $(`.comment-reply-block-${idItemComment}`).addClass('d-flex');
-         var a = $(`.comment-reply-content`);
+         var a = $(`.comment-reply-content-${idItemComment}`);
          setEndOfContenteditable(a)
       });
    }
