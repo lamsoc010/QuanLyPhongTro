@@ -2,6 +2,9 @@
 @section('main')
 <!--================Blog Area =================-->
 <style>
+   .section-padding {
+      padding-top: 20px;
+   }
    .blog-info-link {
       line-height: 25px;
    }
@@ -74,7 +77,7 @@
       padding: 0.4rem !important;
    }
 
-   .comment-block .reply-btn {
+   .reply-btn {
       border: none;
       outline: none;
       padding: 6px 16px;
@@ -130,6 +133,10 @@
       border-radius: 50%;
    }
 
+   .comment-replied-block {
+      border-left: 1px solid #FC3F00;
+      padding-left: 15px;
+   }
 
 
    .comment-reply-box {
@@ -152,13 +159,52 @@
       cursor: auto;
       min-width: 60%;
    }
+   .titlePosts {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
+      -webkit-box-orient: vertical;
+      margin-bottom: 0 !important;
+   }
 
-   .zz {}
+   .breadcrumb-box .breadcrumb {
+      background: transparent;
+      padding-left: 0;
+   }
+
+   .breadcrumb-box .breadcrumb a {
+      color: #007BFF;
+      transition: all 0.3s ease-in-out;
+   }
+
+   .breadcrumb-box .breadcrumb a:hover {
+      text-decoration: underline;
+   }
+   .breadcrumb-item.active a{
+    color: #6c757d;
+
+}
 </style>
 <section class="blog_area single-post-area section-padding">
    <div class="container">
-      <div class="row">
-         <div class="col-lg-8 posts-list">
+      <div class="breadcrumb-box pb-0">
+         <div class="row">
+            <div class="col-lg-12">
+               <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                     <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+                     <li class="breadcrumb-item"><a href="/all-motels">Cho thuê phòng trọ</a></li>
+                     <li class="breadcrumb-item active nameMotelBreadcrumb" aria-current="page"></li>
+                  </ol>
+               </nav>
+            </div>
+         </div>
+      </div>
+
+
+      <div class="row">  <div class="col-lg-8 posts-list">
             <div class="single-post">
                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                   <ol class="carousel-indicators" id="carousel-indicators">
@@ -220,92 +266,8 @@
 
          <div class="comments-area">
             {{-- render comment --}}
-
-            <!-- Cắt từ đây Lãm  -->
-            <div class="comment-list">
-               <div class="single-comment d-flex">
-
-                  <div class="thumb">
-                     <img src="{{asset('assets/img/users/user.jpg')}}" alt="" style="height: 70px; width:70px">
-                  </div>
-
-                  <div class="comment-block flex-grow-1">
-
-                     <div class="comment-content">
-                        <h5>
-                           Nguyên Trần
-                        </h5>
-                        <p class="mt-2 mb-0">hay lắm</p>
-                     </div>
-
-                     <div class="comment-desc d-flex align-items-center mt-2">
-                        <div class="">
-                           <span onclick="showBoxReplyComment()" class="comment-reply-link">Trả lời</span>
-                        </div>
-                        <div class="text-muted small">7 giờ trước</div>
-                     </div>
-
-                     <!-- comment replied -->
-                     <div class="comment-replied-block d-flex mt-3">
-                        <div class="user-reply-thumb">
-                           <img src="{{asset('assets/img/users/user.jpg')}}" alt="" style="height: 30px; width:30px">
-
-                        </div>
-
-                        <div class="ml-2 w-100">
-                           <div class="comment-content">
-                              <h5>
-                                 Kim Cương Trần
-                              </h5>
-                              <p class="mt-2 mb-0">
-                                 <span class="comment-reply-user mr-1">
-                                    Nguyên Trần
-                                 </span>
-                                 hay lắm hay lắm hay lắm hay lắm hay lắm hay lắm hay lắm hay lắm
-                              </p>
-                           </div>
-
-                           <div class="comment-desc d-flex align-items-center mt-2">
-
-                              <div class="text-muted small ml-3">7 giờ trước</div>
-                           </div>
-                        </div>
-                     </div>
-
-                     <!-- comment reply -->
-                     <div class="comment-reply-block d-none   mt-3">
-                        <div class="user-reply-thumb">
-                           <img src="{{asset('assets/img/users/user.jpg')}}" alt="" style="height: 30px; width:30px">
-
-                        </div>
-
-                        <div class="ml-3 w-100">
-                           <div class="comment-reply-box ">
-
-                              <span class="comment-reply-user mr-2">
-                                 Nguyên Trần
-                              </span>
-                              <div class="comment-reply-content d-inline-block" tabindex="0" contenteditable="true" role="textbox" aria-multiline="true" spellcheck="false" autocapitalize="true"></div>
-
-
-
-                           </div>
-                           <div class="comment-reply-btn d-flex justify-content-end mt-2 mr-2">
-                              <button onclick="hideBoxReplyComment()" class="reply-btn btn-reply-cancel mr-2">Huỷ</button>
-                              <button class="reply-btn btn-reply-add">Trả lời</button>
-                           </div>
-                        </div>
-                     </div>
-
-
-
-
-                  </div>
-
-               </div>
-            </div>
-            <!-- end  đây Lãm  -->
-            
+            <div id="countComment"></div>
+            <div class="comment_list"></div>
 
          </div>
 
@@ -433,22 +395,26 @@
 <script>
    $(document).ready(function() {
       let url = document.location.href;
-      // console.log()
+
       // get id in url
       let id = url.split('/').pop();
       $.ajax({
-         url: '/handleDetails/' + id,
+         url: '/handleDetailsMotel/' + id,
          type: 'GET',
          dataType: 'json',
          success: function(response) {
-            // console.log(response.image_motels);
+            // console.log(response.listComments);
             $('#carousel-indicators').html(carousel_indicators(response.image_motels));
             $('#carousel-inner').html(carousel_inner(response.image_motels));
             // $('#information_blog_details').html(information_blog_details(response.motel));
             $('.blog_details').html(blog_details(response.motel));
-            // $('.comments-area').html(comments_area(response.listComments));
+            $('.comment_list').html(comments_area1(response.listComments, response.listReplyComments, id));
+            $('#countComment').html(countComment(response.listComments.length, id));
             $('#motelsMost').html(motels_Most(response.listMotelsMost));
             $('#postsMost').html(posts_Most(response.listPostsMost));
+
+
+            $('.nameMotelBreadcrumb').html(`${response.motel.name}`);
          }
       });
    });
@@ -512,6 +478,7 @@
                <ul class="blog-info-link mt-4 mb-4">
                   <li class="ms-4"><i class="fas fa-chart-area"></i>${motel.area}/m2 </li>
                   <li><i class="fas fa-sort-numeric-down"></i>${motel.room_quantity} phòng </li>
+                  <li class="ms-4"><i class="fas fa-eye"></i>${motel.views} lượt xem </li>
                </ul>
             </div>
             <div class="col-md-5">
@@ -594,44 +561,170 @@
       return html;
    }
 
-   function comments_area(listComments) {
-      let html = `<h4>${listComments.length} Comments</h4>`;
-      for (let i = 0; i < listComments.length; i++) {
-         let item = listComments[i];
-         let image_avatar = '';
-         console.log(item.image);
-         if (!item.image) {
-            image_avatar = `<img src="{{asset('assets/img/users/user.jpg')}}" alt="" style="height: 80px; width:80px">`;
-         } else {
-            image_avatar = `<img src="{{asset('assets/img/users/${item.image}')}}" alt="" style="height: 80px; width:80px">`;
-         };
-         html += `
-               <div class="comment-list">
-                  <div class="single-comment justify-content-between d-flex">
-                     <div class="user justify-content-between d-flex">
-                        <div class="thumb">
-                           ${image_avatar}
-                        </div>
-                        <div class="desc">
-                           <p class="comment">
-                              ${item.contents}
-                           </p>
-                           <div class="d-flex justify-content-between">
-                              <div class="d-flex align-items-center">
-                                 <h5>
-                                    <a href="#">${item.name}</a>
-                                 </h5>
-                                 <p class="date">${item.created_at}</p>
-                              </div>
-                              <div class="reply-btn">
-                                 <a href="#" class="btn-reply text-uppercase">reply</a>
-                              </div>
-                           </div>
-                        </div>
+   function showReplyComments(itemComment, listReplyComments) {
+      let htmlReply = ``;
+      for(let i = 0; i < listReplyComments.length; i++) {
+         if(listReplyComments[i].idCommentMotels == itemComment.id) {
+            let image_avatar = '';
+            if (!listReplyComments[i].image) {
+               image_avatar = `<img src="{{asset('assets/img/users/user.jpg')}}" alt="" style="height: 70px; width:70px">`;
+            } else {
+               image_avatar = `<img src="{{asset('assets/img/users/${listReplyComments[i].image}')}}" alt="" style="height: 70px; width:70px">`;
+            };
+            htmlReply += `
+               <!-- comment replied -->
+               <div class="comment-replied-block d-flex mt-3">
+                  <div class="user-reply-thumb">
+                     ${image_avatar}
+                  </div>
+                  <div class="ml-2 w-100">
+                     <div class="comment-content">
+                        <h5>
+                           ${listReplyComments[i].name}
+                        </h5>
+                        <p class="mt-2 mb-0">
+                           <span class="comment-reply-user mr-1">
+                              ${itemComment.name}
+                           </span>
+                           ${listReplyComments[i].contents}
+                        </p>
+                     </div>
+                     <div class="comment-desc d-flex align-items-center mt-2">
+                        <div class="text-muted small ml-3">${listReplyComments[i].created_at}</div>
                      </div>
                   </div>
                </div>
             `;
+         }
+      }
+      return htmlReply;
+   }
+
+   // Hiển thị chổ bình luận tổng
+   function showCommentBlock(idMotels) {
+      let html = ``;
+      html += `
+         @if(Route::has('login'))
+         @auth
+         <div>
+            <!-- comment reply -->
+               <div class="comment-reply-block my-3 d-flex">
+                  <div class="user-reply-thumb">
+                     @auth
+                     <img src="{{asset('assets/img/users/'.Auth::user()->image)}}" alt="" style="height: 70px; width:70px">
+                     @else
+                     <img src="{{asset('assets/img/users/user.jpg')}}" alt="" style="height: 70px; width:70px">
+                     @endauth
+                  </div>
+                  <div class="ml-3 w-100">
+                     <div class="comment-reply-box ">
+                        <input name="contents" id="comment-content" class="comment-reply-content d-inline-block" tabindex="0" contenteditable="true" role="textbox" aria-multiline="true" spellcheck="false" autocapitalize="true" placeholder="Hãy để lại bình luận của bạn tại đây!"></input>
+                     </div>
+                     <input type="hidden" name="idMotels" value="${idMotels}"></input>
+                     <input type="hidden" name="idUser" value="@auth{{Auth::user()->id}}@endauth"></input>
+                     <div class="comment-reply-btn d-flex justify-content-end mt-2 mr-2">
+                        <!-- <button onclick="handleComment(${idMotels}, @auth{{Auth::user()->id}}@endauth)">Comment</button> -->
+                        <button class="reply-btn btn-reply-add" onclick="handleComment()">Comment</button>
+                     </div>
+                  </div>
+               </div>  
+         </div>
+         @else
+            <div class="mb-2"> <a href="{{route('login')}}" style="color: black; font-size: 20px; margin-bottom: 20px; display: block; font-weight: 500"> Hãy đăng nhập và để bình luận của bạn tại đây </a> </div>
+         @endauth
+         @endif
+      `;
+      return html;
+   }
+
+   // các item comment-list
+   function itemComment_area(itemComment, listReplyComments) {
+      itemComment = JSON.parse(itemComment);
+      let html = ``;
+      let image_avatar = '';
+      if (!itemComment.image) {
+         image_avatar = `<img src="{{asset('assets/img/users/user.jpg')}}" alt="" style="height: 70px; width:70px">`;
+      } else {
+         image_avatar = `<img src="{{asset('assets/img/users/${itemComment.image}')}}" alt="" style="height: 70px; width:70px">`;
+      };
+      html += `
+         <!-- Cắt từ đây Lãm  -->
+         <div class="comment-list pb-3">
+            <div class="single-comment d-flex">
+               <div class="thumb">
+                  ${image_avatar}
+               </div>
+               <div class="comment-block flex-grow-1">
+                  <div class="comment-content">
+                     <h5>
+                        ${itemComment.name}
+                     </h5>
+                     <p class="mt-2 mb-0">${itemComment.contents}</p>
+                  </div>
+                  <div class="comment-desc d-flex align-items-center mt-2">
+                     <div class="">
+                        @if(Route::has('login'))
+                        @auth
+                        <span onclick="showBoxReplyComment(${itemComment.id})" class="comment-reply-link">Trả lời</span>
+                        @else 
+                        <a href="{{ route('login') }}" class="comment-reply-link">Trả lời</a>
+                        @endauth
+                        @endif
+                     </div>
+                     <div class="text-muted small">${itemComment.created_at}</div>
+                  </div>
+                  <!-- comment reply -->
+                  <div class="comment-reply-block-${itemComment.id} d-none   mt-3">
+                     <div class="user-reply-thumb">
+                        @auth
+                        <img src="{{asset('assets/img/users/'.Auth::user()->image)}}" alt="" style="height: 70px; width:70px">
+                        @else
+                        <img src="{{asset('assets/img/users/user.jpg')}}" alt="" style="height: 70px; width:70px">
+                        @endauth
+                     </div>
+                     <div class="ml-3 w-100">
+                        <div class="comment-reply-box ">
+                           <span class="comment-reply-user mr-2">
+                              ${itemComment.name}
+                           </span>
+                           <div id="comment-reply-content-${itemComment.id}" class="comment-reply-content d-inline-block" tabindex="0" contenteditable="true" role="textbox" aria-multiline="true" spellcheck="false" autocapitalize="true"></div>
+                        </div>
+                        <div class="comment-reply-btn d-flex justify-content-end mt-2 mr-2">
+                           <button onclick="hideBoxReplyComment(${itemComment.id})" class="reply-btn btn-reply-cancel mr-2">Huỷ</button>
+                           <button class="reply-btn btn-reply-add" onclick="handleReplyComment(${itemComment.id}, '${itemComment.name}', @auth {{Auth::user()->id}} @endauth)" id="replyComment-${itemComment.id}">Trả lời</button>
+                        </div>
+                     </div>
+                  </div>
+                  <div id="showShowHideBlockReplyComment-${itemComment.id}" class="mt-2">
+                     ${showShowHideBlockReplyComment(itemComment.id, listReplyComments)}
+                  </div>
+                  <div id="block-reply-${itemComment.id}" style="display: none">
+                     ${showReplyComments(itemComment, listReplyComments)}
+                  </div>
+                  
+               </div>
+
+            </div>
+         </div>
+         <!-- end  đây Lãm  -->
+      `;
+      return html;
+   }
+   function countComment(countListComment, idMotels) {
+      let html = `
+         <h4>${countListComment} Comments</h4>
+         ${showCommentBlock(idMotels)}
+      `;
+      return html;
+   }
+   // Render dữ liệU của comment
+   function comments_area1(listComments, listReplyComments, idMotels) {
+      let html = ``;
+      for(let i = 0; i < listComments.length; i++) {
+         let itemComment = listComments[i];
+         html += `
+            ${itemComment_area(JSON.stringify(itemComment), listReplyComments)}
+         `;
       }
       return html;
    }
@@ -653,12 +746,13 @@
 
          html += `
                <div class="media post_item">
-                  <img src="{{asset('assets/img/motels/${item.image}')}}" style="height: 80px; width: 80px" alt="post">
+                  <img src="{{asset('assets/img/motels/${item.image}')}}" style="height: 90px; width: 90px" alt="post">
                   <div class="media-body">
-                     <a href="/details/${item.id}">
+                     <a href="/details-motel/${item.id}">
                         <h3>${item.name}</h3>
                      </a>
-                     <p >${item.address}</p>
+                     <span>Địa chỉ: ${item.address}</span> <br/>
+                     <span>Lượt xem: ${item.views}</span>
                      <div class="d-flex justify-content-between align-items-center">
                         <p class="text-success font-weight-bold">${formatPrice(item.min_price)} /tháng</p>
                         ${time_diff}
@@ -689,9 +783,10 @@
                <div class="media post_item">
                   <img src="{{asset('assets/img/posts/${item.image}')}}" alt="post" style="height: 80px; width: 80px">
                   <div class="media-body">
-                     <a href="single-blog.html">
+                     <a href="/details-post/${item.id}">
                         <h3>${item.title}</h3>
                      </a>
+                     <span>Lượt xem: ${item.views}</span>
                      <div class="d-flex justify-content-between align-items-center">
                         <p class="text-success font-weight-bold">${item.name}</p>
                         ${time_diff}
@@ -717,26 +812,151 @@
       }
    }
 
-   function showBoxReplyComment() {
+   // Hiển thị và xử lý hide show reply comment
+   function showShowHideBlockReplyComment(idItemComment, listReplyComments) {
+      let html = ``;
+      let count = 0;
+      for(let i = 0; i < listReplyComments.length; i++) {
+         let item = listReplyComments[i];
+         if(item.idCommentMotels == idItemComment) {
+            count++;
+         }
+      }
+      if(count == 0) {
+         return html;
+      } else {
+         html += `
+            <a id="showHideBlockReplyComments-${idItemComment} " 
+            onclick="showHideBlockReplyComments(${idItemComment}, ${count})" 
+            style="cursor:pointer; padding-left: 4px">
+               Xem ${count} câu trả lời 
+               <i class="fas fa-caret-down ml-1"></i>   
+            </a>
+         `;
+      }
+      return html;
+   }
+
+   function showHideBlockReplyComments(idItemComment, count) {
+      let status = $(`#block-reply-${idItemComment}`).css('display');
+      if(status == 'none') {
+         $(`#block-reply-${idItemComment}`).show();
+         $(`#showHideBlockReplyComments-${idItemComment}`).html(`Ẩn ${count} câu trả lời <i class="fas fa-caret-up ml-1"></i>`);
+      } else if(status == 'block') {
+         $(`#block-reply-${idItemComment}`).hide();
+         $(`#showHideBlockReplyComments-${idItemComment}`).html(`Xem ${count} câu trả lời <i class="fas fa-caret-down ml-1"></i>`);
+      }
+   }
+
+   function showBoxReplyComment(idItemComment) {
       $(document).ready(function() {
-
-         $('.comment-reply-block').addClass('d-flex');
-         var a = $('.comment-reply-content');
-
+         $(`.comment-reply-block-${idItemComment}`).addClass('d-flex');
+         var a = $(`#comment-reply-content-${idItemComment}`);
          setEndOfContenteditable(a)
-
-
       });
    }
 
-
-   function hideBoxReplyComment() {
+   function hideBoxReplyComment(idItemComment) {
       $(document).ready(function() {
+         $(`.comment-reply-block-${idItemComment}`).removeClass('d-flex');
+         $(`#comment-reply-content-${idItemComment}`).html('');
+      });
+   }
 
-         $('.comment-reply-block').removeClass('d-flex');
+   function addpendReplyComment(itemComment, replyComment) {
+      let image_avatar = '';
+      if (!replyComment.image) {
+         image_avatar = `<img src="{{asset('assets/img/users/user.jpg')}}" alt="" style="height: 70px; width:70px">`;
+      } else {
+         image_avatar = `<img src="{{asset('assets/img/users/${replyComment.image}')}}" alt="" style="height: 70px; width:70px">`;
+      };
+      return `
+         <!-- comment replied -->
+         <div class="comment-replied-block d-flex mt-3">
+            <div class="user-reply-thumb">
+               @auth
+               <img src="{{asset('assets/img/users/'.Auth::user()->image)}}" alt="" style="height: 70px; width:70px">
+               @endauth
+            </div>
+            <div class="ml-2 w-100">
+               <div class="comment-content">
+                  <h5>
+                     @auth
+                     {{Auth::user()->name}}
+                     @endauth
+                  </h5>
+                  <p class="mt-2 mb-0">
+                     <span class="comment-reply-user mr-1">
+                     ${itemComment.name}
+                     </span>
+                     ${replyComment.contents}
+                  </p>
+               </div>
+               <div class="comment-desc d-flex align-items-center mt-2">
+                  <div class="text-muted small ml-3">${replyComment.created_at}</div>
+               </div>
+            </div>
+         </div>
+      `;
+   }
 
+   function handleReplyComment(idCommentMotels, name, idUser) {
+      $(document).ready(function() {
+         let contents = $(`#comment-reply-content-${idCommentMotels}`).html();
+         if(contents == '') {
+            alert('Bạn chưa nhập nội dung bình luận');
+            return;
+         }
+         let itemComment = {
+            id: idCommentMotels,
+            name: name
+         }
+         $.ajax({
+            url: '/handleReplyCommentMotels',
+            type: 'get',
+            data: {
+               contents: contents,
+               idCommentMotels: itemComment.id,
+               idUser: idUser
+            },
+            dataType: 'json',
+            success: function(response) {
+               // console.log(response.replyComment);
+               $(`#block-reply-${idCommentMotels}`).append(addpendReplyComment(itemComment, response.replyComment));
+               $(`#showShowHideBlockReplyComment-${idCommentMotels}`).html(showShowHideBlockReplyComment(idCommentMotels, response.listReplyComments));
+               hideBoxReplyComment(idCommentMotels);
+            }
+         });
+      });
+   }
 
-
+   function handleComment() {
+      $(document).ready(function() {
+            let contents = $('#comment-content').val();
+            let idMotels = $('input[name="idMotels"]').val();
+            let idUser = $('input[name="idUser"]').val();
+            // alert(idUser);
+            if(contents == '') {
+               alert('Bạn chưa nhập nội dung bình luận');
+               return;
+            }
+            $.ajax({
+               url: '/handleCommentMotels',
+               type: 'get',
+               data: {
+                  contents: contents,
+                  idMotels: idMotels,
+                  idUser: idUser
+               },
+               dataType: 'json',
+               success: function(response) {
+                  console.log(response.itemComment);
+                  console.log(response.listReplyComments);
+                  $('.comment_list').prepend(itemComment_area(JSON.stringify(response.itemComment), response.listReplyComments));
+                  $('#countComment').html(countComment(response.countListComment, response.itemComment.idMotels));
+                  $('#comment-content').val('');
+               }
+            });
       });
    }
 </script>

@@ -31,6 +31,8 @@
                                 name="password"
                                 required autocomplete="current-password" />
             </div>
+            <!-- Referer -->
+            <input type="hidden" name="referer" value="{{$referer}}">
 
             <!-- Remember Me -->
             <div class="block mt-4">
@@ -39,6 +41,7 @@
                     <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
                 </label>
             </div>
+            
 
             <div class="flex items-center justify-end mt-4">
                 @if (Route::has('password.request'))
