@@ -17,6 +17,22 @@ use App\Http\Controllers\Clients\HomeController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/handleIndex', [HomeController::class, 'handleIndex'])->name('handleIndex');
 
+
+
+Route::get('/all-motels', [HomeController::class, 'all_motels'])->name('all_motels');
+Route::get('/handleAllMotels', [HomeController::class, 'handleAllMotels'])->name('handleAllMotels');
+Route::get('/details-motel/{id}', [HomeController::class, 'detailsMotel'])->name('details_motel');
+Route::get('/handleDetailsMotel/{id}', [HomeController::class, 'handleDetailsMotel'])->name('handleDetailsMotel');
+
+
+
+Route::get('/all-posts', [HomeController::class, 'all_posts'])->name('all_posts');
+Route::get('/handleAllPosts', [HomeController::class, 'handleAllPosts'])->name('handleAllPosts');
+Route::get('/details-post/{id}', [HomeController::class, 'detailsPost'])->name('details_post');
+Route::get('/handleDetailsPost/{id}', [HomeController::class, 'handleDetailsPost'])->name('handleDetailsPost');
+
+
+
 Route::get('/category', [HomeController::class, 'category'])->name('category');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/latest_news', [HomeController::class, 'latest_news'])->name('latest_news');
@@ -25,9 +41,6 @@ Route::get('/element', [HomeController::class, 'element'])->name('element');
 Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
 Route::get('/blog_details', [HomeController::class, 'blog_details'])->name('blog_details');
 
-Route::get('/details/{id}', [HomeController::class, 'details'])->name('details');
-// Route::get('/details', [HomeController::class, 'details'])->name('details');
-Route::get('/handleDetails/{id}', [HomeController::class, 'handleDetails'])->name('handleDetails');
 
 Route::get('/handleReplyComment' , [HomeController::class, 'handleReplyComment'])->name('handleReplyComment');
 Route::get('/handleComment' , [HomeController::class, 'handleComment'])->name('handleComment');
@@ -96,6 +109,12 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function() {
         Route::get('/posts/getAllNameCategory', 'PostsController@getAllNameCategory');
         // add new post
         Route::post('/posts/create', 'PostsController@create');
+
+        //-------------------------------------------Host----------------------------------------------------
+        // show view host
+        Route::get('/hosts/listHosts', 'HostsController@index');
+        // get all host with datatable(chủ nhà)
+        Route::get('/hosts/getHost', 'HomeController@anyData');
     });
     
     Route::post('logout', 'Auth\AuthenticatedSessionController@destroy')->name('logout');
