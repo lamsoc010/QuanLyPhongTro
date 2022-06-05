@@ -589,10 +589,11 @@
             html += `
                     <!-- trendding-item -->
                     <div class="media post_item">
-                        <img src="{{asset('assets/img/motels/${item.image}')}}" alt="post" style="height: 80px; width: 80px">
+                        <img src="{{asset('assets/img/motels/${item.image}')}}" alt="post" style="height: 100px; width: 100px">
                         <div class="media-body ml-3 mr-2">
                             <a href="/details/${item.id}"><h6>${item.name}</h6></a>
-                            <span>${item.address}</span>
+                            <span>Địa chỉ: ${item.address}</span> <br/>
+                            <span>Lượt xem: ${item.views}</span>
                             <div class="d-flex justify-content-between align-items-center">
                                 <p class="text-success font-weight-bold">${formatPrice(item.min_price)}/tháng</p>
                                 ${time_diff}

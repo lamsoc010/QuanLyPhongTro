@@ -29,6 +29,9 @@ Route::get('/details/{id}', [HomeController::class, 'details'])->name('details')
 // Route::get('/details', [HomeController::class, 'details'])->name('details');
 Route::get('/handleDetails/{id}', [HomeController::class, 'handleDetails'])->name('handleDetails');
 
+Route::get('/handleReplyComment' , [HomeController::class, 'handleReplyComment'])->name('handleReplyComment');
+Route::get('/handleComment' , [HomeController::class, 'handleComment'])->name('handleComment');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');

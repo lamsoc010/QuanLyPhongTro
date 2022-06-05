@@ -119,7 +119,13 @@
                                             <li><a><i class="fas fa-home mr-1"></i> Quản lý dãy trọ</a></li>
                                             <li><a><i class="fas fa-newspaper mr-1"></i> Quản lý bài đăng</a></li>
                                             <li><a><i class="fas fa-key mr-1"></i> Đổi mật khẩu</a></li>
-                                            <li><a><i class="fas fa-sign-out-alt mr-1"></i> Đăng xuất</a></li>
+                                            <li>
+                                                <form method="POST" action="{{route('logout')}}">
+                                                    @csrf
+                                                    @method('POST')
+                                                    <a onclick="event.preventDefault(); this.closest('form').submit();"><i class="fas fa-sign-out-alt mr-1"></i> Đăng xuất</a>
+                                                </form>
+                                            </li>
                                         </div>
 
                                     </ul>

@@ -76,8 +76,7 @@ class HomeController extends Controller
     }
     public function details(Request $request) {
         return view('clients.details');
-        // return redirect()->route('details');
-        // Đang bị lỗi chưa xử lý đƯợc phần detail chi tiếT theo id
+        
     }
     public function handleDetails(Request $request) {
         // dd($request->id);
@@ -86,7 +85,11 @@ class HomeController extends Controller
         ->where('motels.id', '=', $request->id)
         ->select('motels.*', 'users.name as nameUser', 'users.phone', 'users.image as imageUser')
         ->first();
-        // dd($motel);
+
+        // Cập nhập thằng views
+        DB::table('motels')
+        ->where('id', $request->id)
+        ->update(['views' => $motel->views + 1]);
 
         // Ảnh của dãy trọ
         $image_motels = DB::table('image_motels')
@@ -97,8 +100,8 @@ class HomeController extends Controller
 
         // Danh sách dãy trọ nổi bật
         $listMotelsMost = DB::table('motels')
-        ->orderBy('motels.views')
         ->select('motels.*')
+        ->orderBy('views', 'desc')
         ->limit(6)
         ->get();
         // dd($listMotelsMost);
@@ -108,7 +111,7 @@ class HomeController extends Controller
         ->join('users', 'posts.idUser', '=', 'users.id')
         ->select('posts.*', 'users.name', 'views')
         ->where('status', '=', '1')
-        ->orderBy('views')
+        ->orderBy('views', 'desc')
         ->limit(6)
         ->get();
         // dd($listPostsMost);
@@ -116,17 +119,84 @@ class HomeController extends Controller
         // Danh sách comment
         $listComments = DB::table('comment_motels')
         ->join('users', 'comment_motels.idUser', '=', 'users.id')
-        ->select('comment_motels.*', 'users.name', 'users.image' )
+        ->select('comment_motels.*','users.id as idUser', 'users.name', 'users.image' )
         ->where('idMotels', '=', $motel->id)
         ->limit(4)
         ->get();
         // dd($listComments);
+
+        $listReplyComments = DB::table('reply_comment_motels')
+        ->join('users', 'reply_comment_motels.idUser', '=', 'users.id')
+        ->select('reply_comment_motels.*', 'users.name', 'users.image' )
+        ->get();
+
+        // dd($listReplyComments);
+
         return response()->json([
             'motel' => $motel,
             'image_motels' => $image_motels,
             'listMotelsMost' => $listMotelsMost,
             'listPostsMost' => $listPostsMost,
-            'listComments' => $listComments
+            'listComments' => $listComments,
+            'listReplyComments' => $listReplyComments
+        ]);
+    }
+
+    public function handleReplyComment(Request $request) {
+        // insert data in database
+        $replyComment = [
+            'contents' => $request->contents,
+            'idCommentMotels' => $request->idCommentMotels,
+            'idUser' => $request->idUser,
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
+        ];
+        DB::table('reply_comment_motels')->insert($replyComment);
+        
+        $listReplyComments = DB::table('reply_comment_motels')
+        ->get();
+        
+        return response()->json([
+            'replyComment' => $replyComment,
+            'listReplyComments' => $listReplyComments
+        ]);
+    }
+
+    public function handleComment(Request $request) {
+// Xử lý handle comment và check auth xem nếU chưa đăng nhậP thì hiển thị đăng nhập để bình luận
+        // dd($request->all());
+        // dd((new DateTime())->format('Y-m-d H:i:s'));
+        $comment = [
+            'contents' => $request->contents,
+            'idMotels' => $request->idMotels,
+            'idUser' => $request->idUser,
+            // 'created_at' => (new DateTime())->format('Y-m-d H:i:s'),
+            // 'updated_at' => (new DateTime())->format('Y-m-d H:i:s')
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
+        ];
+        DB::table('comment_motels')->insert($comment);
+        // $itemComment = [
+        //     'contents' => $request->contents,
+        //     'idMotels' => $request->idMotels,
+        //     'idUser' => $request->idUser,
+        //     'name' => DB::table('users')->where('id', $request->idUser)->first()->name,
+        //     'image' => DB::table('users')->where('id', $request->idUser)->first()->image,
+        //     'created_at' => date('Y-m-d H:i:s'),
+        //     'updated_at' => date('Y-m-d H:i:s')
+        // ];
+        $itemComment = DB::table('comment_motels')
+        ->join('users', 'comment_motels.idUser', '=', 'users.id')
+        ->select('comment_motels.*','users.id as idUser', 'users.name', 'users.image' )
+        ->orderBy('comment_motels.id', 'desc')
+        ->first();
+        // dd($itemComment);
+        
+        $listReplyComments = [];
+
+        return response()->json([
+            'itemComment' => $itemComment,
+            'listReplyComments' => $listReplyComments
         ]);
     }
         

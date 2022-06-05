@@ -15,9 +15,12 @@ class AuthenticatedSessionController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('auth.login');
+        // get HTTP_referer
+        $referer = $request->headers->get('referer');
+        // dd($referer);
+        return view('auth.login', compact('referer'));
     }
 
     /**
@@ -28,11 +31,14 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request)
     {
+        // get HTTP_referer
+        $referer = $request->all()['referer'];
+        // dd();
         $request->authenticate();
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        return redirect($referer);
     }
 
     /**
@@ -43,12 +49,15 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request)
     {
+        // get HTTP_referer
+        $referer = $request->headers->get('referer');
+        // dd($referer);
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect($referer);
     }
 }
