@@ -78,7 +78,7 @@
       padding: 0.4rem !important;
    }
 
-   .comment-block .reply-btn {
+    .reply-btn {
       border: none;
       outline: none;
       padding: 6px 16px;
@@ -752,7 +752,7 @@
    function showBoxReplyComment(idItemComment) {
       $(document).ready(function() {
          $(`.comment-reply-block-${idItemComment}`).addClass('d-flex');
-         var a = $(`.comment-reply-content`);
+         var a = $(`#comment-reply-content-${idItemComment}`);
          setEndOfContenteditable(a)
       });
    }
