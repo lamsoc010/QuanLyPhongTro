@@ -41,6 +41,7 @@ Route::get('/details-motel/{id}', [MotelController::class, 'detailsMotel'])->nam
 Route::get('/handleDetailsMotel/{id}', [MotelController::class, 'handleDetailsMotel'])->name('handleDetailsMotel');
 Route::get('/handleReplyCommentMotels' , [MotelController::class, 'handleReplyComment'])->name('handleReplyComment');
 Route::get('/handleCommentMotels' , [MotelController::class, 'handleComment'])->name('handleComment');
+Route::get('/loadMoreCommentMotels' , [MotelController::class, 'loadMoreComment'])->name('loadMoreComment');
 
 
 
