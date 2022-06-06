@@ -138,6 +138,8 @@ div.dataTables_wrapper div.dataTables_filter label {
                             
                             <span class="form-message"></span>
                         </div>
+                           
+                        {{-- submit --}}
                           <div class="modal-footer justify-content-between">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Thoát</button>
                             <button  class=" form-submit btn btn-primary" >Lưu</button>
