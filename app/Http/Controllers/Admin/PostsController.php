@@ -85,24 +85,29 @@ class PostsController extends Controller
             $views = $request->views;
             //  $file = $request->file->store('public/uploads');
 
-            $path = 'files/';
-            $file = $request->file('file');
-            //  set name file with time
-            $file_name = time().'_'.$file->getClientOriginalName();
-            // $upload = $file->storeAs('public/uploads', $file_name);
-            $upload = $file->storeAs($path, $file_name, 'public');
+            // $path = 'files/';
+            // $file = $request->file('file');
+            // //  set name file with time
+            // $file_name = time().'_'.$file->getClientOriginalName();
+            // // $upload = $file->storeAs('public/uploads', $file_name);
+            // $upload = $file->storeAs($path, $file_name, 'public');
+
+            $imagePath = $request->file('file');
+            $imageName = time().'_'.$imagePath->getClientOriginalName();
+            
+            $upload = $request->file('file')->storeAs('file', $imageName, 'public');
 
             if($upload){
                 // insert data
-                DB::table('posts')->insertGetId([
-                    'title' => $title,
-                    'content' => $content,
-                    'idCategory' => $category,
-                    'idUser' => $idHost,
-                    'status' => $status,
-                    'views' => $views,
-                    'image' => $file_name,
-                ]);
+                // DB::table('posts')->insertGetId([
+                //     'title' => $title,
+                //     'content' => $content,
+                //     'idCategory' => $category,
+                //     'idUser' => $idHost,
+                //     'status' => $status,
+                //     'views' => $views,
+                //     'image' => $file_name,
+                // ]);
                 
                 return response()->json(['code'=> 1 ,'message'=>$upload]);
             }

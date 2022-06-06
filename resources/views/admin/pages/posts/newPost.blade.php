@@ -112,41 +112,9 @@
 <script src="{{asset('AdminPTH/plugins/codemirror/mode/htmlmixed/htmlmixed.js')}}"></script>
 <!-- Message -->
 <script src="{{asset('AdminPTH/plugins/sweetalert2/sweetalert2.min.js')}}"></script>
-<!-- Page specific script -->
+{{-- upload image --}}
+<script src="{{asset('js/uploadFile.js')}}"></script>
 {{-- <script>
-  $.ajaxSetup({
-      headers: {
-          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-      }
-  });
-
- $('#upload-image-form').submit(function(e) {
-     e.preventDefault();
-     let formData = new FormData(this);
-     console.log("this", this)
-     $('#image-input-error').text('');
-
-     $.ajax({
-        type:'POST',
-        url: "{{asset('admin/posts/create')}}",
-         data: formData,
-         contentType: false,
-         processData: false,
-         success: (response) => {
-           if (response) {
-             this.reset();
-             alert('Image has been uploaded successfully');
-           }
-         },
-         error: function(response){
-            console.log(response);
-              $('#image-input-error').text(response.responseJSON.errors.file);
-         }
-     });
-});
-
-</script> --}}
-<script>
   $(function () {
 
 
@@ -190,10 +158,10 @@ function readAndPreview(file) {
 
 }
   document.querySelector('#file-input').addEventListener("change", previewImages);
-</script>
+</script> --}}
 
 <script>
-    var idHost = {{$id}};
+  var idHost = {{$id}};
   $(document).ready(function(){
     // get id form host to newpost
   

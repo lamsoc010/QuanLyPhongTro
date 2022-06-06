@@ -56,6 +56,7 @@ div.dataTables_wrapper div.dataTables_filter label {
                         <thead>
                             <th> Id</th>
                             <th> STT</th>
+                            <th> Hình ảnh</th>
                             <th> Họ & tên</th>
                             <th> Email </th>
                             <th> Số điện thoại</th>
@@ -90,7 +91,8 @@ div.dataTables_wrapper div.dataTables_filter label {
                 </button>
             </div>
             <div class="modal-body">
-                <form action=""  id="create-user">
+                <form action=""  method="post" id="create-user" enctype="multipart/form-data">
+                    @csrf
                     <div class=" card-body">
                         <div class="row">
                             <div class="col-md-6">
@@ -139,7 +141,24 @@ div.dataTables_wrapper div.dataTables_filter label {
                             
                             <span class="form-message"></span>
                         </div>
-                          <div class="modal-footer justify-content-between">
+                         {{-- choose file --}}
+                         <div class="input-group mb-3">
+                            {{-- <div class="input-group-prepend">
+                                <span class="input-group-text">Upload</span>
+                            </div>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="file-input" multiple>
+                                <label class="custom-file-label" for="file-input">Chọn ảnh</label>
+                            </div> --}}
+                            
+                              
+                            <input id="file-input" type="file" name="file" class="form-control"  multiple>
+                            <label class="input-group-text" for="file-input">Chọn ảnh</label>
+                            <span class="text-danger" id="image-input-error"></span>
+                            <div id="preview"></div>
+                        </div>
+                        {{-- <div id="preview"></div> --}}
+                        <div class="modal-footer justify-content-between">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Thoát</button>
                             <button  class=" form-submit btn btn-primary" >Lưu</button>
                         </div>
@@ -278,7 +297,7 @@ div.dataTables_wrapper div.dataTables_filter label {
                             
                             <span class="form-message"></span>
                         </div>
-                    
+                       
                     </div>
                 </form>
                 <div class="modal-footer justify-content-between">
@@ -314,6 +333,8 @@ div.dataTables_wrapper div.dataTables_filter label {
 <!-- SweetAlert2 -->
 <script src="{{asset('AdminPTH/plugins/sweetalert2/sweetalert2.min.js')}}"></script>
 
+{{-- upload image --}}
+<script src="{{asset('js/uploadFile.js')}}"></script>
 
 <script src="{{asset('AdminPTH/plugins/jquery-validation/jquery.validate.min.js')}}"></script>
   <script src="{{asset('AdminPTH/plugins/jquery-validation/additional-methods.min.js')}}"></script>
@@ -356,6 +377,13 @@ div.dataTables_wrapper div.dataTables_filter label {
             columns: [
             { "data": "id", "name": "id"  },
             { "data": null},
+            {
+                "render": function(data, type, full, meta) {
+                    console.log(full)
+                    var image = '{{asset("storage/files/")}}'+'/'+full.image;
+                     return `<img src="${image}" width="50" height="50">`;
+                }
+            },
             { "data": "name", "name": "name" },
             { "data": "email", "name": "email"  },
             { "data": "phone","name": "phone" },
