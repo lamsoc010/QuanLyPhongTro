@@ -90,7 +90,7 @@ class PostsController extends Controller
             //  set name file with time
             $file_name = time().'_'.$file->getClientOriginalName();
             // $upload = $file->storeAs('public/uploads', $file_name);
-            $upload = $file->storeAs($path, $file_name, 'public');
+            $upload = $file->move(public_path('assets/img/posts'), $file_name);
 
             if($upload){
                 // insert data
