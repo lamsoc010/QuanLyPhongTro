@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class MotelController extends Controller
 {
@@ -101,6 +102,7 @@ class MotelController extends Controller
         ->select('comment_motels.*','users.id as idUser', 'users.name', 'users.image' )
         ->where('idMotels', '=', $motel->id)
         ->orderBy('comment_motels.created_at', 'desc')
+        ->limit(5)
         ->get();
         // dd($listComments);
 
@@ -127,8 +129,8 @@ class MotelController extends Controller
             'contents' => $request->contents,
             'idCommentMotels' => $request->idCommentMotels,
             'idUser' => $request->idUser,
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
+            'created_at' => Carbon::now('Asia/Ho_Chi_Minh'),
+            'updated_at' => Carbon::now('Asia/Ho_Chi_Minh')
         ];
         DB::table('reply_comment_motels')->insert($replyComment);
         
@@ -149,8 +151,8 @@ class MotelController extends Controller
             'contents' => $request->contents,
             'idMotels' => $request->idMotels,
             'idUser' => $request->idUser,
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
+            'created_at' => Carbon::now('Asia/Ho_Chi_Minh'),
+            'updated_at' => Carbon::now('Asia/Ho_Chi_Minh')
         ];
         DB::table('comment_motels')->insert($comment);
 
@@ -173,4 +175,21 @@ class MotelController extends Controller
             'countListComment' => $countListComment
         ]);
     }
+    public function loadMoreComment(Request $request) {
+        $listComments = DB::table('comment_motels')
+        ->join('users', 'comment_motels.idUser', '=', 'users.id')
+        ->select('comment_motels.*','users.id as idUser', 'users.name', 'users.image' )
+        ->where('idMotels', '=', $request->id)
+        ->orderBy('comment_motels.created_at', 'desc')
+        ->skip(5)
+        ->take(5)
+        ->get();
+        // dd($listComments);
+        $listReplyComments = [];
+        return response()->json([
+            'listComments' => $listComments,
+            'listReplyComments' => $listReplyComments
+        ]);
+    }
 }
+
