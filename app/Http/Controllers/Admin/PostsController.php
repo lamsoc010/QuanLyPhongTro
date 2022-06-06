@@ -118,5 +118,5 @@ class PostsController extends Controller
                 ]);
             // }
         }
-    }   
+    } 
 }
