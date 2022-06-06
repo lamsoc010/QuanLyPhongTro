@@ -59,15 +59,15 @@ class PostsController extends Controller
             'title' => 'required',
             'category' => 'required',
             'content' => 'required',
-            'file' => 'required|image|mimes:jpeg,png,jpg,gif,svg,jfif|max:2048',
+            // 'file' => 'required|image',
         ],[
             'title.required' => 'Vui lòng nhập tiêu đề',
             'category.required' => 'Vui lòng chọn danh mục',
             'content.required' => 'Vui lòng nhập nội dung',
-            'file.required' => 'Vui lòng chọn ảnh',
-            'file.image' => 'Vui lòng chọn file ảnh',
-            'file.mimes' => 'Vui lòng chọn file ảnh',
-            'file.max' => 'Vui lòng chọn file ảnh',
+            // 'file.required' => 'Vui lòng chọn ảnh',
+            // 'file.image' => 'Vui lòng chọn file ảnh',
+            // 'file.mimes' => 'Vui lòng chọn file ảnh',
+            // 'file.max' => 'Vui lòng chọn file ảnh',
         
         ]);
 
@@ -85,19 +85,21 @@ class PostsController extends Controller
             $views = $request->views;
             //  $file = $request->file->store('public/uploads');
 
-            // $path = 'files/';
-            // $file = $request->file('file');
-            // //  set name file with time
-            // $file_name = time().'_'.$file->getClientOriginalName();
-            // // $upload = $file->storeAs('public/uploads', $file_name);
-            // $upload = $file->storeAs($path, $file_name, 'public');
+            $path = 'files/';
+            $file = $request->file('file');
+            // dd($file);
+            // console.log($file);
+            //  set name file with time
+            $listFileName = [];
+            // $upload = '';
+            foreach($file as $item) {
+                $file_name = time().'_'.$item->getClientOriginalName();
+                // $upload = $file->storeAs('public/uploads', $file_name);
+                $item->move(public_path('assets/img/posts'), $file_name);
+                $listFileName[] = $file_name;
+            }
 
-            $imagePath = $request->file('file');
-            $imageName = time().'_'.$imagePath->getClientOriginalName();
-            
-            $upload = $request->file('file')->storeAs('file', $imageName, 'public');
-
-            if($upload){
+            // if($upload){
                 // insert data
                 // DB::table('posts')->insertGetId([
                 //     'title' => $title,
@@ -109,8 +111,12 @@ class PostsController extends Controller
                 //     'image' => $file_name,
                 // ]);
                 
-                return response()->json(['code'=> 1 ,'message'=>$upload]);
-            }
+                return response()->json([
+                    'code'=> 1 ,
+                    // 'message'=>$upload,
+                    'file' => $listFileName
+                ]);
+            // }
         }
-    }   
+    } 
 }
