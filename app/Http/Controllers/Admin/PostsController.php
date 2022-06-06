@@ -59,15 +59,15 @@ class PostsController extends Controller
             'title' => 'required',
             'category' => 'required',
             'content' => 'required',
-            'file' => 'required|image|mimes:jpeg,png,jpg,gif,svg,jfif|max:2048',
+            // 'file' => 'required|image',
         ],[
             'title.required' => 'Vui lòng nhập tiêu đề',
             'category.required' => 'Vui lòng chọn danh mục',
             'content.required' => 'Vui lòng nhập nội dung',
-            'file.required' => 'Vui lòng chọn ảnh',
-            'file.image' => 'Vui lòng chọn file ảnh',
-            'file.mimes' => 'Vui lòng chọn file ảnh',
-            'file.max' => 'Vui lòng chọn file ảnh',
+            // 'file.required' => 'Vui lòng chọn ảnh',
+            // 'file.image' => 'Vui lòng chọn file ảnh',
+            // 'file.mimes' => 'Vui lòng chọn file ảnh',
+            // 'file.max' => 'Vui lòng chọn file ảnh',
         
         ]);
 
@@ -87,25 +87,36 @@ class PostsController extends Controller
 
             $path = 'files/';
             $file = $request->file('file');
+            // dd($file);
+            // console.log($file);
             //  set name file with time
-            $file_name = time().'_'.$file->getClientOriginalName();
-            // $upload = $file->storeAs('public/uploads', $file_name);
-            $upload = $file->move(public_path('assets/img/posts'), $file_name);
-
-            if($upload){
-                // insert data
-                DB::table('posts')->insertGetId([
-                    'title' => $title,
-                    'content' => $content,
-                    'idCategory' => $category,
-                    'idUser' => $idHost,
-                    'status' => $status,
-                    'views' => $views,
-                    'image' => $file_name,
-                ]);
-                
-                return response()->json(['code'=> 1 ,'message'=>$upload]);
+            $listFileName = [];
+            // $upload = '';
+            foreach($file as $item) {
+                $file_name = time().'_'.$item->getClientOriginalName();
+                // $upload = $file->storeAs('public/uploads', $file_name);
+                $item->move(public_path('assets/img/posts'), $file_name);
+                $listFileName[] = $file_name;
             }
+
+            // if($upload){
+                // insert data
+                // DB::table('posts')->insertGetId([
+                //     'title' => $title,
+                //     'content' => $content,
+                //     'idCategory' => $category,
+                //     'idUser' => $idHost,
+                //     'status' => $status,
+                //     'views' => $views,
+                //     'image' => $file_name,
+                // ]);
+                
+                return response()->json([
+                    'code'=> 1 ,
+                    // 'message'=>$upload,
+                    'file' => $listFileName
+                ]);
+            // }
         }
     }   
 }

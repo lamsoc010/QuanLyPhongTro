@@ -75,7 +75,7 @@
               <div class="chooseFile">
                 {{-- <input type="file" class="custom-file-input" id="exampleInputFile">
                           <label class="custom-file-label" for="exampleInputFile">Choose file</label> --}}
-                <input id="file-input" type="file" name="file" class="custom-file-input" multiple>
+                <input id="file-input" type="file" name="file[]" class="custom-file-input" multiple>
                 <label class="custom-file-label" for="file-input">Chọn ảnh</label>
                 <span class="text-danger" id="image-input-error"></span>
                 <div id="preview"></div>
