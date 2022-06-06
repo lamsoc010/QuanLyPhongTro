@@ -98,7 +98,7 @@
                           </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/admin/posts/newPost" class="nav-link">
+                            <a href="/admin/posts/newPost" class="nav-link disabled text-muted" >
                               <i class="fas fa-user-edit mr-2"></i>
                               <p>Đăng bài</p>
                             </a>

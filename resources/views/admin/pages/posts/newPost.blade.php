@@ -148,6 +148,8 @@
 </script> --}}
 <script>
   $(function () {
+
+
     // Summernote
     $('#summernote').summernote()
     // $('#summernote1').summernote()
@@ -191,7 +193,11 @@ function readAndPreview(file) {
 </script>
 
 <script>
+    var idHost = {{$id}};
   $(document).ready(function(){
+    // get id form host to newpost
+  
+
     // set data to tagName: select -> option
     $.ajax({
       type: "GET",
@@ -225,6 +231,11 @@ function readAndPreview(file) {
   $('#upload-image-form').submit(function(e) {
     e.preventDefault();
     var formData = new FormData(this);
+    formData.append('idHost', idHost);
+    // ban đầu băng bài cho nó hiện thị -- status =1
+    formData.append('status', 1);
+    // ban đầu lượt xem bằng 0
+    formData.append('views', 0);
     //$('#image-input-error').text('');
 
     $.ajax({

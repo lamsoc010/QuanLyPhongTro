@@ -19,11 +19,11 @@ class HomeController extends Controller
         return view('admin.pages.users.listUser');
     }
     
-    public function post() {
-        // $data['title'] = "hahahahahahh";
-        // return view('pages/index', compact('data'));
-        return view('admin.pages.posts.newPost');
-    }
+    // public function post() {
+    //     // $data['title'] = "hahahahahahh";
+    //     // return view('pages/index', compact('data'));
+    //     return view('admin.pages.posts.newPost');
+    // }
     public function anyData(Request $request)
     {
         // return Datatables::of(User::query())->make(true);

@@ -608,7 +608,7 @@
          @auth
          <div>
             <!-- comment reply -->
-               <div class="comment-reply-block mt-3 d-flex">
+               <div class="comment-reply-block my-3 d-flex">
                   <div class="user-reply-thumb">
                      @auth
                      <img src="{{asset('assets/img/users/'.Auth::user()->image)}}" alt="" style="height: 70px; width:70px">
@@ -649,7 +649,7 @@
       };
       html += `
          <!-- Cắt từ đây Lãm  -->
-         <div class="comment-list">
+         <div class="comment-list pb-3">
             <div class="single-comment d-flex">
                <div class="thumb">
                   ${image_avatar}
@@ -695,7 +695,7 @@
                         </div>
                      </div>
                   </div>
-                  <div id="showShowHideBlockReplyComment-${itemComment.id}">
+                  <div id="showShowHideBlockReplyComment-${itemComment.id}" class="mt-2">
                      ${showShowHideBlockReplyComment(itemComment.id, listReplyComments)}
                   </div>
                   <div id="block-reply-${itemComment.id}" style="display: none">
@@ -826,7 +826,7 @@
          return html;
       } else {
          html += `
-            <a id="showHideBlockReplyComments-${idItemComment}" 
+            <a id="showHideBlockReplyComments-${idItemComment} " 
             onclick="showHideBlockReplyComments(${idItemComment}, ${count})" 
             style="cursor:pointer; padding-left: 4px">
                Xem ${count} câu trả lời 
@@ -851,7 +851,7 @@
    function showBoxReplyComment(idItemComment) {
       $(document).ready(function() {
          $(`.comment-reply-block-${idItemComment}`).addClass('d-flex');
-         var a = $(`.comment-reply-content`);
+         var a = $(`#comment-reply-content-${idItemComment}`);
          setEndOfContenteditable(a)
       });
    }

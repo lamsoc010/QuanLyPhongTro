@@ -31,8 +31,9 @@ div.dataTables_wrapper div.dataTables_filter label {
 @endsection
 @extends('admin.layouts.layout')
 @section('content')
-
+<div class="content-wrapper">
 <section class="content px-4">
+    <h2>Danh sách người dùng</h2>
 <div class="create-new-user d-flex align-items-end flex-column  pb-1 pt-1">
     <!--<button type="button" class="btn btn-primary " data-toggle="modal"
     data-target="#modal-create" >
@@ -42,10 +43,10 @@ div.dataTables_wrapper div.dataTables_filter label {
     <div id="ShowModal"></div>
     <button type="button" class="btn btn-primary" data-toggle="modal"
             data-target="#modal-create">
-        Thêm người dùng
+            <i class="fas fa-plus mr-2"></i>  Thêm người dùng
     </button>
 </div>
-<div class="content-wrapper">
+{{-- <div class="content-wrapper"> --}}
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -60,7 +61,7 @@ div.dataTables_wrapper div.dataTables_filter label {
                             <th> Số điện thoại</th>
                             <th> Địa chỉ</th>
                             <th> Chi tiết</th>
-                            <th>Sửa</th>
+                            {{-- <th>Sửa</th> --}}
                             </tr>
                         </thead>
                     </table>
@@ -71,7 +72,9 @@ div.dataTables_wrapper div.dataTables_filter label {
         </div>
         <!-- /.container-fluid -->
     </div>
+{{-- </div> --}}
 </div>
+</section>
 </div>
 
 
@@ -91,21 +94,27 @@ div.dataTables_wrapper div.dataTables_filter label {
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="name">Họ & tên</label>
+                                    <label for="name">Họ & tên</label><span class="text-danger">*</span>
                                     <input id="name" type="text" class="form-control" name="name" placeholder="Enter name">
                                     
                                     <span class="form-message"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="email">Địa chỉ Email</label>
+                                    <label for="email">Địa chỉ Email</label><span class="text-danger">*</span>
                                     <input id="email" type="email" class="form-control" name="email" placeholder="Enter email">
+                                    <span class="form-message"></span>
+                                    <span id="message" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Mật khẩu</label><span class="text-danger">*</span>
+                                    <input id="password" type="password" class="form-control" name="password" placeholder="Enter email">
                                     <span class="form-message"></span>
                                     <span id="message" class="text-danger"></span>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="phone">Số điện thoại</label>
+                                    <label for="phone">Số điện thoại</label><span class="text-danger">*</span>
                                     <input id="phone" type="text" class="form-control" name="phone" placeholder="Enter Phone">                                    
                                     <span class="form-message"></span>
 
@@ -114,6 +123,12 @@ div.dataTables_wrapper div.dataTables_filter label {
                                     <label for="birthday">Ngày sinh</label>
                                     <input id="birthday"  type="date" value="2022-05-25" name="birthday" class="form-control" placeholder="Enter Birthday">                                 
                                     <span class="form-message"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password_confirm"> Nhập lại mật khẩu</label><span class="text-danger">*</span>
+                                    <input id="password_confirm" type="password" class="form-control" name="password_confirm" placeholder="Enter email">
+                                    <span class="form-message"></span>
+                                    <span id="message" class="text-danger"></span>
                                 </div>
                             </div>
                         </div>
@@ -259,8 +274,6 @@ div.dataTables_wrapper div.dataTables_filter label {
                         <div class="form-group">
                             <label for="ed-address">Địa chỉ </label>
                             <input id="ed-address" type="text" class="form-control" name="address" placeholder="Enter Address">
-                            
-                            <span class="form-message"></span>
                         </div>
                     
                     </div>
@@ -331,6 +344,11 @@ div.dataTables_wrapper div.dataTables_filter label {
                 orderable: false,
                 targets: 1,
                 },
+                {
+                width: "15%",
+                targets: 6 
+                },
+
 
         ],
             columns: [
@@ -340,19 +358,29 @@ div.dataTables_wrapper div.dataTables_filter label {
             { "data": "email", "name": "email"  },
             { "data": "phone","name": "phone" },
             { "data": "address", "name": "address"  },
+            // {
+            //     "render": function(data, type, full, meta) {
+            //         var myUrl = '{{asset('admin/users/details')}}/'+full.id;
+            //         return `<button type="button" class="btn btn-primary" data-toggle="modal" onclick=Details("${myUrl}")  data-target="#modal-details" >Chi tiết </button>`;
+            //     }
+            // },
+            // {
+            //     data: null,
+            //     render: function(data, type, row) {
+            //         var myUrl = '{{asset('admin/users/edit')}}/'+row.id;
+            //         return `<button type="button" class="btn btn-primary" onclick=Edit("${myUrl}")  data-toggle="modal" data-target="#modal-edit">Sửa </button>`;
+            //     }
+            // },
             {
                 "render": function(data, type, full, meta) {
                     var myUrl = '{{asset('admin/users/details')}}/'+full.id;
-                    return `<button type="button" class="btn btn-primary" data-toggle="modal" onclick=Details("${myUrl}")  data-target="#modal-details" >Chi tiết </button>`;
+                    var myUrlEdit = '{{asset('admin/users/edit')}}/'+full.id;
+                    return (
+                            `<button type="button" class="btn btn-outline-success mx-3" data-toggle="modal" onclick=Details("${myUrl}")  data-target="#modal-details" ><i class="fas fa-eye"></i> </button>
+                            <button type="button" class="btn btn-outline-warning mr-3" onclick=Edit("${myUrlEdit}")  data-toggle="modal" data-target="#modal-edit"><i class="fas fa-pen"></i> </button>`
+                        );
                 }
-            },
-            {
-                data: null,
-                render: function(data, type, row) {
-                    var myUrl = '{{asset('admin/users/edit')}}/'+row.id;
-                    return `<button type="button" class="btn btn-primary" onclick=Edit("${myUrl}")  data-toggle="modal" data-target="#modal-edit">Sửa </button>`;
-                }
-            },
+            }
             ],
         });
         table.on( 'order.dt search.dt', function () {
@@ -380,8 +408,9 @@ div.dataTables_wrapper div.dataTables_filter label {
                     phone: form.phone.value,
                     address: form.address.value,
                     birthday: form.birthday.value,
-                    password: Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 7),
-                    role: '1',
+                  //  password: Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 7),
+                    password: form.password.value,
+                    role: 'user',
                     _token: '{{csrf_token()}}'
                 },
                 success: function (data) {
@@ -405,37 +434,46 @@ div.dataTables_wrapper div.dataTables_filter label {
       });
       $('#create-user').validate({
         rules: {
-          name: {
-            required: true,
-          },
-          email: {
-            required: true,
-            email: true,
-          },
-          phone: {
-            required: true,
-            phoneUK: true,
-           
-          },
-          address: {
-            required: true,
-          },
+            name: {
+                required: true,
+            },
+            email: {
+                required: true,
+                email: true,
+            },
+            phone: {
+                required: true,
+                phoneUK: true,
+            
+            },
+            password : {
+                required: true,
+                minlength : 8
+                },
+                password_confirm : {
+                    minlength : 8,
+                    equalTo : '[name="password"]'
+            }
         },
         messages: {
-          email: {
-            required: "Vui lòng nhập địa chỉ email",
-            email: "Trường này là email"
-          },
-          name: {
-            required: "Vui lòng nhập Họ $ tên",
-          },
-          phone: {
-            required: "Vui lòng nhập số điện thoại",
-            phoneUS: "Trường này là số điện thoại"
-          },
-          address: {
-            required: "Vui lòng nhập địa chỉ",
-          },
+            email: {
+                required: "Vui lòng nhập địa chỉ email",
+                email: "Trường này là email"
+            },
+                name: {
+                required: "Vui lòng nhập Họ $ tên",
+            },
+            phone: {
+                required: "Vui lòng nhập số điện thoại",
+                phoneUS: "Trường này là số điện thoại"
+            },
+            password: {
+                required: "Vui lòng nhâp mật khẩu",
+                minlength: "Độ dài tối thiểu 8 ký tự"
+            },
+            confirmpassword: {
+                equalTo: "Mật khẩu không trùng khớp",
+            }
         },
         errorElement: 'span',
         errorPlacement: function (error, element) {
