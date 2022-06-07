@@ -142,21 +142,15 @@ div.dataTables_wrapper div.dataTables_filter label {
                             <span class="form-message"></span>
                         </div>
                          {{-- choose file --}}
-                         <div class="input-group mb-3">
-                            {{-- <div class="input-group-prepend">
-                                <span class="input-group-text">Upload</span>
-                            </div>
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="file-input" multiple>
-                                <label class="custom-file-label" for="file-input">Chọn ảnh</label>
-                            </div> --}}
-                            
-                              
+                         <span class="form-message"></span>
+                        </div>
+                         {{-- choose file --}}
+                         {{-- <div class="input-group mb-3">
                             <input id="file-input" type="file" name="file" class="form-control"  multiple>
                             <label class="input-group-text" for="file-input">Chọn ảnh</label>
                             <span class="text-danger" id="image-input-error"></span>
                             <div id="preview"></div>
-                        </div>
+                        </div> --}}
                         {{-- <div id="preview"></div> --}}
                         <div class="modal-footer justify-content-between">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Thoát</button>
@@ -173,6 +167,91 @@ div.dataTables_wrapper div.dataTables_filter label {
     <!-- /.modal-dialog -->
 </div>
 <!-- /Modal create-->
+
+<!-- Modal create motels-->
+<div class="modal fade" id="modal-motels" data-backdrop="static">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Thêm chủ trọ</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action=""  method="post" id="create-user" enctype="multipart/form-data">
+                    @csrf
+                    <div class=" card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="name">Tên dãy trọ</label><span class="text-danger">*</span>
+                                    <input id="name" type="text" class="form-control" name="name" placeholder="Enter name">
+                                    
+                                    <span class="form-message"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="area">Diện tích trung bình mỗi phòng </label><span class="text-danger">*</span>
+                                    <input id="area" type="number" class="form-control" name="area" placeholder="Enter area">
+                                    <span class="form-message"></span>
+                                    <span id="message" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="min_pri">Giá phòng thấp nhất</label><span class="text-danger">*</span>
+                                    <input id="min_pri" type="number" class="form-control" name="min_pri" placeholder="Enter min price">
+                                    <span class="form-message"></span>
+                                    <span id="message" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="address">Địa chỉ</label><span class="text-danger">*</span>
+                                    <input id="address" type="text" class="form-control" name="address" placeholder="Enter Address">                                    
+                                    <span class="form-message"></span>
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="quantity">Tổng số phòng</label><span class="text-danger">*</span>
+                                    <input id="quantity"  type="number"  name="quantity" class="form-control" placeholder="Enter quantity">                                 
+                                    <span class="form-message"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="max_pri"> Giá phòng cao nhất</label><span class="text-danger">*</span>
+                                    <input id="max_pri" type="number" class="form-control" name="max_pri" placeholder="Enter max price">
+                                    <span class="form-message"></span>
+                                    <span id="message" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="descreption">Mô tả </label>
+                            <textarea class="form-control" id="descreption" name="descreption" rows="4"></textarea>
+
+                             <span class="form-message"></span>
+                            </div>
+                             {{-- choose file --}}
+                             {{-- <div class="input-group mb-3">
+                                <input id="file-input" type="file" name="file" class="form-control"  multiple>
+                                <label class="input-group-text" for="file-input">Chọn ảnh</label>
+                                <span class="text-danger" id="image-input-error"></span>
+                                <div id="preview"></div>
+                            </div> --}}
+                            {{-- <div id="preview"></div> --}}
+                            <div class="modal-footer justify-content-between">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Thoát</button>
+                                <button  class=" form-submit btn btn-primary" >Lưu</button>
+                            </div>
+                        </div>
+                    </form>
+                  
+                </div>
+    
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /Modal create-->  
 
 {{-- modal details  --}}
 <div class="modal fade" id="modal-details" data-backdrop="static">
@@ -405,9 +484,10 @@ div.dataTables_wrapper div.dataTables_filter label {
                 "render": function(data, type, full, meta) {
                     var myUrl = '{{asset('admin/users/details')}}/'+full.id;
                     return (
-                        `<button type="button" class="btn btn-outline-success mx-3" data-toggle="modal" onclick=Details("${myUrl}")  data-target="#modal-details" ><i class="fas fa-eye"></i> </button>
-                        <button type="button" class="btn btn-outline-warning mr-3" onclick=Edit("${myUrl}")  data-toggle="modal" data-target="#modal-edit"><i class="fas fa-pen"></i> </button>
-                        <a href="{{asset('admin/posts/newPost/${full.id}')}}" class="btn btn-outline-primary " ><i class="fas fa-folder-plus"></i> </a>`
+                        `<button type="button" class="btn btn-outline-success " data-toggle="modal" onclick=Details("${myUrl}")  data-target="#modal-details" ><i class="fas fa-eye"></i> </button>
+                        <button type="button" class="btn btn-outline-warning " onclick=Edit("${myUrl}")  data-toggle="modal" data-target="#modal-edit"><i class="fas fa-pen"></i> </button>
+                        <a href="{{asset('admin/posts/newPost/${full.id}')}}" class="btn btn-outline-primary " ><i class="fas fa-folder-plus"></i> </a>
+                        <button type="button" class="btn btn-outline-warning "   data-toggle="modal" data-target="#modal-motels"> <i class="fas fa-door-open mr-2"></i> </button>`
                     );
                 }
             },
@@ -438,8 +518,9 @@ div.dataTables_wrapper div.dataTables_filter label {
                     phone: form.phone.value,
                     address: form.address.value,
                     birthday: form.birthday.value,
-                    password: Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 7),
-                    role: '1',
+                  //  password: Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 7),
+                  password: form.password.value,
+                    role: 'chutro',
                     _token: '{{csrf_token()}}'
                 },
                 success: function (data) {
