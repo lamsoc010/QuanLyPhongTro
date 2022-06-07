@@ -18,8 +18,12 @@ class AuthenticatedSessionController extends Controller
     public function create(Request $request)
     {
         // get HTTP_referer
+        
         $referer = $request->headers->get('referer');
-        // dd($referer);
+        if($referer == null) {
+            $referer = '/';
+        }
+        // dd($request->headers);
         return view('auth.login', compact('referer'));
     }
 

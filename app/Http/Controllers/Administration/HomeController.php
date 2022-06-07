@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Administration;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -16,7 +16,7 @@ class HomeController extends Controller
     public function user() {
         // $data['title'] = "hahahahahahh";
         // return view('pages/index', compact('data'));
-        return view('admin.pages.users.listUser');
+        return view('administration.pages.users.listUser');
     }
     
     // public function post() {
