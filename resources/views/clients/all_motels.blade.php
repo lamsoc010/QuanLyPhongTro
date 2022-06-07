@@ -135,6 +135,8 @@
     }
 </style>
 <main>
+    <input type="hidden" id="price" value="{{$price}}">
+    <input type="hidden" id="person" value="{{$person}}">
     <!-- Trending Area Start -->
     <div class="trending-area fix">
         <div class="container">
@@ -144,7 +146,7 @@
                 <div class="col-md-12">
                     <div class="filter-blog  d-flex justify-content-around align-items-center">
 
-                        <!-- <div class="filter-price  filter-block w-20 bg-white d-flex justify-content-between  align-items-center text-dark">
+                        <div class="filter-price  filter-block w-20 bg-white d-flex justify-content-between  align-items-center text-dark">
 
 
                             <div class="filter-sub w-100">
@@ -156,35 +158,36 @@
                                 </select>
                             </div>
 
-                        </div> -->
+                        </div>
 
                         <div class="filter-price filter-block bg-white d-flex justify-content-between  align-items-center text-dark">
 
                             <span class="flex-grow-1 mx-3"><i class="fas fa-dollar-sign mr-2 "></i>Chọn giá:</span>
                             <div class="filter-sub">
-                                <select class="form-select ">
-                                    <option selected value="1">Dưới 1 triệu</option>
-                                    <option value="2">1 - 2 triệu</option>
-                                    <option value="3">Trên 2 triệu</option>
+                                <select class="form-select " id="priceMotels">
+                                    <option selected value="1000000">Dưới 1 triệu</option>
+                                    <option value="2000000">1 - 2 triệu</option>
+                                    <option value="2000001">Trên 2 triệu</option>
                                 </select>
                             </div>
 
                         </div>
 
                         <div class="filter-area filter-block   bg-white  d-flex justify-content-between  align-items-center text-dark">
-                            <span class="flex-grow-1 mx-3"><i class="fas fa-chart-area mr-2"></i>Diện tích:</span>
+                            <span class="flex-grow-1 mx-3"><i class="fas fa-chart-area mr-2"></i>Đối tượng:</span>
 
                             <div class="filter-sub">
-                                <select class="form-select ">
-
-                                    <option select value="1">Dưới 15m2</option>
-                                    <option value="2">15 - 30m2</option>
-                                    <option value="3">Trên 30m2</option>
+                                <select class="form-select " id="personMotels">
+                                    <option value="All">Tất Cả</option>
+                                    <option select value="Nam">Nam </option>
+                                    <option value="Nữ">Nữ</option>
                                 </select>
                             </div>
                         </div>
-                        <div class="filter-block filter-btn px-5  bg-primary d-flex justify-content-center align-items-center text-white">
-                            <i class="fas fa-search mr-2"></i>Tìm kiếm
+                        <div class="filter-block filter-btn px-5  bg-primary d-flex justify-content-center align-items-center text-white" onclick="searchMotels()">
+                            {{-- <a href="{{route('all_motels', ['price' => $priceMotels, 'person' => $personMotels])}}"> --}}
+                                <i class="fas fa-search mr-2" ></i>Tìm kiếm
+                            {{-- </a> --}}
                         </div>
                     </div>
                 </div>
@@ -289,12 +292,6 @@
         </div>
     </div>
     <!-- Trending Area End -->
-
-
-
-
-
-
 </main>
 
 @endsection
@@ -304,14 +301,20 @@
 <script>
     $(document).ready(function() {
         let url = document.location.href;
+        let price = $('#price').val();
+        let person = $('#person').val();
         // console.log()
         // get id in url
         $.ajax({
             url: '/handleAllMotels',
             type: 'GET',
+            data: {
+                price: price,
+                person: person
+            },
             dataType: 'json',
             success: function(response) {
-
+                console.log(response.listAllMotels);
                 $('#listAllMotels').html(listAllMotels(response.listAllMotels));
                 $('#postsMost').html(posts_Most(response.listPostsMost));
             }
@@ -432,6 +435,13 @@
         }
         console.log(html);
         return html;
+    }
+    function searchMotels() {
+        // alert("123");
+        let priceMotels = $('#priceMotels').val();
+        let personMotels = $('#personMotels').val();
+        // return redirect()->route('all_motels', ['price' => priceMotels, 'person' => personMotels]);
+        window.location.href = `/all-motels/${priceMotels}-${personMotels}`;
     }
 </script>
 

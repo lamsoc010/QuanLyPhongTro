@@ -35,7 +35,7 @@ Route::get('/handleReplyCommentPosts' , [PostController::class, 'handleReplyComm
 Route::get('/handleCommentPosts' , [PostController::class, 'handleComment'])->name('posts.handleComment');
 
 // Motels
-Route::get('/all-motels', [MotelController::class, 'all_motels'])->name('all_motels');
+Route::get('/all-motels/{price?}-{person?}', [MotelController::class, 'all_motels'])->name('all_motels');
 Route::get('/handleAllMotels', [MotelController::class, 'handleAllMotels'])->name('handleAllMotels');
 Route::get('/details-motel/{id}', [MotelController::class, 'detailsMotel'])->name('details_motel');
 Route::get('/handleDetailsMotel/{id}', [MotelController::class, 'handleDetailsMotel'])->name('handleDetailsMotel');
