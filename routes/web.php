@@ -66,6 +66,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function() {
         Route::get('dashboard', 'HomeController@index')->name('dashboard');
         // new routes
         Route::get('/', 'HomeController@index');
+        Route::get('/handleAdminIndex', 'HomeController@handleAdminIndex');
     
         Route::get('/hello', function () {
             return view('index');
