@@ -15,23 +15,59 @@ class MotelController extends Controller
     //
     //__________________MOTELS____________________
 
-    public function all_motels()
+    public function all_motels($price=null, $person=null)
     {
-        return view('clients.all_motels');
+        
+        return view('clients.all_motels', compact('price', 'person'));
     }
 
     public function handleAllMotels(Request $request)
     {
-
-        // Danh sách  tất cả dãy trọ 
-        $listAllMotels = DB::table('motels')
-            ->join('users', 'motels.idUser', '=', 'users.id')
-            ->select('motels.*', 'users.name as nameUser', 'users.phone', 'users.image as imageUser')
-            ->orderBy('motels.created_at', 'desc')
-            //  ->limit(5)
-            ->get();
-
-
+        if(isset($request->price) && isset($request->person) ){
+            $price = $request->price;
+            $person = $request->person;
+            if($person == 'All') {
+                $person = ['Nam', 'Nữ', 'All'];
+            } else if($person == 'Nam') {
+                $person = ['Nam'];
+            } else if($person == 'Nữ') {
+                $person = ['Nữ'];
+            }
+            if($price == 1000000 ) {
+             $listAllMotels = DB::table('motels')
+                 ->join('users', 'motels.idUser', '=', 'users.id')
+                 ->select('motels.*', 'users.name as nameUser', 'users.phone', 'users.image as imageUser')
+                 ->orderBy('motels.created_at', 'desc')
+                 ->where('motels.min_price', '<=', $price)
+                //  ($person == 'All' ? '' : '->where('motels.person', '=', $person)')
+                ->whereIn('motels.person', $person)
+                 ->get(); 
+            } else if($price == 2000000) {
+                $listAllMotels = DB::table('motels')
+                ->join('users', 'motels.idUser', '=', 'users.id')
+                ->select('motels.*', 'users.name as nameUser', 'users.phone', 'users.image as imageUser')
+                ->orderBy('motels.created_at', 'desc')
+                ->whereBetween('motels.min_price', [1000000, $price])
+                ->whereIn('motels.person', $person)
+                ->get(); 
+            } else if($price == 2000001){
+                 $listAllMotels = DB::table('motels')
+                ->join('users', 'motels.idUser', '=', 'users.id')
+                ->select('motels.*', 'users.name as nameUser', 'users.phone', 'users.image as imageUser')
+                ->orderBy('motels.created_at', 'desc')
+                ->where('motels.min_price', '>=', 2000000)
+                ->whereIn('motels.person', $person)
+                ->get(); 
+        }
+        } else {
+            // Danh sách  tất cả dãy trọ 
+            $listAllMotels = DB::table('motels')
+                ->join('users', 'motels.idUser', '=', 'users.id')
+                ->select('motels.*', 'users.name as nameUser', 'users.phone', 'users.image as imageUser')
+                ->orderBy('motels.created_at', 'desc')
+                //  ->limit(5)
+                ->get();
+        }
 
         //  Danh sách bài đăng nổi bật
         $listPostsMost = DB::table('posts')
