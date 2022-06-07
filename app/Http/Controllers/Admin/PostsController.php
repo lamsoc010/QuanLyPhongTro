@@ -101,15 +101,23 @@ class PostsController extends Controller
 
             // if($upload){
                 // insert data
-                // DB::table('posts')->insertGetId([
-                //     'title' => $title,
-                //     'content' => $content,
-                //     'idCategory' => $category,
-                //     'idUser' => $idHost,
-                //     'status' => $status,
-                //     'views' => $views,
-                //     'image' => $file_name,
-                // ]);
+                DB::table('posts')->insertGetId([
+                    'title' => $title,
+                    'content' => $content,
+                    'idCategory' => $category,
+                    'idUser' => $idHost,
+                    'status' => $status,
+                    'views' => $views,
+                    'image' => $listFileName[0],
+                ]);
+
+                $idLastPost = DB::getPdo()->lastInsertId();
+                for($i = 1; $i < count($listFileName); $i++) {
+                    DB::table('image_posts')->insert([
+                        'idPosts' => $idLastPost,
+                        'image' => $listFileName[$i],
+                    ]);
+                }
                 
                 return response()->json([
                     'code'=> 1 ,
