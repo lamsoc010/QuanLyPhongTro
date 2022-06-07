@@ -75,7 +75,7 @@
               <div class="chooseFile">
                 {{-- <input type="file" class="custom-file-input" id="exampleInputFile">
                           <label class="custom-file-label" for="exampleInputFile">Choose file</label> --}}
-                <input id="file-input" type="file" name="file" class="custom-file-input" multiple>
+                <input id="file-input" type="file" name="file[]" class="custom-file-input" multiple>
                 <label class="custom-file-label" for="file-input">Chọn ảnh</label>
                 <span class="text-danger" id="image-input-error"></span>
                 <div id="preview"></div>
@@ -112,42 +112,12 @@
 <script src="{{asset('AdminPTH/plugins/codemirror/mode/htmlmixed/htmlmixed.js')}}"></script>
 <!-- Message -->
 <script src="{{asset('AdminPTH/plugins/sweetalert2/sweetalert2.min.js')}}"></script>
-<!-- Page specific script -->
+{{-- upload image --}}
+<script src="{{asset('js/uploadFile.js')}}"></script>
 {{-- <script>
-  $.ajaxSetup({
-      headers: {
-          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-      }
-  });
-
- $('#upload-image-form').submit(function(e) {
-     e.preventDefault();
-     let formData = new FormData(this);
-     console.log("this", this)
-     $('#image-input-error').text('');
-
-     $.ajax({
-        type:'POST',
-        url: "{{asset('admin/posts/create')}}",
-         data: formData,
-         contentType: false,
-         processData: false,
-         success: (response) => {
-           if (response) {
-             this.reset();
-             alert('Image has been uploaded successfully');
-           }
-         },
-         error: function(response){
-            console.log(response);
-              $('#image-input-error').text(response.responseJSON.errors.file);
-         }
-     });
-});
-
-</script> --}}
-<script>
   $(function () {
+
+
     // Summernote
     $('#summernote').summernote()
     // $('#summernote1').summernote()
@@ -188,10 +158,14 @@ function readAndPreview(file) {
 
 }
   document.querySelector('#file-input').addEventListener("change", previewImages);
-</script>
+</script> --}}
 
 <script>
+  var idHost = {{$id}};
   $(document).ready(function(){
+    // get id form host to newpost
+  
+
     // set data to tagName: select -> option
     $.ajax({
       type: "GET",
@@ -225,6 +199,11 @@ function readAndPreview(file) {
   $('#upload-image-form').submit(function(e) {
     e.preventDefault();
     var formData = new FormData(this);
+    formData.append('idHost', idHost);
+    // ban đầu băng bài cho nó hiện thị -- status =1
+    formData.append('status', 1);
+    // ban đầu lượt xem bằng 0
+    formData.append('views', 0);
     //$('#image-input-error').text('');
 
     $.ajax({

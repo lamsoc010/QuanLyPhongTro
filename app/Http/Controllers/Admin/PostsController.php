@@ -10,9 +10,13 @@ class PostsController extends Controller
 {
     // view posts
     public function index() {
+        
         return view('admin.pages.posts.listPosts');
     }
+    public function post($id) {
 
+        return view('admin.pages.posts.newPost', compact('id'));
+    }
     // get all posts with datatable
     public function anyData(Request $request) {
         $start1 =$request->start;
@@ -50,66 +54,77 @@ class PostsController extends Controller
 
     // add new post
     public function create(Request $request){
-   
-         //  $name = $request->file('image')->getClientOriginalName();
-        //  dd("a");
-         //   $path = $request->fileName->store('public/images');
-            // dd($path);
-        //     $path ="aaa";
-        //    return response()->json($path);
-        // $request->validate([
-        //     'file' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        //   ]);
-  
-        //   $image = new Image;
-  
-      //  if ($files = $request->file('file')) {
-             
-            // validate
-            $validator = Validator::make($request->all(), [
-                'title' => 'required',
-                'category' => 'required',
-                'content' => 'required',
-                'file' => 'required|image|mimes:jpeg,png,jpg,gif,svg,jfif|max:2048',
-            ],[
-                'title.required' => 'Vui lòng nhập tiêu đề',
-                'category.required' => 'Vui lòng chọn danh mục',
-                'content.required' => 'Vui lòng nhập nội dung',
-                'file.required' => 'Vui lòng chọn ảnh',
-                'file.image' => 'Vui lòng chọn file ảnh',
-                'file.mimes' => 'Vui lòng chọn file ảnh',
-                'file.max' => 'Vui lòng chọn file ảnh',
-            
-            ]);
+        // validate
+        $validator = Validator::make($request->all(), [
+            'title' => 'required',
+            'category' => 'required',
+            'content' => 'required',
+            // 'file' => 'required|image',
+        ],[
+            'title.required' => 'Vui lòng nhập tiêu đề',
+            'category.required' => 'Vui lòng chọn danh mục',
+            'content.required' => 'Vui lòng nhập nội dung',
+            // 'file.required' => 'Vui lòng chọn ảnh',
+            // 'file.image' => 'Vui lòng chọn file ảnh',
+            // 'file.mimes' => 'Vui lòng chọn file ảnh',
+            // 'file.max' => 'Vui lòng chọn file ảnh',
+        
+        ]);
 
-            if(!$validator ->passes()){
-               
-                return response()->json(['error'=>'false','message'=>$validator->errors()]);
-            }else{
-                // get value form request
-                $title = $request->title;
-                $content = $request->content;
-                $category = $request->category;
-                $file = $request->file->store('public/uploads');
- 
-                $path = 'files/';
-                $file = $request->file('file');
-                //  set name file with time
-                $file_name = time().'_'.$file->getClientOriginalName();
+        if(!$validator ->passes()){
+            
+            return response()->json(['error'=>'false','message'=>$validator->errors()]);
+            
+        }else{
+            // get value form request
+            $idHost = $request->idHost;
+            $title = $request->title;
+            $content = $request->content;
+            $category = $request->category;
+            $status = $request->status;
+            $views = $request->views;
+            //  $file = $request->file->store('public/uploads');
+
+            $path = 'files/';
+            $file = $request->file('file');
+            // dd($file);
+            // console.log($file);
+            //  set name file with time
+            $listFileName = [];
+            // $upload = '';
+            foreach($file as $item) {
+                $file_name = time().'_'.$item->getClientOriginalName();
                 // $upload = $file->storeAs('public/uploads', $file_name);
-                $upload = $file->storeAs($path, $file_name, 'public');
-
-                // insert data
-                
-                
-                if($upload){
-                    return response()->json(['code'=> 1 ,'message'=>'Upload success']);
-                }
-               
+                $item->move(public_path('assets/img/posts'), $file_name);
+                $listFileName[] = $file_name;
             }
-            
-  
-      //  }
-    }
-    
+
+            // if($upload){
+                // insert data
+                DB::table('posts')->insertGetId([
+                    'title' => $title,
+                    'content' => $content,
+                    'idCategory' => $category,
+                    'idUser' => $idHost,
+                    'status' => $status,
+                    'views' => $views,
+                    'image' => $listFileName[0],
+                ]);
+
+                $idLastPost = DB::getPdo()->lastInsertId();
+                for($i = 1; $i < count($listFileName); $i++) {
+                    DB::table('image_posts')->insert([
+                        'idPosts' => $idLastPost,
+                        'image' => $listFileName[$i],
+                    ]);
+                }
+                
+                return response()->json([
+                    'code'=> 1 ,
+                    // 'message'=>$upload,
+                    'file' => $listFileName
+                ]);
+            // }
+        }
+    } 
 }

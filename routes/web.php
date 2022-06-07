@@ -41,6 +41,7 @@ Route::get('/details-motel/{id}', [MotelController::class, 'detailsMotel'])->nam
 Route::get('/handleDetailsMotel/{id}', [MotelController::class, 'handleDetailsMotel'])->name('handleDetailsMotel');
 Route::get('/handleReplyCommentMotels' , [MotelController::class, 'handleReplyComment'])->name('handleReplyComment');
 Route::get('/handleCommentMotels' , [MotelController::class, 'handleComment'])->name('handleComment');
+Route::get('/loadMoreCommentMotels' , [MotelController::class, 'loadMoreComment'])->name('loadMoreComment');
 
 
 
@@ -72,7 +73,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function() {
             return view('index');
         });
         Route::get('/users/listUser', 'HomeController@user');
-        Route::get('/posts/newPost', 'HomeController@post');
+       
         
         // get all user with datatable
         Route::get('/users/getList', 'HomeController@anyData');
@@ -106,6 +107,8 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function() {
         Route::get('/posts/listPosts', 'PostsController@index');
         // get all posts with datatable
         Route::get('/posts/getList', 'PostsController@anyData');
+        // view new post
+        Route::get('/posts/newPost/{id}', 'PostsController@post');
         // get all name category --- admin/posts/getAllNameCategory
         Route::get('/posts/getAllNameCategory', 'PostsController@getAllNameCategory');
         // add new post

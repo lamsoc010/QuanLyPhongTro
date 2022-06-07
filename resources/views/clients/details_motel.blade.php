@@ -268,7 +268,7 @@
             {{-- render comment --}}
             <div id="countComment"></div>
             <div class="comment_list"></div>
-
+            <a id="loadMoreComment" onclick="loadMoreComment()" >Xem thêm bình luận</a>
          </div>
 
          <div class="comment-form">
@@ -957,6 +957,28 @@
                   $('#comment-content').val('');
                }
             });
+      });
+   }
+
+   function loadMoreComment() {
+      $(document).ready(function() {
+         let idMotels = $('input[name="idMotels"]').val();
+         // alert(idMotels);
+         $.ajax({
+            url: '/loadMoreCommentMotels',
+            type: 'get',
+            data: {
+               id: idMotels,
+            },
+            dataType: 'json',
+            success: function(response) {
+               console.log(response.listComments.length);
+               $('.comment_list').append(comments_area1(response.listComments, response.listReplyComments, idMotels));
+               if(response.listComments.length < 5) {
+                  $('#loadMoreComment').hide();
+               }
+            }
+         });
       });
    }
 </script>

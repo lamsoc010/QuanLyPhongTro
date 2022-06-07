@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class PostController extends Controller
 {
@@ -152,8 +153,8 @@ class PostController extends Controller
             'contents' => $request->contents,
             'idCommentPosts' => $request->idCommentPosts,
             'idUser' => $request->idUser,
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
+            'created_at' => Carbon::now('Asia/Ho_Chi_Minh'),
+            'updated_at' => Carbon::now('Asia/Ho_Chi_Minh')
         ];
         DB::table('reply_comment_posts')->insert($replyComment);
         
@@ -174,10 +175,8 @@ class PostController extends Controller
             'contents' => $request->contents,
             'idPosts' => $request->idPosts,
             'idUser' => $request->idUser,
-            // 'created_at' => (new DateTime())->format('Y-m-d H:i:s'),
-            // 'updated_at' => (new DateTime())->format('Y-m-d H:i:s')
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
+            'created_at' => Carbon::now('Asia/Ho_Chi_Minh'),
+            'updated_at' => Carbon::now('Asia/Ho_Chi_Minh')
         ];
         DB::table('comment_posts')->insert($comment);
         // $itemComment = [
@@ -186,8 +185,8 @@ class PostController extends Controller
         //     'idUser' => $request->idUser,
         //     'name' => DB::table('users')->where('id', $request->idUser)->first()->name,
         //     'image' => DB::table('users')->where('id', $request->idUser)->first()->image,
-        //     'created_at' => date('Y-m-d H:i:s'),
-        //     'updated_at' => date('Y-m-d H:i:s')
+        //     'created_at' => Carbon::now('Asia/Ho_Chi_Minh'),
+        //     'updated_at' => Carbon::now('Asia/Ho_Chi_Minh')
         // ];
         $itemComment = DB::table('comment_posts')
         ->join('users', 'comment_posts.idUser', '=', 'users.id')
