@@ -14,7 +14,7 @@
                   <!-- small box -->
                   <div class="small-box bg-info">
                     <div class="inner">
-                      <h3 class="total-users">150</h3>
+                      <h3 class="total-user">150</h3>
       
                       <p>Thành viên</p>
                     </div>
@@ -61,7 +61,7 @@
                   <!-- small box -->
                   <div class="small-box bg-danger">
                     <div class="inner">
-                      <h3 class="total-views">65</h3>
+                      <h3>65</h3>
       
                       <p>Lượt view</p>
                     </div>
@@ -340,20 +340,4 @@
 <script src="{{asset('AdminPTH/plugins/chart.js/Chart.min.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{asset('AdminPTH/dist/js/pages/dashboard3.js')}}"></script>
-<script>
-   $(document).ready(function() {
-     
-      $.ajax({
-         url: 'admin/handleAdminIndex',
-         type: 'GET',
-         dataType: 'json',
-         success: function(response) {
-            $('.total-users').html(`${response.totalUsers[0].total}`);
-            $('.total-motels').html(`${response.totalMotels[0].totalMotels}`);
-            $('.total-posts').html(`${response.totalPosts[0].totalPosts}`);
-            // $('.total-views').html(`${response.totalPosts[0].totalViewPosts} + ${response.totalMotels[0].totalViewMotels}`);;
-         }
-      });
-   });
-</script>
 @endsection
