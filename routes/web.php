@@ -124,3 +124,72 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function() {
     Route::post('logout', 'Auth\AuthenticatedSessionController@destroy')->name('logout');
     
 });
+
+// administration
+Route::namespace('Administration')->prefix('administration')->name('administration.')->group(function() {
+    // Route::namespace('Auth')->middleware('guest:admin')->group(function() {
+    //     // login route
+    //     Route::get('login', 'AuthenticatedSessionController@create')->name('login');
+    //     Route::post('login', 'AuthenticatedSessionController@store')->name('adminlogin');
+    // });
+    
+   // Route::middleware('administration')->group(function() {
+        Route::get('dashboard', 'HomeController@index')->name('dashboard');
+        // new routes
+        Route::get('/', 'HomeController@index');
+    
+        Route::get('/hello', function () {
+            return view('index');
+        });
+        Route::get('/users/listUser', 'HomeController@user');
+       
+        
+        // get all user with datatable
+        Route::get('/users/getList', 'HomeController@anyData');
+    
+        // show user with function details in view --- admin.users.details
+        Route::get('/users/details/{id}', 'HomeController@details');
+    
+         // show user with function details in view --- admin.users.details
+         Route::get('/users/edit/{id}', 'HomeController@getOneUser');
+    
+          // show user with function details in view --- admin.users.details
+        Route::post('/users/edit/{id}', 'HomeController@edit');
+    
+        // add new user ----admin.users.create
+        Route::post('/users/create', 'HomeController@create');
+
+        //---------------------------------------Motels------------------------------------------------------
+        // show view motels
+        Route::get('/motels/listMotels', 'MotelsController@index');
+        // get all motel with datatable
+        Route::get('/motels/getList', 'MotelsController@anyData');
+        // get all name motels --- admin/motels/getAllNameMotels
+        Route::get('/motels/getAllNameMotels', 'MotelsController@getAllNameMotels');
+
+        //-------------------------------------------Rooms----------------------------------------------------
+        // show view rooms 
+        Route::get('/rooms/listRooms', 'RoomsController@index');
+
+        //-------------------------------------------Posts----------------------------------------------------
+        // show view posts
+        Route::get('/posts/listPosts', 'PostsController@index');
+        // get all posts with datatable
+        Route::get('/posts/getList', 'PostsController@anyData');
+        // view new post
+        Route::get('/posts/newPost/{id}', 'PostsController@post');
+        // get all name category --- admin/posts/getAllNameCategory
+        Route::get('/posts/getAllNameCategory', 'PostsController@getAllNameCategory');
+        // add new post
+        Route::post('/posts/create', 'PostsController@create');
+
+        //-------------------------------------------Host----------------------------------------------------
+        // show view host
+        Route::get('/hosts/listHosts', 'HostsController@index');
+        // get all host with datatable(chủ nhà)
+        Route::get('/hosts/getHost', 'HomeController@anyData');
+  //  });
+    
+   // Route::post('logout', 'Auth\AuthenticatedSessionController@destroy')->name('logout');
+    
+});
