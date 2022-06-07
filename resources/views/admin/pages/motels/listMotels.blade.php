@@ -98,11 +98,13 @@
           <!-- /.col -->
         </div>
         <!-- /.row -->
-        <button onclick="filterData()" id="filterData">tra cứu</button>
+
+       
+       
   
       </div>
     
-    </div>
+      </div>
     <!-- /.card -->
     {{-- button --}}
    
@@ -112,38 +114,40 @@
 {{-- dataTable --}}
 <section class="content">
   <div class="container-fluid">
-  <div class="row">
-    <div class="col-12">
-        <div class="card">
-            <!-- /.card-header -->
-            <div class="card-body">
-                <table id="tabMotels" class="table table-bordered table-striped" style="width:100%">
-                    <thead>
-                        <th> Id</th>
-                        <th> STT</th>
-                        <th> Tên trọ</th>
-                        <th> Chủ trọ</th>
-                        <th> Giá TB</th>
-                        <th> Tổng phòng </th>
-                        <th> Tổng diện tích</th>
-                        <th> Địa chỉ</th>
-                        <th> Trạng thái</th>
-                        <th> Chi tiết</th>
-                        <th>Sửa</th>
-                        </tr>
-                    </thead>
-                </table>
-            </div>
-            <!-- /.col -->
-        </div>
-        <!-- /.row -->
+    <div class="row">
+      <div class="col-12">
+          <div class="card">
+              <!-- /.card-header -->
+              <div class="card-body">
+                  <table id="tabMotels" class="table table-bordered table-striped" style="width:100%">
+                      <thead>
+                          <th> Id</th>
+                          <th> STT</th>
+                          <th> Tên trọ</th>
+                          <th> Chủ trọ</th>
+                          <th> Giá TB</th>
+                          <th> Tổng phòng </th>
+                          <th> Tổng diện tích</th>
+                          <th> Địa chỉ</th>
+                          <th> Trạng thái</th>
+                          <th> Chi tiết</th>
+                          <th>Sửa</th>
+                          </tr>
+                      </thead>
+                  </table>
+              </div>
+              <!-- /.col -->
+          </div>
+          <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
     </div>
-    <!-- /.container-fluid -->
   </div>
-</div>
 </section>
 </div>
   <!-- /.content-wrapper -->
+
+  
   @endsection
 
   @section('scripts')
@@ -267,11 +271,11 @@
              });
       })
      
-      function  filterData(){
-        var price = $('#price :selected').val();
-        var nameMotels = $('#nameMotels :selected').val();
-        var sex = $('#sex :selected').val();
-        var status = $('#status :selected').val();
-      }
+      // function  filterData(){
+      //   var price = $('#price :selected').val();
+      //   var nameMotels = $('#nameMotels :selected').val();
+      //   var sex = $('#sex :selected').val();
+      //   var status = $('#status :selected').val();
+      // }
   </script>
   @endsection
