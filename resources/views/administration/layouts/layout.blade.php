@@ -33,11 +33,11 @@
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
         <!-- Navbar -->
-        @include('admin.layouts.header')
+        @include('administration.layouts.header')
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        @include('admin.layouts.tabBar')
+        @include('administration.layouts.tabBar')
 
 
         <!-- Content Wrapper. Contains page content -->
@@ -45,7 +45,7 @@
 
         <!-- /.content-wrapper -->
 
-        @include('admin.layouts.footer')
+        @include('administration.layouts.footer')
 
     </div>
     <!-- ./wrapper -->

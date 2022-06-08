@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 @endsection
 
-@extends('admin.layouts.layout')
+@extends('administration.layouts.layout')
 @section('content')
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
