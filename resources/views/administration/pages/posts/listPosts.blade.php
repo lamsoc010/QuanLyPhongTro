@@ -158,9 +158,9 @@
 <!-- jQuery -->
 <script>
   // DataTable.datetime('D MMM YYYY');
-  var idHost = "{{Auth::user()->id}}";
+  // var idHost = "{{Auth::user()->id}}";
      $(document).ready(function(){
-      
+      var idHost = {{Auth::user()->id}};
         var table =   $("#tabPosts").DataTable({
             processing: true, 
             serverSide: true, 

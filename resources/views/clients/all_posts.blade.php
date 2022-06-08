@@ -263,7 +263,7 @@
             html += `
                     <!-- post-item -->
                     <div class="motel-posts-item d-flex">
-                        <img style="min-width:240px; height:180px;border-radius:6px" src="{{asset('assets/img/posts/${item.image}')}}" alt="">
+                        <img style="width:180px; height:180px;border-radius:6px" src="{{asset('assets/img/posts/${item.image}')}}" alt="" >
                         <div class="motel-posts-content ml-3">
                             <div class="motel-posts-title d-flex justify-content-between">
                                 <span class="mr-3">

@@ -275,7 +275,7 @@
     var sex = null ;
     var price = null;
      $(document).ready(function(){
-      var idHost = "{{Auth::user()->id}}";
+      var idHost = {{Auth::user()->id}};
        // cấu hình message
        var Toast = Swal.mixin({
                     toast: true,

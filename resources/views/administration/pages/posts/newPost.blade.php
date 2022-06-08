@@ -115,7 +115,7 @@
 {{-- upload image --}}
 <script src="{{asset('js/uploadFile.js')}}"></script>
 <script>
-  var idHost = "{{Auth::user()->id}}";
+  var idHost = {{Auth::user()->id}};
     $(document).ready(function(){
     // set data to tagName: select -> option
     $.ajax({
@@ -170,8 +170,9 @@
               type: 'success',
               title: 'Đăng bài thành công'
             });
+
             // setTimeout(function(){
-            //   window.location.href = "{{asset('admin/posts')}}";
+              window.location.href = "{{asset('administration/posts/listPosts')}}";
             // }, 3000);
           }
         },
