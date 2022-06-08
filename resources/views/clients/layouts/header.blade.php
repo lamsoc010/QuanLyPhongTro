@@ -52,6 +52,14 @@
             color: #007BFF;
             transform: translateY(-10px);
         }
+        .sticky-logo {
+
+            padding-top: 28px !important;
+        }
+        .sticky-logo span{
+            text-transform: uppercase;
+            font-size: 22px;
+        }
 
         .user-title {
             position: relative;
@@ -195,7 +203,9 @@
                             <div class="col-xl-10 col-lg-10 col-md-12 header-flex">
                                 <!-- sticky -->
                                 <div class="sticky-logo">
-                                    <a href="index.html"><img src="{{asset('assets/img/logo/logo.png')}}" alt=""></a>
+                                    <a href="/">
+                                        <span class="text-danger">PHONGTROHUE</span>
+                                    </a>
                                 </div>
                                 <!-- Main-menu -->
                                 <div class="main-menu d-none d-md-block">
