@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+
 use Carbon\Carbon;
 
 class HomeController extends Controller
@@ -128,18 +130,34 @@ class HomeController extends Controller
 
     public function edit(Request $request)
     {
+        // dd($request->image);
         $idUser = $request->id;
+        
         DB::table('users')
-            ->where('id', $idUser)
+        ->where('id', $idUser)
             ->update([
                 'name' => $request->name,
                 'email' => $request->email,
                 'address' => $request->address,
                 'phone' => $request->phone,
+                'image' => $request->image,
                 'birthday' => $request->birthday,
-
+                'updated_at' => Carbon::now('Asia/Ho_Chi_Minh')
             ]);
-    }
+            // Lưu ảnh lại và cho vào public khi chỉnh sửa
+            // if($request->file('image')) {
+            //     $image = $request->file('image');
+            //     $name = time() . '.' . $image->getClientOriginalExtension();
+            //     $destinationPath = public_path('assets/img/users');
+            //     $image->move($destinationPath, $name);
+            //     $image = $name;
+            //     DB::table('users')
+            //         ->where('id', $idUser)
+            //         ->update([
+            //             'image' => $image,
+            //         ]);
+            // };
+        }
 
 
     public function create(Request $request)
@@ -148,14 +166,19 @@ class HomeController extends Controller
 
 
         // insert database
+        
         DB::table('users')->insertGetId([
             'name' => $request->name,
             'email' => $request->email,
             'address' => $request->address,
             'phone' => $request->phone,
             'birthday' => $request->birthday,
-            'password' => $request->password,
+            'image' => 'user.jpg',
+            // Mã hoá password
+            'password' => Hash::make($request->password),
             'role' => $request->role,
+            'created_at' => Carbon::now('Asia/Ho_Chi_Minh'),
+            'updated_at' => Carbon::now('Asia/Ho_Chi_Minh'),
         ]);
 
         //  return view('admin.pages.users.listUser');

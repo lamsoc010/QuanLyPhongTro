@@ -406,25 +406,26 @@
 
     function posts_Most(listPostsMost) {
         let html = `<h3 class="widget_title">Bài đăng nổi bật</h3>`;
-        for (let i = 0; i < listPostsMost.length; i++) {
-            let item = listPostsMost[i];
-            let time_now = moment(new Date());
-            let time_created_at = moment(item.created_at);
-            let time_diff = time_now.diff(time_created_at, 'hours');
-            if (time_diff == 0) {
-                time_diff = `<p>Vừa mới xong</p>`;
-            } else if (time_diff >= 24) {
-                time_diff = `<p>${Math.floor(time_diff/24)} ngày trước</p>`;
-            } else {
-                time_diff = `<p>${time_diff} giờ trước</p>`;
-            }
-            html += `
+      for (let i = 0; i < listPostsMost.length; i++) {
+         let item = listPostsMost[i];
+         let time_now = moment(new Date());
+         let time_created_at = moment(item.created_at);
+         let time_diff = time_now.diff(time_created_at, 'hours');
+         if (time_diff == 0) {
+            time_diff = `<p>Vừa mới xong</p>`;
+         } else if (time_diff >= 24) {
+            time_diff = `<p>${Math.floor(time_diff/24)} ngày trước</p>`;
+         } else {
+            time_diff = `<p>${time_diff} giờ trước</p>`;
+         }
+         html += `
                <div class="media post_item">
                   <img src="{{asset('assets/img/posts/${item.image}')}}" alt="post" style="height: 80px; width: 80px">
                   <div class="media-body">
                      <a href="/details-post/${item.id}">
-                        <h3>${item.title}</h3>    
+                        <h3>${item.title}</h3>
                      </a>
+                     <span>Lượt xem: ${item.views}</span>
                      <div class="d-flex justify-content-between align-items-center">
                         <p class="text-success font-weight-bold">${item.nameUser}</p>
                         ${time_diff}
@@ -432,9 +433,9 @@
                   </div>
                </div>
             `;
-        }
-        console.log(html);
-        return html;
+      }
+      console.log(html);
+      return html;
     }
     function searchMotels() {
         // alert("123");
