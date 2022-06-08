@@ -113,7 +113,7 @@
                                     <ul class="header-social user-title">
 
 
-                                        <li class="user-name"><a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Xin chào, {{ Auth::user()->name }} <i class="fas fa-caret-down ml-1"></i></a></li>
+                                        <li class="user-name"><a href="{{ route('administration.home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Xin chào, {{ Auth::user()->name }} <i class="fas fa-caret-down ml-1"></i></a></li>
                                         <div class="block-info-user">
                                             <li><a><i class="fas fa-user mr-1"></i> Thông tin cá nhân</a></li>
                                             <li><a><i class="fas fa-home mr-1"></i> Quản lý dãy trọ</a></li>
