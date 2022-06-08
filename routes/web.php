@@ -104,7 +104,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function() {
 
          //-------------------------------------------Motels----------------------------------------------------
         // save motel
-        Route::post('/motels/create', 'MotelsController@create');
+        Route::post('/motels/create/{id}', 'MotelsController@create');
 
         //-------------------------------------------Posts----------------------------------------------------
         // show view posts

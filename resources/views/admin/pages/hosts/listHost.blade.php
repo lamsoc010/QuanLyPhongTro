@@ -237,9 +237,9 @@ div.dataTables_wrapper div.dataTables_filter label {
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="sex"> Đối tượng cho thuế</label><span class="text-danger">*</span>
-                                    <select class="form-control select2"  name="sex" id="sex">
-                                        <option selected="selected" value="" >--tất cả--</option>
+                                    <label for="person"> Đối tượng cho thuế</label><span class="text-danger">*</span>
+                                    <select class="form-control select2"  name="person" id="person">
+                                        <option selected="selected" value="All" >--tất cả--</option>
                                         <option value="Nam">Nam</option>
                                         <option value="Nữ">Nữ</option>
                                       </select>
