@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 @endsection
 
-@extends('admin.layouts.layout')
+@extends('administration.layouts.layout')
 @section('content')
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -84,9 +84,6 @@
 
             </div>
             <!-- end filter -->
-
-
-
             <div class="row">
                 <div class="col-lg-6">
                   <div class="card">
@@ -335,9 +332,27 @@
 @endsection
 
 @section('scripts')
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js"></script>
 <!-- OPTIONAL SCRIPTS -->
 <script src="{{asset('AdminPTH/plugins/chart.js/Chart.min.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{asset('AdminPTH/dist/js/pages/dashboard3.js')}}"></script>
+<script>
+  $(document).ready(function () {
+    let user = {
+      id: '{{Auth::user()->id}}',
+      name: '{{Auth::user()->name}}',
+      email: '{{Auth::user()->email}}',
+      image: '{{Auth::user()->avatar}}',
+      phone: '{{Auth::user()->phone}}',
+      role: '{{Auth::user()->role}}',
+      address: '{{Auth::user()->address}}',
+      created_at: '{{Auth::user()->created_at}}',
+      updated_at: '{{Auth::user()->updated_at}}',
+    };
+    // console.log(user);
+    localStorage.setItem('users', JSON.stringify(user));
+  })
+</script>
 @endsection

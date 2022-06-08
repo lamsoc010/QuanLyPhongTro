@@ -173,7 +173,7 @@ Route::namespace('Administration')->prefix('administration')->name('administrati
 
         //-------------------------------------------Posts----------------------------------------------------
         // show view posts
-        Route::get('/posts/listPosts', 'PostsController@index');
+        Route::get('/posts/listPosts', 'PostsController@index')->name('listPosts');
         // get all posts with datatable
         Route::get('/posts/getList', 'PostsController@anyData');
         // view new post
@@ -190,6 +190,6 @@ Route::namespace('Administration')->prefix('administration')->name('administrati
         Route::get('/hosts/getHost', 'HomeController@anyData');
    });
     
-   // Route::post('logout', 'Auth\AuthenticatedSessionController@destroy')->name('logout');
+//    Route::post('logout', 'Auth\AuthenticatedSessionController@destroy')->name('logout');
     
 });
