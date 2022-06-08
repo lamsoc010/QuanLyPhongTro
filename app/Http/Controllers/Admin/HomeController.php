@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -18,6 +19,8 @@ class HomeController extends Controller
     public function handleAdminIndex(Request $request)
     {
 
+            // $year = Carbon::now()->year;
+            // dd($year);
         // total users
         $totalUsers = DB::table('users')
             ->select(DB::raw('count(*) as total'))
@@ -25,28 +28,39 @@ class HomeController extends Controller
 
         // total motels
         $totalMotels = DB::table('motels')
-            ->select(DB::raw('count(*) as totalMotels'))
-            // ->select(DB::raw('SUM(motels.view) as totalViewMotels'))
+            ->select(DB::raw('count(*) as totalMotels'), DB::raw('SUM(motels.views) as totalViewMotels'))
             // ->where('posts.status', '1')
-
             ->get();
 
         // total posts
         $totalPosts = DB::table('posts')
-        ->select(DB::raw('count(*) as totalPosts'))
-        // ->select(DB::raw('SUM(posts.view) as totalViewPosts'))
-
-        
+            ->select(DB::raw('count(*) as totalPosts'), DB::raw('SUM(posts.views) as totalViewPosts'))
             // ->where('posts.status', '1')
-
             ->get();
 
+        //thống kê theo tháng motels
+        $MotelInMonth = DB::table('motels')
+            ->select(DB::raw('MONTH(motels.created_at) as month'), DB::raw('SUM(motels.views) as views'), DB::raw('count(*) as motelsQuantity'))
+            // ->where('YEAR(motels.created_at)','=', $year)
+            ->groupBy('month')
+            // ->where('posts.status', '1')
+            ->get();
+
+        //thống kê theo tháng posts
+        $PostInMonth = DB::table('posts')
+            ->select(DB::raw('MONTH(posts.created_at) as month'), DB::raw('SUM(posts.views) as views'), DB::raw('count(*) as postsQuantity'))
+            // ->where('YEAR(posts.created_at)','=', $year)
+            ->groupBy('month')
+            // ->where('posts.status', '1')
+            ->get();
 
         return response()->json([
-           'totalUsers' => $totalUsers,
-           'totalMotels' => $totalMotels,
-           'totalPosts' => $totalPosts,
-           
+            'totalUsers' => $totalUsers,
+            'totalMotels' => $totalMotels,
+            'totalPosts' => $totalPosts,
+            'MotelInMonth' => $MotelInMonth,
+            'PostInMonth' => $PostInMonth,
+
         ]);
     }
 
