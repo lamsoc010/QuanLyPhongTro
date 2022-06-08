@@ -159,7 +159,7 @@
 <script>
   // DataTable.datetime('D MMM YYYY');
      $(document).ready(function(){
-      var idHost = JSON.parse(localStorage.getItem('users')).id;
+      var idHost = {{Auth::user()->id}};
         var table =   $("#tabPosts").DataTable({
             processing: true, 
             serverSide: true, 

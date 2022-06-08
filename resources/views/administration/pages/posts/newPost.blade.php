@@ -115,12 +115,12 @@
 {{-- upload image --}}
 <script src="{{asset('js/uploadFile.js')}}"></script>
 <script>
-  var idHost = JSON.parse(localStorage.getItem('users')).id;
+  var idHost = {{Auth::user()->id}};
     $(document).ready(function(){
     // set data to tagName: select -> option
     $.ajax({
       type: "GET",
-      url:  "{{asset('admin/posts/getAllNameCategory')}}",
+      url:  "{{asset('administration/posts/getAllNameCategory')}}",
       success: function (data) {
         $.each(data, function(key, value){
             $("select[name='category']").append(
@@ -159,7 +159,7 @@
 
     $.ajax({
        type:'POST',
-       url: "{{asset('admin/posts/create')}}",
+       url: "{{asset('administration/posts/create')}}",
         data: formData,
         contentType: false,
         processData: false,
@@ -170,8 +170,9 @@
               type: 'success',
               title: 'Đăng bài thành công'
             });
+
             // setTimeout(function(){
-            //   window.location.href = "{{asset('admin/posts')}}";
+              window.location.href = "{{asset('administration/posts/listPosts')}}";
             // }, 3000);
           }
         },
