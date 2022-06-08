@@ -174,7 +174,7 @@ div.dataTables_wrapper div.dataTables_filter label {
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex flex-column align-items-center text-center">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle dt-image" style="height: 150px; wight: 150px">
                                     <div class="mt-3">
                                         <h4 class="dt-name"></h4>
                                     </div>
@@ -276,6 +276,10 @@ div.dataTables_wrapper div.dataTables_filter label {
                         <div class="form-group">
                             <label for="ed-address">Địa chỉ </label>
                             <input id="ed-address" type="text" class="form-control" name="address" placeholder="Enter Address">
+                        </div>
+                        <div class="form-group">
+                            <label for="ed-image">Ảnh đại diện </label>
+                            <input id="ed-image" type="file" class="form-control" name="image" placeholder="Enter image">
                         </div>
                     
                     </div>
@@ -500,6 +504,7 @@ div.dataTables_wrapper div.dataTables_filter label {
             type: 'GET',
             success: function (data) {
                 console.log(data);
+                 $('.dt-image').attr('src', `{{asset('assets/img/users/${data[0].image}')}}`);
                  $('.dt-name').html(data[0].name);
                  $('.dt-email').html(data[0].email);
                  $('.dt-address').html(data[0].address);
@@ -522,6 +527,8 @@ div.dataTables_wrapper div.dataTables_filter label {
                 $('#ed-phone').val(data[0].phone);
                 $('#ed-address').val(data[0].address);
                 $('#ed-birthday').val(data[0].birthday);
+                $('#ed-image').val(data[0].image);
+                
             }
         });
         urlEdit = url;
@@ -534,6 +541,7 @@ div.dataTables_wrapper div.dataTables_filter label {
             showConfirmButton: false,
             timer: 3000
         });
+        console.log($('#ed-image').val().split('\\')[$('#ed-image').val().split('\\').length - 1]);
         var actionUrl =urlEdit;
         $.ajax({
             type: "POST",
@@ -544,6 +552,7 @@ div.dataTables_wrapper div.dataTables_filter label {
                 email: $('#ed-email').val(),
                 phone: $('#ed-phone').val(),
                 address: $('#ed-address').val(),
+                image: $('#ed-image').val().split('\\')[$('#ed-image').val().split('\\').length - 1],
                 birthday: $('#ed-birthday').val(),
                 _token: '{{csrf_token()}}'
             },

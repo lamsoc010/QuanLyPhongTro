@@ -149,7 +149,28 @@ Route::namespace('Administration')->prefix('administration')->name('administrati
     Route::post('/posts/create', 'PostsController@create');
 
 
+<<<<<<< HEAD
+=======
+        //-------------------------------------------Posts----------------------------------------------------
+        // show view posts
+        Route::get('/posts/listPosts', 'PostsController@index')->name('listPosts');
+        // get all posts with datatable
+        Route::get('/posts/getList', 'PostsController@anyData');
+        // view new post
+        Route::get('/posts/newPost/{id}', 'PostsController@post');
+        // get all name category --- admin/posts/getAllNameCategory
+        Route::get('/posts/getAllNameCategory', 'PostsController@getAllNameCategory');
+        // add new post
+        Route::post('/posts/create', 'PostsController@create');
+
+        //-------------------------------------------Host----------------------------------------------------
+        // show view host
+        Route::get('/hosts/listHosts', 'HostsController@index');
+        // get all host with datatable(chủ nhà)
+        Route::get('/hosts/getHost', 'HomeController@anyData');
+   });
+>>>>>>> da7b053af2c6f560c582c491dc4f0c37188d5d0f
     
-   // Route::post('logout', 'Auth\AuthenticatedSessionController@destroy')->name('logout');
+//    Route::post('logout', 'Auth\AuthenticatedSessionController@destroy')->name('logout');
     
 });

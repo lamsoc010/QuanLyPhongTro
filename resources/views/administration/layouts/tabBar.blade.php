@@ -22,6 +22,7 @@
             </div>
         </div>
 
+<<<<<<< HEAD
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
@@ -67,3 +68,50 @@
     </div>
     <!-- /.sidebar -->
 </aside>
+=======
+          <!-- Sidebar Menu -->
+          <nav class="mt-2">
+              <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                  data-accordion="false">
+                  <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+                    @if (Auth::user()->role == 'chutro')
+                        <li class="nav-item">
+                            <a href="/admin/motels/listMotels" class="nav-link">
+                                <i class="fas fa-door-open mr-2"></i>
+                                <p>Dãy trọ</p>
+                            </a>
+                        </li>
+                    @endif
+                     
+                    <li class="nav-item">
+                      <a href="{{route('administration.listPosts')}}" class="nav-link">
+                        <i class="fab fa-usps mr-2"></i>
+                          <p>
+                              Bài viết
+                          </p>
+                      </a>
+                    </li>
+                  {{-- class: nav-link disabled text-muted --}}
+                    <li class="nav-item">
+                        <a href="/administration/posts/newPost" class="nav-link" >
+                        <i class="fas fa-user-edit mr-2"></i>
+                        <p>Đăng bài</p>
+                        </a>
+                    </li>
+                 
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-headset mr-2"></i>
+                            <p>
+                                Liên hệ
+                            </p>
+                        </a>
+                    </li>
+              </ul>
+          </nav>
+          <!-- /.sidebar-menu -->
+      </div>
+      <!-- /.sidebar -->
+  </aside>
+>>>>>>> da7b053af2c6f560c582c491dc4f0c37188d5d0f

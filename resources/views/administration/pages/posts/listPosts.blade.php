@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="{{asset('AdminPTH/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
 @endsection
 
-@extends('admin.layouts.layout')
+@extends('administration.layouts.layout')
 @section('content')
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper pt-2">
@@ -171,7 +171,7 @@
             //  },
             
             ajax: {
-                url:  "{{asset('admin/posts/getList')}}",
+                url:  "{{asset('administration/posts/getList')}}",
                 // data: function(data){
                 //   var price = $('#price').val();
                 //   var nameMotels = $('#nameMotels').val();

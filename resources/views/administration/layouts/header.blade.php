@@ -11,10 +11,18 @@
             <a class="nav-link pt-0" data-toggle="dropdown" href="#">
                 <div class="user-panel  d-flex btn p-0">
                     <div class="image">
-                        <img src="{{asset('AdminPTH/dist/img/user1-128x128.jpg')}}" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                        @if (Auth::user()->image)
+                        <img src="{{asset('assets/img/users/'.Auth::user()->image)}}" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                        @else 
+                        <img src="{{asset('assets/img/users/user')}}" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+
+                        @endif
                     </div>
                     <div class="info">
-                        <span>Van Huy</span>
+                        @auth
+                            <span>Xin chào, {{Auth::user()->name}}</span>
+                            
+                        @endauth
                     </div>
                 </div>
             </a>
@@ -23,9 +31,13 @@
                     <i class="fas fa-address-card mr-2"></i> Profile
                 </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" asp-controller="Account" asp-action="Login">
-                    <i class="fas fa-sign-out-alt mr-2"></i> Sign-out
-                </a>
+                <form method="POST" action="{{route('logout')}}">
+                    @csrf
+                    @method('POST')
+                    <a onclick="event.preventDefault(); this.closest('form').submit();" class="dropdown-item" asp-controller="Account" asp-action="Login">
+                        <i class="fas fa-sign-out-alt mr-2"></i> Sign-out
+                    </a>
+                </form>
             </div>
         </li>
     </ul>

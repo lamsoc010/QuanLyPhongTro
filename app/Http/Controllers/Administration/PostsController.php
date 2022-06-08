@@ -14,6 +14,10 @@ class PostsController extends Controller
         return view('administration.pages.posts.listPosts');
     }
     public function post($id) {
+<<<<<<< HEAD
+=======
+
+>>>>>>> da7b053af2c6f560c582c491dc4f0c37188d5d0f
         return view('administration.pages.posts.newPost', compact('id'));
     }
     // get all posts with datatable
@@ -84,7 +88,11 @@ class PostsController extends Controller
             $views = $request->views;
             //  $file = $request->file->store('public/uploads');
 
+<<<<<<< HEAD
            // $path = 'files/';
+=======
+            $path = 'files/';
+>>>>>>> da7b053af2c6f560c582c491dc4f0c37188d5d0f
             $file = $request->file('file');
             // dd($file);
             // console.log($file);

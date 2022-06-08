@@ -6,6 +6,7 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 class PostsController extends Controller
 {
     // view posts
@@ -109,6 +110,8 @@ class PostsController extends Controller
                     'status' => $status,
                     'views' => $views,
                     'image' => $listFileName[0],
+                    'created_at' => Carbon::now('Asia/Ho_Chi_Minh'),
+                    'updated_at' => Carbon::now('Asia/Ho_Chi_Minh')
                 ]);
 
                 $idLastPost = DB::getPdo()->lastInsertId();
