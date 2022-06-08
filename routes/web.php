@@ -122,7 +122,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function() {
         // show view host
         Route::get('/hosts/listHosts', 'HostsController@index');
         // get all host with datatable(chủ nhà)
-        Route::get('/hosts/getHost', 'HomeController@anyData');
+        Route::get('/hosts/getHost', 'HostsController@anyData');
     });
     
     Route::post('logout', 'Auth\AuthenticatedSessionController@destroy')->name('logout');
@@ -141,12 +141,12 @@ Route::namespace('Administration')->prefix('administration')->name('administrati
         // Route::get('dashboard', 'HomeController@index')->name('dashboard');
         // new routes
         Route::get('/', 'HomeController@index')->name('home');
-
-        //-------------------------------------------Posts----------------------------------------------------
-        // view new post
-        Route::get('/posts/newPost', 'PostsController@post');
-        // add new post
-        Route::post('/posts/create', 'PostsController@create');
+  
+    //-------------------------------------------Posts----------------------------------------------------
+    // view new post
+    Route::get('/posts/newPost', 'PostsController@post');
+    // add new post
+    Route::post('/posts/create', 'PostsController@create');
 
 
         //-------------------------------------------Posts----------------------------------------------------
@@ -166,6 +166,15 @@ Route::namespace('Administration')->prefix('administration')->name('administrati
         Route::get('/hosts/listHosts', 'HostsController@index');
         // get all host with datatable(chủ nhà)
         Route::get('/hosts/getHost', 'HomeController@anyData');
+         //-------------------------------------------Motels----------------------------------------------------
+        // show view -- crete new motel
+        Route::get('/motels/newMotels', 'MotelsController@index');
+        // get all motel with datatable -- host
+        Route::get('/motels/getList', 'MotelsController@anyData');
+        // create new motel
+        Route::post('/motels/createMotel', 'MotelsController@createMotel');
+        // get all name all -- host
+        Route::get('/motels/getAllNameMotels', 'MotelsController@getAllNameMotels');
    });
 });
     

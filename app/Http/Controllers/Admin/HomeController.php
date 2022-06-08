@@ -87,9 +87,11 @@ class HomeController extends Controller
         $draw = $request->draw;
 
         // get dataBase
-        $users = DB::table('users');
+        $users = DB::table('users')
+        ->where('role', '=', 'user');
         $totalRecords = $users->count();
         $users = $users
+
             ->offset($start1)
             ->limit($end1)
             ->get();

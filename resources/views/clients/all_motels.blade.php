@@ -234,7 +234,7 @@
                             {{-- render danh sách dãy trọ --}}
                         </div>
                         <div class="motel-posts-all py-3 text-center">
-                            <a href="#" class="btn">pagination</a>
+                            <!-- <a href="#" class="btn">pagination</a> -->
                         </div>
                     </div>
                     <!-- Right content -->

@@ -40,8 +40,8 @@ class HomeController extends Controller
                 ->get();
         $data1 = [
             "draw"=> $request->draw,
-            "recordsFiltered"=> $totalRecords,
-            "recordsTotal"=>  $totalRecords,
+            "recordsFiltered" => $totalRecords,
+            "recordsTotal" =>  $totalRecords,
             "data" => $users
         ];
 

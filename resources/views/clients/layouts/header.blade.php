@@ -34,6 +34,25 @@
             font-size: 14px !important;
         }
 
+        .logo h3 {
+            color: #0067B1;
+        }
+
+        .logo h2 {
+            color: #FF0B0B;
+        }
+
+        .logo span {
+            font-size: 18px !important;
+            color: #B7B7B7;
+        }
+
+        .logo-title {
+            font-size: 13px;
+            color: #007BFF;
+            transform: translateY(-10px);
+        }
+
         .user-title {
             position: relative;
         }
@@ -52,7 +71,7 @@
             padding: 10px;
             border-radius: 5px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            transform:  rotateX(-90deg) ;
+            transform: rotateX(-90deg);
             transform-origin: top left;
             transition: all 0.4s ease-in-out;
             z-index: 100;
@@ -72,16 +91,15 @@
             color: #333 !important;
             transition: all 0.4s ease-in-out;
         }
+
         .block-info-user li a:hover {
             color: #fc3f00 !important;
         }
 
         .block-info-user li:last-child {
-           
-            border:none;
+
+            border: none;
         }
-
-
     </style>
 </head>
 
@@ -96,8 +114,8 @@
                             <div class="row d-flex justify-content-between align-items-center">
                                 <div class="header-info-left">
                                     <ul>
-                                        <li><img src="{{asset('assets/img/icon/header_icon1.png')}}" alt="">34ºc, Sunny </li>
-                                        <li><img src="{{asset('assets/img/icon/header_icon1.png')}}" alt="">Tuesday, 18th June, 2019</li>
+                                        <li><img src="{{asset('assets/img/icon/header_icon1.png')}}" alt="">30ºc, Sunny </li>
+                                        <li><img src="{{asset('assets/img/icon/header_icon1.png')}}" alt="">Thursday, 8th June, 2022</li>
                                     </ul>
                                 </div>
                                 <div class="header-info-right d-flex justify-content-center align-items-center">
@@ -154,10 +172,14 @@
                     <div class="container">
                         <div class="row d-flex align-items-center">
                             <!-- Logo -->
-                            <div class="col-xl-3 col-lg-3 col-md-3">
-                                <div class="logo">
-                                    <a href="/"><img src="{{asset('assets/img/logo/logo.png')}}" alt=""></a>
+                            <div class="col-xl-3 col-lg-3 col-md-3 pt-4">
+                                <div class="logo d-flex justify-content-start align-items-center">
+                                    <!-- <a href="/"><img src="{{asset('assets/img/logo/logo.png')}}" alt=""></a> -->
+                                    <h3 class="m-0">PHONGTRO</h3>
+                                    <h2 class="m-0">HUE</h2>
+                                    <span class="mt-2">.com</span>
                                 </div>
+                                <p class="logo-title">Kênh thông tin phòng trọ số 1 Huế</p>
                             </div>
                             <div class="col-xl-9 col-lg-9 col-md-9">
                                 <div class="header-banner f-right ">

@@ -56,6 +56,7 @@ div.dataTables_wrapper div.dataTables_filter label {
                         <thead>
                             <th> Id</th>
                             <th> STT</th>
+                            <th> Hình ảnh</th>
                             <th> Họ & tên</th>
                             <th> Email </th>
                             <th> Số điện thoại</th>
@@ -337,7 +338,7 @@ div.dataTables_wrapper div.dataTables_filter label {
             serverSide: true, 
             filter: true, 
             orderMulti: false,
-            dom: 'Blfrtip',
+            dom: 'Blrtip',
             buttons: [
             'copy', 'csv', 'excel', 'pdf', 'print'
             ],
@@ -367,6 +368,13 @@ div.dataTables_wrapper div.dataTables_filter label {
             columns: [
             { "data": "id", "name": "id"  },
             { "data": null},
+            {
+                    "render": function(data, type, full, meta) {
+                    
+                        var image = '{{asset("assets/img/users/")}}'+'/'+full.image;
+                        return `<img src="${image}" width="50" height="50">`;
+                    }
+                },
             { "data": "name", "name": "name" },
             { "data": "email", "name": "email"  },
             { "data": "phone","name": "phone" },
