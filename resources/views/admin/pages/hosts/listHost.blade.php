@@ -179,7 +179,7 @@ div.dataTables_wrapper div.dataTables_filter label {
                 </button>
             </div>
             <div class="modal-body">
-                <form action=""  method="post" id="create-user" enctype="multipart/form-data">
+                <form action=""  method="post" id="create-motels" enctype="multipart/form-data">
                     @csrf
                     <div class=" card-body">
                         <div class="row">
@@ -223,34 +223,53 @@ div.dataTables_wrapper div.dataTables_filter label {
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                {{-- choose file --}}
+                                <label for="sex"> Chọn ảnh</label><span class="text-danger">*</span>
+                                <div class="input-group mb-3">
+                                    
+                                    <input id="file-input" type="file" name="file" class="form-control"  multiple>
+                                    <span class="text-danger" id="image-input-error"></span>
+                                    <div id="preview"></div>
+                                </div>
+                                {{-- <div id="preview"></div> --}}
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="sex"> Đối tượng cho thuế</label><span class="text-danger">*</span>
+                                    <select class="form-control select2"  name="sex" id="sex">
+                                        <option selected="selected" value="" >--tất cả--</option>
+                                        <option value="Nam">Nam</option>
+                                        <option value="Nữ">Nữ</option>
+                                      </select>
+                                    <span class="form-message"></span>
+                                    <span id="message" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>    
                         <div class="form-group">
                             <label for="descreption">Mô tả </label>
                             <textarea class="form-control" id="descreption" name="descreption" rows="4"></textarea>
 
                              <span class="form-message"></span>
-                            </div>
-                             {{-- choose file --}}
-                             {{-- <div class="input-group mb-3">
-                                <input id="file-input" type="file" name="file" class="form-control"  multiple>
-                                <label class="input-group-text" for="file-input">Chọn ảnh</label>
-                                <span class="text-danger" id="image-input-error"></span>
-                                <div id="preview"></div>
-                            </div> --}}
-                            {{-- <div id="preview"></div> --}}
-                            <div class="modal-footer justify-content-between">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Thoát</button>
-                                <button  class=" form-submit btn btn-primary" >Lưu</button>
-                            </div>
                         </div>
-                    </form>
+                                                 
+                            
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Thoát</button>
+                            <button type="submit"  class=" form-submit btn btn-primary" >Lưu</button>
+                        </div>
+                    </div>
+                </form>
                   
-                </div>
-    
             </div>
-            <!-- /.modal-content -->
+    
         </div>
-        <!-- /.modal-dialog -->
+            <!-- /.modal-content -->
     </div>
+        <!-- /.modal-dialog -->
+</div>
     <!-- /Modal create-->  
 
 {{-- modal details  --}}
@@ -421,8 +440,8 @@ div.dataTables_wrapper div.dataTables_filter label {
 
     $(document).ready(function(){
        
-    //    datatable
-     var table =   $("#example1").DataTable({
+        //    datatable
+        var table =   $("#example1").DataTable({
             processing: true, 
             serverSide: true, 
             filter: true, 
@@ -454,43 +473,31 @@ div.dataTables_wrapper div.dataTables_filter label {
 
             ],
             columns: [
-            { "data": "id", "name": "id"  },
-            { "data": null},
-            {
-                "render": function(data, type, full, meta) {
-                    console.log(full)
-                    var image = '{{asset("storage/files/")}}'+'/'+full.image;
-                     return `<img src="${image}" width="50" height="50">`;
-                }
-            },
-            { "data": "name", "name": "name" },
-            { "data": "email", "name": "email"  },
-            { "data": "phone","name": "phone" },
-            { "data": "address", "name": "address"  },
-            // {
-            //     "render": function(data, type, full, meta) {
-            //         var myUrl = '{{asset('admin/users/details')}}/'+full.id;
-            //         return `<button type="button" class="btn btn-primary" data-toggle="modal" onclick=Details("${myUrl}")  data-target="#modal-details" >Chi tiết </button>`;
-            //     }
-            // },
-            // {
-            //     data: null,
-            //     render: function(data, type, row) {
-            //         var myUrl = '{{asset('admin/users/edit')}}/'+row.id;
-            //         return `<button type="button" class="btn btn-primary" onclick=Edit("${myUrl}")  data-toggle="modal" data-target="#modal-edit">Sửa </button>`;
-            //     }
-            // },
-            {
-                "render": function(data, type, full, meta) {
-                    var myUrl = '{{asset('admin/users/details')}}/'+full.id;
-                    return (
-                        `<button type="button" class="btn btn-outline-success " data-toggle="modal" onclick=Details("${myUrl}")  data-target="#modal-details" ><i class="fas fa-eye"></i> </button>
-                        <button type="button" class="btn btn-outline-warning " onclick=Edit("${myUrl}")  data-toggle="modal" data-target="#modal-edit"><i class="fas fa-pen"></i> </button>
-                        <a href="{{asset('admin/posts/newPost/${full.id}')}}" class="btn btn-outline-primary " ><i class="fas fa-folder-plus"></i> </a>
-                        <button type="button" class="btn btn-outline-warning "   data-toggle="modal" data-target="#modal-motels"> <i class="fas fa-door-open mr-2"></i> </button>`
-                    );
-                }
-            },
+                { "data": "id", "name": "id"  },
+                { "data": null},
+                {
+                    "render": function(data, type, full, meta) {
+                    
+                        var image = '{{asset("storage/files/")}}'+'/'+full.image;
+                        return `<img src="${image}" width="50" height="50">`;
+                    }
+                },
+                { "data": "name", "name": "name" },
+                { "data": "email", "name": "email"  },
+                { "data": "phone","name": "phone" },
+                { "data": "address", "name": "address"  },
+                {
+                    "render": function(data, type, full, meta) {
+                        var myUrl = '{{asset('admin/users/details')}}/'+full.id;
+                        var urlCreateMotel = '{{asset('admin/motels/create')}}/'+full.id;
+                        return (
+                            `<button type="button" class="btn btn-outline-success " data-toggle="modal" onclick=Details("${myUrl}")  data-target="#modal-details" ><i class="fas fa-eye"></i> </button>
+                            <button type="button" class="btn btn-outline-warning " onclick=Edit("${myUrl}")  data-toggle="modal" data-target="#modal-edit"><i class="fas fa-pen"></i> </button>
+                            <a href="{{asset('admin/posts/newPost/${full.id}')}}" class="btn btn-outline-primary " ><i class="fas fa-folder-plus"></i> </a>
+                            <button type="button" class="btn btn-outline-warning"  onclick=createMotels("${urlCreateMotel}")  data-toggle="modal" data-target="#modal-motels"> <i class="fas fa-door-open mr-2"></i> </button>`
+                        );
+                    }
+                },
             ],
         });
         table.on( 'order.dt search.dt', function () {
@@ -499,106 +506,150 @@ div.dataTables_wrapper div.dataTables_filter label {
             } );
         } ).draw();
       // xử lý -  gửi data sau khi thông qua được validate
-      $.validator.setDefaults({
-        submitHandler: function (form) {
-            // cấu hình message
-            var Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 3000
-            });
-            var actionUrl ="{{asset('admin/users/create')}}";    
-            $.ajax({
-                type: "POST",
-                url: actionUrl,
-                data: { 
-                    name: form.name.value,
-                    email: form.email.value,
-                    phone: form.phone.value,
-                    address: form.address.value,
-                    birthday: form.birthday.value,
-                  //  password: Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 7),
-                  password: form.password.value,
-                    role: 'chutro',
-                    _token: '{{csrf_token()}}'
-                },
-                success: function (data) {
-                    // ẩn modal
-                    $('div#modal-create').modal('hide');
-                    // reload data in table
-                    $('#example1').DataTable().ajax.reload();
-                    // show message
-                    Toast.fire({
-                        icon: 'success',
-                        title: "Thông tin được lưu lại thành công"
-                    })
-                    // xóa các biểu mẫu sau khi lưu
-                    form.reset();
-                },
-                error: function (data, textStatus, errorThrown) {
-                    $('#message').html('Email đã tồn tại');
-                },
-            });
-        }
-      });
-      $('#create-user').validate({
-        rules: {
-            name: {
-                required: true,
-            },
-            email: {
-                required: true,
-                email: true,
-            },
-            phone: {
-                required: true,
-                phoneUK: true,
-            
-            },
-            password : {
-                required: true,
-                minlength : 8
-                },
-                password_confirm : {
-                    minlength : 8,
-                    equalTo : '[name="password"]'
+        $.validator.setDefaults({
+            submitHandler: function (form) {
+                // cấu hình message
+                var Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000
+                });
+                var actionUrl ="{{asset('admin/users/create')}}";    
+                $.ajax({
+                    type: "POST",
+                    url: actionUrl,
+                    data: { 
+                        name: form.name.value,
+                        email: form.email.value,
+                        phone: form.phone.value,
+                        address: form.address.value,
+                        birthday: form.birthday.value,
+                    //  password: Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 7),
+                    password: form.password.value,
+                        role: 'chutro',
+                        _token: '{{csrf_token()}}'
+                    },
+                    success: function (data) {
+                        // ẩn modal
+                        $('div#modal-create').modal('hide');
+                        // reload data in table
+                        $('#example1').DataTable().ajax.reload();
+                        // show message
+                        Toast.fire({
+                            icon: 'success',
+                            title: "Thông tin được lưu lại thành công"
+                        })
+                        // xóa các biểu mẫu sau khi lưu
+                        form.reset();
+                    },
+                    error: function (data, textStatus, errorThrown) {
+                        $('#message').html('Email đã tồn tại');
+                    },
+                });
             }
-        },
-        messages: {
-            email: {
-                required: "Vui lòng nhập địa chỉ email",
-                email: "Trường này là email"
-            },
+        });
+        $('#create-user').validate({
+            rules: {
                 name: {
-                required: "Vui lòng nhập Họ $ tên",
+                    required: true,
+                },
+                email: {
+                    required: true,
+                    email: true,
+                },
+                phone: {
+                    required: true,
+                    phoneUK: true,
+                
+                },
+                password : {
+                    required: true,
+                    minlength : 8
+                    },
+                    password_confirm : {
+                        minlength : 8,
+                        equalTo : '[name="password"]'
+                }
             },
-            phone: {
-                required: "Vui lòng nhập số điện thoại",
-                phoneUS: "Trường này là số điện thoại"
+            messages: {
+                email: {
+                    required: "Vui lòng nhập địa chỉ email",
+                    email: "Trường này là email"
+                },
+                    name: {
+                    required: "Vui lòng nhập Họ $ tên",
+                },
+                phone: {
+                    required: "Vui lòng nhập số điện thoại",
+                    phoneUS: "Trường này là số điện thoại"
+                },
+                password: {
+                    required: "Vui lòng nhâp mật khẩu",
+                    minlength: "Độ dài tối thiểu 8 ký tự"
+                },
+                confirmpassword: {
+                    equalTo: "Mật khẩu không trùng khớp",
+                }
             },
-            password: {
-                required: "Vui lòng nhâp mật khẩu",
-                minlength: "Độ dài tối thiểu 8 ký tự"
+            errorElement: 'span',
+            errorPlacement: function (error, element) {
+            error.addClass('invalid-feedback');
+            element.closest('.form-group').append(error);
             },
-            confirmpassword: {
-                equalTo: "Mật khẩu không trùng khớp",
+            highlight: function (element, errorClass, validClass) {
+            $(element).addClass('is-invalid');
+            },
+            unhighlight: function (element, errorClass, validClass) {
+            $(element).removeClass('is-invalid');
             }
-        },
-        errorElement: 'span',
-        errorPlacement: function (error, element) {
-          error.addClass('invalid-feedback');
-          element.closest('.form-group').append(error);
-        },
-        highlight: function (element, errorClass, validClass) {
-          $(element).addClass('is-invalid');
-        },
-        unhighlight: function (element, errorClass, validClass) {
-          $(element).removeClass('is-invalid');
-        }
-      });
+        });
     })
-   
+    
+    // setup request header with ajax
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    // get url createMotels
+    function createMotels(url) {
+        var myUrl = url;
+        console.log(myUrl);
+        $('#create-motels').submit(function(e) {
+            e.preventDefault();
+
+            var formData = new FormData(this);
+            // phòng
+            formData.append('status', "Còn phòng");
+            // lượt view mới đầu tiên
+            formData.append('views', 0);
+
+            // ajax
+            $.ajax({
+                type:'POST',
+                url: myUrl,
+                data: formData,
+                contentType: false,
+                processData: false,
+                // response message
+                success: (response) => {
+                    if (response) {
+                        this.reset();
+                        Toast.fire({
+                            type: 'success',
+                            title: 'Đăng bài thành công'
+                        });
+                    }
+                },
+                error: function(response){
+                    console.log(response);
+                }
+            });
+        });
+    }
+    
 
     // show modal details
     function Details(url) {

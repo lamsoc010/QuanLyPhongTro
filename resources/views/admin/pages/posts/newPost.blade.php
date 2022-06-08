@@ -195,7 +195,7 @@ function readAndPreview(file) {
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
-    });
+  });
   $('#upload-image-form').submit(function(e) {
     e.preventDefault();
     var formData = new FormData(this);
