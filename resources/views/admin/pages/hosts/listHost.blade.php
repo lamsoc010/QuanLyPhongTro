@@ -478,7 +478,7 @@ div.dataTables_wrapper div.dataTables_filter label {
                 {
                     "render": function(data, type, full, meta) {
                     
-                        var image = '{{asset("storage/files/")}}'+'/'+full.image;
+                        var image = '{{asset("assets/img/users/")}}'+'/'+full.image;
                         return `<img src="${image}" width="50" height="50">`;
                     }
                 },
