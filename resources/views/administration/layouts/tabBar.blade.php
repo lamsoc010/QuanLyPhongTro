@@ -29,7 +29,7 @@
                with font-awesome or any other icon font library -->
                     @if (Auth::user()->role == 'chutro')
                         <li class="nav-item">
-                            <a href="/admin/motels/listMotels" class="nav-link">
+                            <a href="/administration/motels/listMotels" class="nav-link">
                                 <i class="fas fa-door-open mr-2"></i>
                                 <p>Dãy trọ</p>
                             </a>

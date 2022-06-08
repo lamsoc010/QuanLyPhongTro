@@ -140,13 +140,13 @@ Route::namespace('Administration')->prefix('administration')->name('administrati
     Route::middleware(['auth'])->group(function() {
         // Route::get('dashboard', 'HomeController@index')->name('dashboard');
         // new routes
-        Route::get('/', 'HomeController@index');
-    });
-    //-------------------------------------------Posts----------------------------------------------------
-    // view new post
-    Route::get('/posts/newPost', 'PostsController@post');
-    // add new post
-    Route::post('/posts/create', 'PostsController@create');
+        Route::get('/', 'HomeController@index')->name('home');
+
+        //-------------------------------------------Posts----------------------------------------------------
+        // view new post
+        Route::get('/posts/newPost', 'PostsController@post');
+        // add new post
+        Route::post('/posts/create', 'PostsController@create');
 
 
         //-------------------------------------------Posts----------------------------------------------------
@@ -167,6 +167,7 @@ Route::namespace('Administration')->prefix('administration')->name('administrati
         // get all host with datatable(chủ nhà)
         Route::get('/hosts/getHost', 'HomeController@anyData');
    });
+});
     
 //    Route::post('logout', 'Auth\AuthenticatedSessionController@destroy')->name('logout');
     
