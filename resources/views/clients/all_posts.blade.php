@@ -176,7 +176,7 @@
                             {{-- render danh sách bài viết--}}
                         </div>
                         <div class="motel-posts-all py-3 text-center">
-                            <a href="#" class="btn">pagi</a>
+                            <!-- <a href="#" class="btn">pagi</a> -->
                         </div>
                     </div>
                     <!-- Right content -->
