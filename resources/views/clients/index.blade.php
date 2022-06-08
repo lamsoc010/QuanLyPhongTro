@@ -454,6 +454,8 @@
             let time_diff = time_now.diff(time_created_at, 'hours');
             if (time_diff == 0) {
                 time_diff = `<p>Vừa mới xong</p>`;
+            } else if(time_diff >= 720){
+                time_diff = `<p class="small">${Math.floor(time_diff/24/30)} tháng trước</p>`;
             } else if (time_diff >= 24) {
                 time_diff = `<p class="small">${Math.floor(time_diff/24)} ngày trước</p>`;
             } else {

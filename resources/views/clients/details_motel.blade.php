@@ -737,11 +737,13 @@
          let time_created_at = moment(item.created_at);
          let time_diff = time_now.diff(time_created_at, 'hours');
          if (time_diff == 0) {
-            time_diff = `<p>Vừa mới xong</p>`;
+               time_diff = `<p>Vừa mới xong</p>`;
+         } else if(time_diff >= 720){
+               time_diff = `<p class="small">${Math.floor(time_diff/24/30)} tháng trước</p>`;
          } else if (time_diff >= 24) {
-            time_diff = `<p>${Math.floor(time_diff/24)} ngày trước</p>`;
+               time_diff = `<p class="small">${Math.floor(time_diff/24)} ngày trước</p>`;
          } else {
-            time_diff = `<p>${time_diff} giờ trước</p>`;
+               time_diff = `<p class="small">${time_diff} giờ trước</p>`;
          }
 
          html += `
@@ -770,15 +772,17 @@
       for (let i = 0; i < listPostsMost.length; i++) {
          let item = listPostsMost[i];
          let time_now = moment(new Date());
-         let time_created_at = moment(item.created_at);
-         let time_diff = time_now.diff(time_created_at, 'hours');
-         if (time_diff == 0) {
-            time_diff = `<p>Vừa mới xong</p>`;
-         } else if (time_diff >= 24) {
-            time_diff = `<p>${Math.floor(time_diff/24)} ngày trước</p>`;
-         } else {
-            time_diff = `<p>${time_diff} giờ trước</p>`;
-         }
+            let time_created_at = moment(item.created_at);
+            let time_diff = time_now.diff(time_created_at, 'hours');
+            if (time_diff == 0) {
+                time_diff = `<p>Vừa mới xong</p>`;
+            } else if(time_diff >= 720){
+                time_diff = `<p class="small">${Math.floor(time_diff/24/30)} tháng trước</p>`;
+            } else if (time_diff >= 24) {
+                time_diff = `<p class="small">${Math.floor(time_diff/24)} ngày trước</p>`;
+            } else {
+                time_diff = `<p class="small">${time_diff} giờ trước</p>`;
+            }
          html += `
                <div class="media post_item">
                   <img src="{{asset('assets/img/posts/${item.image}')}}" alt="post" style="height: 80px; width: 80px">
