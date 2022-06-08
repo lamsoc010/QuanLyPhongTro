@@ -140,7 +140,7 @@ Route::namespace('Administration')->prefix('administration')->name('administrati
     Route::middleware(['auth'])->group(function() {
         // Route::get('dashboard', 'HomeController@index')->name('dashboard');
         // new routes
-        Route::get('/', 'HomeController@index');
+        Route::get('/', 'HomeController@index')->name('home');
     });
     //-------------------------------------------Posts----------------------------------------------------
     // view new post
