@@ -144,13 +144,11 @@ Route::namespace('Administration')->prefix('administration')->name('administrati
     });
     //-------------------------------------------Posts----------------------------------------------------
     // view new post
-    Route::get('/posts/newPost/{id}', 'PostsController@post');
+    Route::get('/posts/newPost', 'PostsController@post');
     // add new post
     Route::post('/posts/create', 'PostsController@create');
 
 
-<<<<<<< HEAD
-=======
         //-------------------------------------------Posts----------------------------------------------------
         // show view posts
         Route::get('/posts/listPosts', 'PostsController@index')->name('listPosts');
@@ -169,8 +167,6 @@ Route::namespace('Administration')->prefix('administration')->name('administrati
         // get all host with datatable(chủ nhà)
         Route::get('/hosts/getHost', 'HomeController@anyData');
    });
->>>>>>> da7b053af2c6f560c582c491dc4f0c37188d5d0f
     
 //    Route::post('logout', 'Auth\AuthenticatedSessionController@destroy')->name('logout');
     
-});

@@ -21,54 +21,6 @@
                 </div>
             </div>
         </div>
-
-<<<<<<< HEAD
-        <!-- Sidebar Menu -->
-        <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-                data-accordion="false">
-                <li class="nav-item">
-                <a href="/administration" class="nav-link">
-                    <i class="fas fa-home mr-2"></i>
-                    <p>Trang chủ</p>
-                </a>
-                </li>
-                <li class="nav-item">
-                    <a href="/administration/motels/listMotels" class="nav-link">
-                        <i class="fas fa-door-open mr-2"></i>
-                        <p>Dãy trọ</p>
-                    </a>
-                </li>
-                    
-                <li class="nav-item">
-                    <a href="/administration/posts/listPost" class="nav-link">
-                        <i class="fab fa-usps mr-2"></i>
-                            <p>
-                            Bài viết
-                        </p>   
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="/administration/posts/newPost" class="nav-link" >
-                        <i class="fas fa-user-edit mr-2"></i>
-                        <p>Đăng bài</p>
-                    </a>
-                </li>                
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                    <i class="fas fa-headset mr-2"></i>
-                        <p>
-                            Liên hệ
-                        </p>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    <!-- /.sidebar-menu -->
-    </div>
-    <!-- /.sidebar -->
-</aside>
-=======
           <!-- Sidebar Menu -->
           <nav class="mt-2">
               <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
@@ -114,4 +66,4 @@
       </div>
       <!-- /.sidebar -->
   </aside>
->>>>>>> da7b053af2c6f560c582c491dc4f0c37188d5d0f
+

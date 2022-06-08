@@ -132,7 +132,11 @@ class HomeController extends Controller
     {
         // dd($request->image);
         $idUser = $request->id;
-        
+        $file = $request->file('image');
+        $file_name = time().'_'.$file->getClientOriginalName();
+        $file->move(public_path('assets/img/users'), $file_name);
+ 
+
         DB::table('users')
         ->where('id', $idUser)
             ->update([
@@ -140,7 +144,7 @@ class HomeController extends Controller
                 'email' => $request->email,
                 'address' => $request->address,
                 'phone' => $request->phone,
-                'image' => $request->image,
+                'image' => $file_name,
                 'birthday' => $request->birthday,
                 'updated_at' => Carbon::now('Asia/Ho_Chi_Minh')
             ]);

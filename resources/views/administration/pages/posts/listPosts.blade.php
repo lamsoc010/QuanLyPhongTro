@@ -159,7 +159,7 @@
 <script>
   // DataTable.datetime('D MMM YYYY');
      $(document).ready(function(){
-       
+      var idHost = JSON.parse(localStorage.getItem('users')).id;
         var table =   $("#tabPosts").DataTable({
             processing: true, 
             serverSide: true, 
@@ -172,16 +172,9 @@
             
             ajax: {
                 url:  "{{asset('administration/posts/getList')}}",
-                // data: function(data){
-                //   var price = $('#price').val();
-                //   var nameMotels = $('#nameMotels').val();
-                //   var sex = $('#sex').val();
-                //   var status = $('#status').val();
-                //   data.searchByPrice= price;
-                //   data.searchBynameMotels= nameMotels;
-                //   data.searchBySex = sex;
-                //   data.searchByStatus= status;
-                // }
+                data: {
+                  idHost: idHost,
+                }
             },
             columnDefs: [{
                 "targets": [0],

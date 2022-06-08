@@ -13,18 +13,15 @@ class PostsController extends Controller
         
         return view('administration.pages.posts.listPosts');
     }
-    public function post($id) {
-<<<<<<< HEAD
-=======
-
->>>>>>> da7b053af2c6f560c582c491dc4f0c37188d5d0f
-        return view('administration.pages.posts.newPost', compact('id'));
+    public function post() {
+        return view('administration.pages.posts.newPost');
     }
     // get all posts with datatable
     public function anyData(Request $request) {
         $start1 =$request->start;
         $end1 = $request->length;
         $draw = $request->draw;
+        $idHost = $request->idHost;
 
         // get dataBase
         $posts = DB::table('posts');
@@ -32,7 +29,8 @@ class PostsController extends Controller
         $posts = $posts
                 ->join('users', 'users.id', '=', 'posts.idUser')
                  ->join('category', 'category.id', '=', 'posts.idCategory')
-                 ->select('posts.*', 'users.name as nameUser', 'category.name as category'  )
+                 ->select('posts.*', 'users.name as nameUser', 'category.name as category')
+                 ->where('posts.idUser', '=', $idHost)
                 ->offset($start1)
                 ->limit($end1)
                 ->get();
@@ -87,12 +85,7 @@ class PostsController extends Controller
             $status = $request->status;
             $views = $request->views;
             //  $file = $request->file->store('public/uploads');
-
-<<<<<<< HEAD
-           // $path = 'files/';
-=======
             $path = 'files/';
->>>>>>> da7b053af2c6f560c582c491dc4f0c37188d5d0f
             $file = $request->file('file');
             // dd($file);
             // console.log($file);

@@ -241,53 +241,58 @@ div.dataTables_wrapper div.dataTables_filter label {
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <form asp-action="Edit" id="edit-user">
-                    <div class=" card-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="ed-name">Họ & tên</label>
-                                    <input id="ed-name" type="text" class="form-control" name="name" placeholder="Enter name">
-                                    
-                                    <span class="form-message"></span>
+            <form method="post" id="upload-image-form" class="p-2" enctype="multipart/form-data" >
+                @csrf
+                <div class="modal-body">
+                    <form method="post" id="upload-image-form" class="p-2" enctype="multipart/form-data" >
+                        @csrf
+                        <div class=" card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="ed-name">Họ & tên</label>
+                                        <input id="ed-name" type="text" class="form-control" name="name" placeholder="Enter name">
+                                        
+                                        <span class="form-message"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="ed-email">Địa chỉ Email</label>
+                                        <input id="ed-email" type="email" class="form-control" name="email" placeholder="Enter email">
+                                        <span class="form-message"></span>
+                                        <span id="message" class="text-danger"></span>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="ed-email">Địa chỉ Email</label>
-                                    <input id="ed-email" type="email" class="form-control" name="email" placeholder="Enter email">
-                                    <span class="form-message"></span>
-                                    <span id="message" class="text-danger"></span>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="ed-phone">Số điện thoại</label>
-                                    <input id="ed-phone" type="text" class="form-control" name="phone" placeholder="Enter Phone">                                    
-                                    <span class="form-message"></span>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="ed-phone">Số điện thoại</label>
+                                        <input id="ed-phone" type="text" class="form-control" name="phone" placeholder="Enter Phone">                                    
+                                        <span class="form-message"></span>
 
-                                </div>
-                                <div class="form-group">
-                                    <label for="ed-birthday">Ngày sinh</label>
-                                    <input id="ed-birthday"  type="date" value="2022-05-25" name="birthday" class="form-control" placeholder="Enter Birthday">                                 
-                                    <span class="form-message"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="ed-birthday">Ngày sinh</label>
+                                        <input id="ed-birthday"  type="date" value="2022-05-25" name="birthday" class="form-control" placeholder="Enter Birthday">                                 
+                                        <span class="form-message"></span>
+                                    </div>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label for="ed-address">Địa chỉ </label>
+                                <input id="ed-address" type="text" class="form-control" name="address" placeholder="Enter Address">
+                            </div>
+                            <div class="form-group">
+                                <label for="ed-image">Ảnh đại diện </label>
+                                <input id="ed-image" type="file" class="form-control" name="image" placeholder="Enter image">
+                            </div>
+                        
                         </div>
-                        <div class="form-group">
-                            <label for="ed-address">Địa chỉ </label>
-                            <input id="ed-address" type="text" class="form-control" name="address" placeholder="Enter Address">
-                        </div>
-                        <div class="form-group">
-                            <label for="ed-image">Ảnh đại diện </label>
-                            <input id="ed-image" type="file" class="form-control" name="image" placeholder="Enter image">
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Thoát</button>
+                            <button type="submit"  class="btn btn-primary" data-save="modal">Lưu thay đổi</button>
                         </div>
                     
-                    </div>
-                </form>
-                <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Thoát</button>
-                <button type="button" onclick="editUser()" class="btn btn-primary" data-save="modal">Lưu thay đổi</button>
-            </div>
+                    </form>
+                   
             </div>
 
         </div>
@@ -316,6 +321,8 @@ div.dataTables_wrapper div.dataTables_filter label {
 @*message*@
 <!-- SweetAlert2 -->
 <script src="{{asset('AdminPTH/plugins/sweetalert2/sweetalert2.min.js')}}"></script>
+{{-- upload image --}}
+<script src="{{asset('js/uploadFile.js')}}"></script>
 
 
 <script src="{{asset('AdminPTH/plugins/jquery-validation/jquery.validate.min.js')}}"></script>
@@ -533,29 +540,28 @@ div.dataTables_wrapper div.dataTables_filter label {
         });
         urlEdit = url;
     }
-
-    function editUser(){
-        var Toast = Swal.mixin({
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    var Toast = Swal.mixin({
             toast: true,
             position: 'top-end',
             showConfirmButton: false,
             timer: 3000
         });
-        console.log($('#ed-image').val().split('\\')[$('#ed-image').val().split('\\').length - 1]);
+    $('#upload-image-form').submit(function(e) {
+        e.preventDefault();
+        var formData = new FormData(this);
+       // console.log($('#ed-image').val().split('\\')[$('#ed-image').val().split('\\').length - 1]);
         var actionUrl =urlEdit;
         $.ajax({
             type: "POST",
             url: actionUrl,
-            data: { 
-                id: $('#ed-id').val(),
-                name: $('#ed-name').val(),
-                email: $('#ed-email').val(),
-                phone: $('#ed-phone').val(),
-                address: $('#ed-address').val(),
-                image: $('#ed-image').val().split('\\')[$('#ed-image').val().split('\\').length - 1],
-                birthday: $('#ed-birthday').val(),
-                _token: '{{csrf_token()}}'
-            },
+            data: formData,
+            contentType: false,
+            processData: false,
             success: function (data) {
                 // ẩn modal
                 $('div#modal-edit').modal('hide');
@@ -577,7 +583,7 @@ div.dataTables_wrapper div.dataTables_filter label {
                 $('#message').html('Email đã tồn tại');
             },
         });
-    }
+    });
 
 </script>
 @endsection

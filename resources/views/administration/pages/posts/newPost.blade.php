@@ -7,7 +7,7 @@
  <link rel="stylesheet" href="{{asset('AdminPTH/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css')}}">
 @endsection
 
-@extends('admin.layouts.layout')
+@extends('administration.layouts.layout')
 @section('content')
 <div class="content-wrapper">
 
@@ -114,58 +114,9 @@
 <script src="{{asset('AdminPTH/plugins/sweetalert2/sweetalert2.min.js')}}"></script>
 {{-- upload image --}}
 <script src="{{asset('js/uploadFile.js')}}"></script>
-{{-- <script>
-  $(function () {
-
-
-    // Summernote
-    $('#summernote').summernote()
-    // $('#summernote1').summernote()
-
-    // CodeMirror
-    CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {
-      mode: "htmlmixed",
-      theme: "monokai"
-    });
-  });
-  // upload multiple image
-  function previewImages() {
-
-var preview = document.querySelector('#preview');
-
-if (this.files) {
-    [].forEach.call(this.files, readAndPreview);
-}
-
-function readAndPreview(file) {
-
-    // Make sure `file.name` matches our extensions criteria
-    if (!/\.(jpe?g|png|gif|jfif)$/i.test(file.name)) {
-        return alert(file.name + " is not an image");
-    } // else...
-
-    var reader = new FileReader();
-
-    reader.addEventListener("load", function () {
-        var image = new Image();
-        image.height = 100;
-        image.title = file.name;
-        image.src = this.result;
-        preview.appendChild(image);
-    });
-    reader.readAsDataURL(file);
-}
-
-}
-  document.querySelector('#file-input').addEventListener("change", previewImages);
-</script> --}}
-
 <script>
-  var idHost = {{$id}};
-  $(document).ready(function(){
-    // get id form host to newpost
-  
-
+  var idHost = JSON.parse(localStorage.getItem('users')).id;
+    $(document).ready(function(){
     // set data to tagName: select -> option
     $.ajax({
       type: "GET",
@@ -231,7 +182,4 @@ function readAndPreview(file) {
     });
   });
 </script>
-
-
-
   @endsection
