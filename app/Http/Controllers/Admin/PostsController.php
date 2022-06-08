@@ -85,7 +85,7 @@ class PostsController extends Controller
             $views = $request->views;
             //  $file = $request->file->store('public/uploads');
 
-            $path = 'files/';
+           // $path = 'files/';
             $file = $request->file('file');
             // dd($file);
             // console.log($file);

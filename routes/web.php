@@ -102,6 +102,10 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function() {
         // show view rooms 
         Route::get('/rooms/listRooms', 'RoomsController@index');
 
+         //-------------------------------------------Motels----------------------------------------------------
+        // save motel
+        Route::post('/motels/create/{id}', 'MotelsController@create');
+
         //-------------------------------------------Posts----------------------------------------------------
         // show view posts
         Route::get('/posts/listPosts', 'PostsController@index');

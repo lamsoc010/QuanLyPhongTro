@@ -74,6 +74,50 @@ class MotelsController extends Controller
 
         return response()->json($data);
     }
+
+    public function create(Request $request, $id) {
+       // validate
+
+       //   get value form request
+        $idUser = $id;
+        $name = $request->name;
+        $address = $request->address;
+        $status = $request->status;
+        $person = $request->person;
+        $views = $request->views;
+        $min_pri = $request->min_pri;
+        $max_pri= $request->max_pri;
+        $descreption = $request->descreption;
+        $quantity = $request->quantity;
+        $area = $request->area;
+
+        $file = $request->file('file');
+
+        $file_name = time().'_'.$file->getClientOriginalName();
+                // $upload = $file->storeAs('public/uploads', $file_name);
+        $file->move(public_path('assets/img/motels'), $file_name);
+      
+
+        // insert to database
+        DB::table('motels')->insert([
+            'idUser' => $idUser,
+            'name' => $name,
+            'address' => $address,
+            'status' => $status,
+            'person' => $person,
+            'views' => $views,
+            'min_price' => $min_pri,
+            'max_price' => $max_pri,
+            'descreption' => $descreption,
+            'room_quantity' => $quantity,
+            'area' => $area,
+            'image' => $file_name,
+        ]);
+
+        return response() ->json(['success' => 'Thêm thành công']);
+            
+            
+    }
     
     
 }
