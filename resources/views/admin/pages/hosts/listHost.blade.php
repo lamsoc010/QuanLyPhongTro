@@ -173,7 +173,7 @@ div.dataTables_wrapper div.dataTables_filter label {
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Thêm chủ trọ</h4>
+                <h4 class="modal-title">Thêm dãy trọ</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -446,7 +446,7 @@ div.dataTables_wrapper div.dataTables_filter label {
             serverSide: true, 
             filter: true, 
             orderMulti: false,
-            dom: 'Blfrtip',
+            dom: 'Brtip',
             buttons: [
             'copy', 'csv', 'excel', 'pdf', 'print'
             ],

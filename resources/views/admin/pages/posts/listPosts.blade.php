@@ -15,19 +15,19 @@
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper pt-2">
 
-  <div class="container-fluid">
+  {{-- <div class="container-fluid">
     <div class="card card-default">
       <div class="card-header">
-        <h3 class="card-title">Quản lý phòng trọ</h3>
+        <h3 class="card-title">Quản lý bài đăng</h3>
   
-        <div class="card-tools">
+         <div class="card-tools">
           <button type="button" class="btn btn-tool" data-card-widget="collapse">
             <i class="fas fa-minus"></i>
           </button>
           <button type="button" class="btn btn-tool" data-card-widget="remove">
             <i class="fas fa-times"></i>
           </button>
-        </div>
+        </div> 
       </div>
       <!-- /.card-header -->
       <div class="card-body">
@@ -100,19 +100,18 @@
         <!-- /.row -->
         <button onclick="filterData()" id="filterData">tra cứu</button>
   
-      </div>
+      </div> 
     
     </div>
-    <!-- /.card -->
-    {{-- button --}}
+  
    
-  </div>
+  </div> --}}
            <!-- /.row -->
            <div class="row">
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title">Expandable Table</h3>
+                  <h3 class="card-title">Quản lý bài đăng</h3>
                 </div>
                 <!-- ./card-header -->
                 <div class="card-body">
